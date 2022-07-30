@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component should render correctly 1`] = `
+.c0 {
+  position: relative;
+  width: 100%;
+}
+
+.c1 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: auto;
+  gap: 0.4rem;
+  color: #181917;
+  background-color: #E4E5E3;
+  border: 0.1rem solid #C9CAC8;
+  -webkit-transition: box-shadow 0.2s, border-color 0.2s;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  border-radius: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-family: 'Roboto',sans-serif;
+  line-height: 2.4rem;
+  height: 4.4rem;
+}
+
+.c1:hover,
+.c1:focus-within {
+  border-color: #797B75;
+  box-shadow: 1px 0px 3px 0px #E4E5E3;
+}
+
+.c2 {
+  outline: none;
+  width: 100%;
+  height: 100%;
+  padding: 0 1.6rem;
+  color: inherit;
+  background-color: inherit;
+  border: none;
+  border-radius: inherit;
+}
+
+.c3 {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: 'Roboto',sans-serif;
+  line-height: 1.6rem;
+  margin: auto;
+  padding: 0.6rem 1.2rem;
+  color: #FFFFFF;
+  background-color: #FFE3A3;
+  border-radius: 0;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 2;
+}
+
+.c3 svg {
+  margin-right: 0.5rem;
+}
+
+<div
+  class="c0"
+>
+  <label
+    class="c1"
+  >
+    <input
+      class="c2"
+      id="test-input"
+      placeholder="Type here..."
+    />
+  </label>
+  <span
+    class="c3"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 256 256"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        fill="none"
+        height="256"
+        width="256"
+      />
+      <line
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="16"
+        x1="128"
+        x2="128"
+        y1="104"
+        y2="144"
+      />
+      <path
+        d="M114.2,40l-88,152A16,16,0,0,0,40,216H216a16,16,0,0,0,13.8-24l-88-152A15.9,15.9,0,0,0,114.2,40Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="16"
+      />
+      <circle
+        cx="128"
+        cy="180"
+        r="12"
+      />
+    </svg>
+  </span>
+</div>
+`;

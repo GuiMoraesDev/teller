@@ -2,14 +2,13 @@ import React from 'react'
 import Head from 'next/head'
 import { NextSeo } from 'next-seo'
 import { AppProps } from 'next/app'
-import { ThemeProvider } from 'styled-components'
 
-import theme from 'styles/themes'
 import GlobalStyle from 'styles/global'
+import GlobalAppProvider from 'context'
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <ThemeProvider theme={theme}>
+    <GlobalAppProvider>
       <Head>
         <meta name="theme-color" content="#06092B" />
         <link rel="shortcut icon" href="/img/icon-512.png" />
@@ -36,7 +35,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
       <GlobalStyle />
       <Component {...pageProps} />
-    </ThemeProvider>
+    </GlobalAppProvider>
   )
 }
 
