@@ -2,7 +2,9 @@
   "name": "teller",
   "version": "0.1.0",
   "private": true,
-  "author": "Guilherme Moraes",
+  "author": {
+    "name": "Guilherme Moraes"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "next dev",

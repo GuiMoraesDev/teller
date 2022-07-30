@@ -19,7 +19,7 @@ export const PrimaryVariant = Template.bind({})
 
 PrimaryVariant.args = {
   type: 'button',
-  label: 'Random Button',
+  label: 'Button',
   fullWidth: false,
   dimension: 'sm',
   rounded: 'sm',
@@ -30,7 +30,7 @@ export const SecondaryVariant = Template.bind({})
 
 SecondaryVariant.args = {
   type: 'button',
-  label: 'Random Button',
+  label: 'Button',
   fullWidth: false,
   dimension: 'sm',
   rounded: 'sm',
@@ -41,7 +41,7 @@ export const NeutralVariant = Template.bind({})
 
 NeutralVariant.args = {
   type: 'button',
-  label: 'Random Button',
+  label: 'Button',
   fullWidth: false,
   dimension: 'sm',
   rounded: 'sm',
@@ -52,7 +52,7 @@ export const OutlineVariant = Template.bind({})
 
 OutlineVariant.args = {
   type: 'button',
-  label: 'Random Button',
+  label: 'Button',
   fullWidth: false,
   dimension: 'sm',
   rounded: 'sm',
@@ -63,7 +63,7 @@ export const AlertVariant = Template.bind({})
 
 AlertVariant.args = {
   type: 'button',
-  label: 'Random Button',
+  label: 'Button',
   fullWidth: false,
   dimension: 'sm',
   rounded: 'sm',
@@ -86,7 +86,7 @@ export const RoundedVariant = Template.bind({})
 
 RoundedVariant.args = {
   type: 'button',
-  label: 'Random Button',
+  label: 'Button',
   fullWidth: false,
   dimension: 'sm',
   rounded: 'full',
@@ -108,7 +108,7 @@ export const LabelIconLeftBasic = Template.bind({})
 
 LabelIconLeftBasic.args = {
   type: 'button',
-  label: 'Random Button',
+  label: 'Button',
   IconLeft: <Minus />,
   fullWidth: false,
   dimension: 'sm',
@@ -120,7 +120,7 @@ export const LabelIconRightBasic = Template.bind({})
 
 LabelIconRightBasic.args = {
   type: 'button',
-  label: 'Random Button',
+  label: 'Button',
   IconRight: <Plus />,
   fullWidth: false,
   dimension: 'sm',
@@ -132,7 +132,7 @@ export const LabelIconLeftRightBasic = Template.bind({})
 
 LabelIconLeftRightBasic.args = {
   type: 'button',
-  label: 'Random Button',
+  label: 'Button',
   IconLeft: <Plus />,
   IconRight: <Minus />,
   fullWidth: false,
