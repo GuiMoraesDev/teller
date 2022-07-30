@@ -6,7 +6,7 @@ import { colors, themeColors } from "./colors";
 import sizes from "./sizes";
 import typography from "./typography";
 
-const appTheme: DefaultTheme = {
+const appTheme = {
   breakpoints,
   transition: {
     slow: "0.4s ease-in-out",
