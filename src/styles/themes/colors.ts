@@ -1,0 +1,90 @@
+const colors = {
+  transparent: "transparent",
+  neutrals: {
+    "000": "#FFFFFF",
+    "050": "#F2F2F1",
+    "100": "#E4E5E3",
+    "150": "#D7D7D6",
+    "200": "#C9CAC8",
+    "300": "#AFB0AC",
+    "400": "#949591",
+    "500": "#797B75",
+    "600": "#61625E",
+    "700": "#494A46",
+    "800": "#30312F",
+    "850": "#242523",
+    "900": "#181917",
+    "950": "#0C0C0C",
+    "999": "#000000",
+  },
+  primary: {
+    "050": "#EFF5F5",
+    "100": "#E0EAEC",
+    "150": "#D0E0E2",
+    "200": "#C1D6D9",
+    "300": "#A1C1C5",
+    "400": "#82ADB2",
+    "500": "#63989F",
+    "600": "#4F7A7F",
+    "700": "#3B5B5F",
+    "800": "#283D40",
+    "850": "#1E2E30",
+    "900": "#141E20",
+    "950": "#0A0F10",
+  },
+  secondary: {
+    "050": "#F5F1EF",
+    "100": "#ECE3E0",
+    "150": "#E2D4D0",
+    "200": "#D9C6C1",
+    "300": "#C5AAA1",
+    "400": "#B28D82",
+    "500": "#9F7163",
+    "600": "#7F5A4F",
+    "700": "#5F443B",
+    "800": "#402D28",
+    "850": "#30221E",
+    "900": "#201714",
+    "950": "#100B0A",
+  },
+  success: {
+    "100": "#D7E2D9",
+    "300": "#94AF99",
+    "500": "#507C59",
+  },
+  alert: {
+    "100": "#FFF6E0",
+    "300": "#FFE3A3",
+    "500": "#FFD166",
+  },
+  danger: {
+    "100": "#F9DCD4",
+    "300": "#EE977D",
+    "500": "#E35226",
+  },
+  info: {
+    "100": "#B8CDE0",
+    "300": "#6D92B5",
+    "500": "#235789",
+  },
+};
+
+const themeColors = {
+  canvas: colors.neutrals["000"],
+  canvasDark: colors.neutrals["100"],
+  canvasInverted: colors.neutrals["999"],
+  canvasInvertedLight: colors.neutrals["800"],
+
+  textLight: colors.neutrals["500"],
+  text: colors.neutrals["900"],
+  textInverted: colors.neutrals["000"],
+
+  border: colors.neutrals["200"],
+  borderInverted: colors.neutrals["500"],
+
+  brandPrimaryLight: colors.primary["400"],
+  brandPrimary: colors.primary["500"],
+  brandPrimaryDark: colors.primary["600"],
+};
+
+export { colors, themeColors };
