@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Plus, Minus } from 'phosphor-react';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import Button from '.'
@@ -95,7 +97,7 @@ export const IconBasic = Template.bind({})
 
 IconBasic.args = {
   type: 'button',
-  iconLeft: 'Plus',
+  IconLeft: <Plus />,
   fullWidth: false,
   dimension: 'sm',
   rounded: 'sm',
@@ -107,7 +109,7 @@ export const LabelIconLeftBasic = Template.bind({})
 LabelIconLeftBasic.args = {
   type: 'button',
   label: 'Random Button',
-  iconLeft: 'Leaf',
+  IconLeft: <Minus />,
   fullWidth: false,
   dimension: 'sm',
   rounded: 'sm',
@@ -119,7 +121,7 @@ export const LabelIconRightBasic = Template.bind({})
 LabelIconRightBasic.args = {
   type: 'button',
   label: 'Random Button',
-  iconRight: 'Plus',
+  IconRight: <Plus />,
   fullWidth: false,
   dimension: 'sm',
   rounded: 'sm',
@@ -131,8 +133,8 @@ export const LabelIconLeftRightBasic = Template.bind({})
 LabelIconLeftRightBasic.args = {
   type: 'button',
   label: 'Random Button',
-  iconLeft: 'Plus',
-  iconRight: 'Minus',
+  IconLeft: <Plus />,
+  IconRight: <Minus />,
   fullWidth: false,
   dimension: 'sm',
   rounded: 'sm',
