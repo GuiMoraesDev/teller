@@ -3,7 +3,7 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 import Logo from 'components/Logo';
 import Text from 'components/Text';
-import { SignIn } from 'phosphor-react';
+import { GithubLogo, SignIn } from 'phosphor-react';
 import * as Styles from './styles';
 
 const Login = (): JSX.Element => {
@@ -20,6 +20,7 @@ const Login = (): JSX.Element => {
 					id="github-user"
 					label="Type below your github user to login"
 					placeholder="@my-github-username"
+					PlaceholderIconLeft={<GithubLogo />}
 				/>
 
 				<Button label="Login" IconRight={<SignIn />} />

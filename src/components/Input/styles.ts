@@ -1,192 +1,116 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
-import { InputDefaultPropsThatMakeStyles } from ".";
+import { InputDefaultPropsThatMakeStyles } from '.';
 
 export const Container = styled.div`
-  position: relative;
+	position: relative;
 
-  width: ${({ theme }) => theme.sizes.partition["x1/1"]};
+	width: ${({ theme }) => theme.sizes.partition['x1/1']};
 `;
 
 export const Label = styled.label``;
 
 export const InputContainer = styled.label<InputDefaultPropsThatMakeStyles>`
-  position: relative;
+	position: relative;
 
-  display: flex;
+	display: flex;
 
-  align-items: center;
+	align-items: center;
+	justify-content: center;
 
-  width: auto;
+	width: auto;
+	height: ${({ theme, dimension }) =>
+		theme.sizes.dimensions.height[dimension || 'md']};
 
-  gap: ${({ theme }) => theme.sizes.common.x1};
+	color: ${({ theme }) => theme.themeColors.text};
+	background-color: ${({ theme }) => theme.themeColors.canvas};
 
-  color: ${({ theme }) => theme.themeColors.text};
+	border: ${({ theme }) => theme.borders.solid};
+	border-color: ${({ theme, error }) => error && theme.colors.danger['500']};
+	border-radius: ${({ theme, rounded }) => theme.rounded[rounded || 'none']};
 
-  background-color: ${({ theme }) => theme.themeColors.canvas};
+	margin: 0;
+	padding: 0
+		${({ theme, dimension }) =>
+			theme.sizes.dimensions.spacing[dimension || 'md']};
+	gap: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
 
-  border: ${({ theme }) => theme.borders.solid};
+	transition: box-shadow ${({ theme }) => theme.transition.fast},
+		border-color ${({ theme }) => theme.transition.fast};
 
-  border-color: ${({ theme, error }) => error && theme.colors.alert["500"]};
+	&:hover,
+	&:focus-within {
+		border-color: ${({ theme, error }) =>
+			error ? theme.colors.alert[300] : theme.themeColors.borderInverted};
+		box-shadow: ${({ theme }) => theme.shadows.short};
+	}
 
-  transition: box-shadow ${({ theme }) => theme.transition.fast},
-    border-color ${({ theme }) => theme.transition.fast};
+	svg {
+		color: ${({ theme }) => theme.colors.neutrals['400']};
+	}
 
-  &:hover,
-  &:focus-within {
-    border-color: ${({ theme, error }) =>
-      error ? theme.colors.alert[300] : theme.themeColors.borderInverted};
-    box-shadow: ${({ theme }) => theme.shadows.short};
-  }
+	${({ theme, isDisabled }) => {
+		if (isDisabled)
+			return css`
+				color: ${theme.colors.neutrals[500]};
 
-  ${({ theme, rounded }) => {
-    return css`
-      border-radius: ${theme.rounded[rounded || "none"]};
-    `;
-  }}
+				background-color: ${theme.colors.neutrals[200]};
 
-  ${({ dimension, theme }) => {
-    if (dimension === "xs")
-      return css`
-        ${theme.typography.variants.body3};
+				border: ${theme.borders.none};
 
-        height: ${theme.sizes.common.x9};
-      `;
+				&:hover {
+					color: ${theme.colors.neutrals[500]};
 
-    if (dimension === "sm")
-      return css`
-        ${theme.typography.variants.body3};
-
-        height: ${theme.sizes.common.x10};
-      `;
-
-    if (dimension === "md")
-      return css`
-        ${theme.typography.variants.body1};
-
-        height: ${theme.sizes.common.x11};
-      `;
-
-    if (dimension === "lg")
-      return css`
-        ${theme.typography.variants.body1};
-
-        height: ${theme.sizes.common.x12};
-      `;
-
-    if (dimension === "xl")
-      return css`
-        ${theme.typography.variants.body1};
-
-        height: ${theme.sizes.common.x14};
-      `;
-  }}
-
-  ${({ theme, isDisabled }) => {
-    if (isDisabled)
-      return css`
-        background-color: ${theme.colors.neutrals[200]};
-        color: ${theme.colors.neutrals[500]};
-        box-shadow: 0 0 0 1px ${theme.colors.neutrals[200]};
-
-        &:hover {
-          background-color: ${theme.colors.neutrals[200]};
-          color: ${theme.colors.neutrals[500]};
-        }
-      `;
-  }}
+					background-color: ${theme.colors.neutrals[200]};
+				}
+			`;
+	}}
 `;
 
 export const InputComponent = styled.input`
-  outline: none;
+	outline: none;
 
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 
-  padding: ${({ theme }) =>
-    `${theme.sizes.common.x0} ${theme.sizes.common.x4}`};
+	color: inherit;
+	background-color: inherit;
 
-  color: inherit;
-  background-color: inherit;
-
-  border: none;
-  border-radius: inherit;
-`;
-
-export const ActionButton = styled.button`
-  position: absolute;
-  top: ${({ theme }) => theme.sizes.partition["x1/2"]};
-  right: ${({ theme }) => theme.sizes.common.x2};
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  margin: ${({ theme }) => theme.sizes.common.x0};
-  padding: ${({ theme }) => theme.sizes.common.x0};
-
-  background-color: transparent;
-
-  border: none;
-
-  transform: translateY(-${({ theme }) => theme.sizes.partition["x1/2"]});
-  transition: transform ${({ theme }) => theme.transition.fast} ease-in-out;
-
-  > .icon {
-    width: ${({ theme }) => theme.sizes.common["x4.5"]};
-    height: ${({ theme }) => theme.sizes.common["x4.5"]};
-
-    fill: ${({ theme }) => theme.colors.neutrals["500"]};
-
-    opacity: ${({ theme }) => theme.opacity.mid};
-
-    transition: opacity ${({ theme }) => theme.transition.fast};
-  }
-
-  &:hover > .icon {
-    opacity: 1;
-
-    fill: ${({ theme }) => theme.colors.neutrals["900"]};
-  }
+	border: none;
+	border-radius: inherit;
 `;
 
 interface ErrorMessageProps {
-  error?: string;
+	error?: string;
 }
 
 export const ErrorMessage = styled.span<ErrorMessageProps>`
-  position: absolute;
-  bottom: ${({ theme }) => theme.sizes.common["x0.5"]};
-  right: ${({ theme }) => theme.sizes.common.x0};
-  left: ${({ theme }) => theme.sizes.common.x0};
+	position: absolute;
 
-  display: flex;
+	bottom: ${({ theme }) => theme.sizes.common['x0.5']};
+	right: ${({ theme }) => theme.sizes.common.x0};
+	left: ${({ theme }) => theme.sizes.common.x0};
 
-  align-items: center;
+	display: flex;
 
-  width: ${({ theme }) => theme.sizes.partition["x1/1"]};
+	align-items: center;
 
-  ${({ theme }) => theme.typography.variants.body3};
+	width: ${({ theme }) => theme.sizes.partition['x1/1']};
 
-  margin: auto;
-  padding: ${({ theme }) =>
-    `${theme.sizes.common["x1.5"]} ${theme.sizes.common.x3}`};
+	${({ theme }) => theme.typography.variants.body3};
 
-  color: ${({ theme }) => theme.colors.neutrals["000"]};
-  background-color: ${({ theme }) => theme.colors.alert["300"]};
+	margin: auto;
+	padding: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
+	gap: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
 
-  border-radius: 0;
-  border-bottom-left-radius: ${({ theme }) => theme.rounded.sm};
-  border-bottom-right-radius: ${({ theme }) => theme.rounded.sm};
+	color: ${({ theme }) => theme.colors.neutrals['000']};
+	background-color: ${({ theme }) => theme.colors.danger['300']};
 
-  opacity: ${({ error }) => (error ? 1 : 0)};
-  transform: translateY(100%);
-  transition: opacity 0.5s ease-in-out;
+	border-radius: ${({ theme }) => theme.rounded.none};
+	border-bottom-left-radius: ${({ theme }) => theme.rounded.sm};
+	border-bottom-right-radius: ${({ theme }) => theme.rounded.sm};
 
-  z-index: 2;
-
-  svg {
-    margin-right: 0.5rem;
-  }
+	opacity: ${({ error }) => (error ? 1 : 0)};
+	transform: translateY(100%);
+	transition: opacity 0.5s ease-in-out;
 `;

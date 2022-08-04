@@ -3,6 +3,7 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import Input from '.'
+import { Plus } from 'phosphor-react'
 
 const Storie = {
   title: 'Components/Input',
@@ -27,7 +28,7 @@ DefaultRequired.args = {
   label: 'Random Input',
   dimension: 'sm',
   rounded: 'sm',
-  required: true
+  isRequired: true
 }
 
 export const DefaultNoLabel = Template.bind({})
@@ -53,4 +54,33 @@ Password.args = {
   type: 'password',
   dimension: 'sm',
   rounded: 'sm'
+}
+
+
+export const DefaultIconLeft = Template.bind({})
+
+DefaultIconLeft.args = {
+	label: 'Random Input',
+  dimension: 'sm',
+  rounded: 'sm',
+	PlaceholderIconLeft: <Plus />,
+}
+
+export const DefaultIconRight = Template.bind({})
+
+DefaultIconRight.args = {
+  label: 'Random Input',
+  dimension: 'sm',
+  rounded: 'sm',
+	PlaceholderIconRight: <Plus />,
+}
+
+export const DefaultIconLeftAndRight = Template.bind({})
+
+DefaultIconLeftAndRight.args = {
+  label: 'Random Input',
+  dimension: 'sm',
+  rounded: 'sm',
+	PlaceholderIconLeft: <Plus />,
+	PlaceholderIconRight: <Plus />,
 }

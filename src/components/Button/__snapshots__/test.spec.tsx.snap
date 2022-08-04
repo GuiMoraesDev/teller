@@ -18,16 +18,16 @@ exports[`Button component should render correctly 1`] = `
   width: auto;
   height: 4.4rem;
   border: 0.1rem solid #C9CAC8;
+  border-radius: 0.4rem;
   margin: 0;
   padding: 0 1.4rem;
-  cursor: pointer;
+  gap: 1.2rem;
   -webkit-transition: background-color 0.2s, color 0.2s;
   transition: background-color 0.2s, color 0.2s;
-  gap: 1.2rem;
+  cursor: pointer;
   color: #FFFFFF;
   background-color: #63989F;
   border-color: #4F7A7F;
-  border-radius: 0.4rem;
 }
 
 .c0:hover {

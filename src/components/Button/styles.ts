@@ -14,18 +14,18 @@ export const Button = styled.button<ButtonDefaultPropsThatMakeStyles>`
 		theme.sizes.dimensions.height[dimension || 'md']};
 
 	border: ${({ theme }) => theme.borders.solid};
+	border-radius: ${({ theme, rounded }) => theme.rounded[rounded || 'none']};
 
 	margin: 0;
 	padding: 0
 		${({ theme, dimension }) =>
 			theme.sizes.dimensions.spacing[dimension || 'md']};
-
-	cursor: pointer;
+	gap: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
 
 	transition: background-color ${({ theme }) => theme.transition.fast},
 		color ${({ theme }) => theme.transition.fast};
 
-	gap: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
+	cursor: pointer;
 
 	&:hover {
 		background-color: ${({ theme }) => theme.themeColors.brandPrimaryLight};
@@ -106,12 +106,6 @@ export const Button = styled.button<ButtonDefaultPropsThatMakeStyles>`
 					background-color: ${theme.colors.danger[500]};
 				}
 			`;
-	}}
-
-	${({ theme, rounded }) => {
-		return css`
-			border-radius: ${theme.rounded[rounded || 'none']};
-		`;
 	}}
 
   ${({ theme, isDisabled }) => {
