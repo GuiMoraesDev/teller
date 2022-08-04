@@ -70,9 +70,9 @@ const colors = {
 };
 
 const themeColors = {
-  canvas: colors.neutrals["000"],
+  canvas: colors.neutrals["050"],
   canvasDark: colors.neutrals["100"],
-  canvasInverted: colors.neutrals["999"],
+  canvasInverted: colors.neutrals["900"],
   canvasInvertedLight: colors.neutrals["800"],
 
   textLight: colors.neutrals["500"],

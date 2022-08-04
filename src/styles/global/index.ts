@@ -7,13 +7,13 @@ export default createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background-color: ${({ theme }) => theme.colors.neutrals["200"]};
+    background-color: ${({ theme }) => theme.themeColors.canvasInverted};
 
     border: ${({ theme }) => theme.borders.solid};
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.neutrals["300"]};
+    background-color: ${({ theme }) => theme.themeColors.canvasDark};
 
     border-radius: ${({ theme }) => theme.rounded.full};
   }

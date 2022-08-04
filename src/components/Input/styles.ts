@@ -23,7 +23,7 @@ export const InputContainer = styled.label<InputDefaultPropsThatMakeStyles>`
 
   color: ${({ theme }) => theme.themeColors.text};
 
-  background-color: ${({ theme }) => theme.themeColors.canvasDark};
+  background-color: ${({ theme }) => theme.themeColors.canvas};
 
   border: ${({ theme }) => theme.borders.solid};
 

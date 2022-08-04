@@ -19,7 +19,7 @@ exports[`Input component should render correctly 1`] = `
   width: auto;
   gap: 0.4rem;
   color: #181917;
-  background-color: #E4E5E3;
+  background-color: #F2F2F1;
   border: 0.1rem solid #C9CAC8;
   -webkit-transition: box-shadow 0.2s, border-color 0.2s;
   transition: box-shadow 0.2s, border-color 0.2s;

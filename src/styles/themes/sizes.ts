@@ -61,9 +61,27 @@ const common = {
   x96: "38.4rem",
 };
 
+const dimensions = {
+  spacing: {
+    xs: common.x2,
+    sm: common.x3,
+    md: common["x3.5"],
+    lg: common.x4,
+    xl: common.x5,
+  },
+  height: {
+    xs: common.x9,
+    sm: common.x10,
+    md: common.x11,
+    lg: common.x12,
+    xl: common.x14,
+  }
+};
+
 const sizes = {
   partition,
   common,
+  dimensions,
 };
 
 export default sizes;
