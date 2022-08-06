@@ -42,6 +42,17 @@ exports[`Button component should render correctly 1`] = `
   background-color: #4F7A7F;
 }
 
+.c0 .spin {
+  -webkit-animation-name: ieAXeN;
+  animation-name: ieAXeN;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
 <button
   class="c0"
   type="button"

@@ -1,6 +1,15 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { ButtonDefaultPropsThatMakeStyles } from '.';
+
+const rotate = keyframes`
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+`;
 
 export const Button = styled.button<ButtonDefaultPropsThatMakeStyles>`
 	position: relative;
@@ -108,7 +117,7 @@ export const Button = styled.button<ButtonDefaultPropsThatMakeStyles>`
 			`;
 	}}
 
-  ${({ theme, isDisabled }) => {
+	${({ theme, isDisabled }) => {
 		if (isDisabled)
 			return css`
 				color: ${theme.colors.neutrals[500]};
@@ -124,4 +133,11 @@ export const Button = styled.button<ButtonDefaultPropsThatMakeStyles>`
 				}
 			`;
 	}}
+
+	.spin {
+		animation-name: ${rotate};
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
 `;

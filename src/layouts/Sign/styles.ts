@@ -4,7 +4,7 @@ export const Container = styled.div`
 	display: grid;
 
 	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 10fr 1fr;
+	grid-template-rows: 10rem 10fr 6rem;
 
 	grid-template-areas:
 		'Header'
@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 	@media ${({ theme }) => theme.breakpoints.laptop} {
 		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: 10fr 1fr;
+		grid-template-rows: auto 6rem;
 
 		grid-template-areas:
 			'Header Content'
@@ -36,14 +36,14 @@ export const Header = styled.header`
 	align-items: center;
 	justify-content: center;
 
-	width: 100%;
+	height: 100%;
 
 	@media ${({ theme }) => theme.breakpoints.laptop} {
 		background-color: ${({ theme }) => theme.themeColors.brandPrimaryLight};
 	}
 `;
 
-export const ContentWrapper = styled.main`
+export const SignContent = styled.main`
 	grid-area: Content;
 
 	display: flex;

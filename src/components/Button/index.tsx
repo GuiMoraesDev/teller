@@ -3,6 +3,7 @@ import { ButtonHTMLAttributes, forwardRef, useCallback } from 'react';
 import { useRouter } from 'next/router';
 
 import { DimensionsProps } from '@types';
+import { Spinner } from 'phosphor-react';
 import { DefaultTheme } from 'styled-components';
 
 import * as Styles from './styles';
@@ -15,6 +16,7 @@ export interface ButtonDefaultPropsThatMakeStyles {
 	isDisabled: boolean;
 	IconLeft?: JSX.Element;
 	IconRight?: JSX.Element;
+	isLoading?: boolean;
 }
 
 interface ButtonDefaultProps
@@ -38,6 +40,7 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
 		dimension = 'md',
 		rounded = 'sm',
 		href,
+		isLoading,
 		...props
 	},
 	ref
@@ -66,11 +69,11 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
 			{...props}
 			ref={ref}
 		>
-			{IconLeft}
+			{isLoading && IconLeft ? <Spinner className="spin" /> : IconLeft}
 
 			{label}
 
-			{IconRight}
+			{isLoading ? <Spinner className="spin"/> : IconRight}
 		</Styles.Button>
 	);
 };
