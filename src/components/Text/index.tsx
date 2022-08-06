@@ -1,57 +1,57 @@
-import React, { HTMLAttributes } from "react";
+import React, { HTMLAttributes } from 'react';
 
-import { DefaultTheme } from "styled-components";
+import { DefaultTheme } from 'styled-components';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 export interface TextDefaultPropsThatMakeStyles {
-  fullWidth?: boolean;
-  dimension?: keyof DefaultTheme["typography"]["variants"];
-  variant?: "regular" | "light" | "lighter";
-  bold?: boolean;
+	fullWidth?: boolean;
+	dimension?: keyof DefaultTheme['typography']['variants'];
+	variant?: 'regular' | 'light';
+	isBold?: boolean;
 }
 
-type TagProps = Record<keyof DefaultTheme["typography"]["variants"], string>;
+type TagProps = Record<keyof DefaultTheme['typography']['variants'], string>;
 
 interface TextDefaultProps extends TextDefaultPropsThatMakeStyles {
-  label: string;
+	label: string;
 }
 
 type TextProps = TextDefaultProps & HTMLAttributes<HTMLElement>;
 
 const Text = ({
-  label,
-  variant = "regular",
-  fullWidth = false,
-  dimension = "body2",
-  ...props
+	label,
+	variant = 'regular',
+	fullWidth = false,
+	dimension = 'body2',
+	...props
 }: TextProps): JSX.Element => {
-  const TagsOptions: TagProps = {
-    display1: "strong",
-    heading1: "h1",
-    heading2: "h2",
-    heading3: "h3",
-    heading4: "h4",
-    heading5: "h5",
-    body1: "p",
-    body2: "p",
-    body3: "p",
-    body4: "p",
-  };
+	const TagsOptions: TagProps = {
+		display1: 'strong',
+		heading1: 'h1',
+		heading2: 'h2',
+		heading3: 'h3',
+		heading4: 'h4',
+		heading5: 'h5',
+		body1: 'p',
+		body2: 'p',
+		body3: 'p',
+		body4: 'p',
+	};
 
-  const Tag = TagsOptions[dimension];
+	const Tag = TagsOptions[dimension];
 
-  return (
-    <Styles.Text
-      tag={Tag}
-      fullWidth={fullWidth}
-      dimension={dimension}
-      variant={variant}
-      {...props}
-    >
-      {label}
-    </Styles.Text>
-  );
+	return (
+		<Styles.Text
+			tag={Tag}
+			fullWidth={fullWidth}
+			dimension={dimension}
+			variant={variant}
+			{...props}
+		>
+			{label}
+		</Styles.Text>
+	);
 };
 
 export default Text;

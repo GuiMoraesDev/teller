@@ -18,15 +18,14 @@ import { getUser } from 'services/github/users.api';
 import * as Styles from './styles';
 import { LoginSchemaProps, loginResolver } from './validations';
 
-
 const Login = (): JSX.Element => {
-	const { setUser } = useAuth();
+	const { setLoggedUser } = useAuth();
 	const router = useRouter();
 
 	const mutation = useMutation(getUser, {
 		retry: 1,
 		onSuccess: (response) => {
-			setUser({
+			setLoggedUser({
 				id: response.data.id,
 				name: response.data.name,
 				avatar_url: response.data.avatar_url,

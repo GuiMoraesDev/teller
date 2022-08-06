@@ -2,8 +2,8 @@ import React, {
 	createContext,
 	useState,
 	useContext,
-	useCallback,
 	PropsWithChildren,
+	useCallback,
 } from 'react';
 
 export interface UserProps {
@@ -13,24 +13,52 @@ export interface UserProps {
 }
 
 interface AuthContextData {
-	user: UserProps;
-	setUser: (props: UserProps) => void;
+	user: UserProps | null;
+	setLoggedUser: (props: UserProps) => void;
+	logoutUser: () => void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider = ({ children }: PropsWithChildren<{}>) => {
-	const [data, setData] = useState<UserProps>({} as UserProps);
+	const [data, setData] = useState<AuthContextData['user']>(
+		(): AuthContextData['user'] => {
+			if (typeof window !== 'undefined') {
+				const user = localStorage.getItem('User');
 
-	const setUser = useCallback((props: UserProps) => {
+				if (user) {
+					const parseduser: UserProps = JSON.parse(user);
+
+					return parseduser;
+				}
+			}
+
+			return null;
+		}
+	);
+
+	const setLoggedUser = useCallback((props: UserProps) => {
 		setData(props);
+
+		if (typeof window !== 'undefined') {
+			localStorage.setItem('User', JSON.stringify(props));
+		}
+	}, []);
+
+	const logoutUser = useCallback(() => {
+		setData(null);
+
+		if (typeof window !== 'undefined') {
+			localStorage.removeItem('User');
+		}
 	}, []);
 
 	return (
 		<AuthContext.Provider
 			value={{
 				user: data,
-				setUser,
+				setLoggedUser,
+				logoutUser,
 			}}
 		>
 			{children}
@@ -46,6 +74,14 @@ function useAuth(): AuthContextData {
 	}
 
 	return context;
+}
+
+export async function getStaticProps(context: any) {
+	console.log('context', context);
+
+	return {
+		props: {}, // will be passed to the page component as props
+	};
 }
 
 export { AuthProvider, useAuth };

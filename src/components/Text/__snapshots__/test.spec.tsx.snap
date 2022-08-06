@@ -5,12 +5,12 @@ exports[`Text component should render correctly 1`] = `
   position: relative;
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
-  color: #181917;
   font-size: 1.4rem;
   font-weight: 400;
   font-family: 'Roboto',sans-serif;
   line-height: 2.0rem;
+  color: #181917;
+  box-sizing: border-box;
 }
 
 <p

@@ -7,7 +7,7 @@ const Home = (): JSX.Element => {
 
 	return (
 		<Styles.Container>
-			<strong>{user.name}</strong>
+			<strong>{user?.name}</strong>
 		</Styles.Container>
 	);
 };

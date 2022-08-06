@@ -4,11 +4,13 @@ import { NextSeo } from 'next-seo'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 
+import CustomRouter from 'router';
+
 import GlobalAppProvider from 'context'
 
 import GlobalStyle from 'styles/global'
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps, router }: AppProps) => {
   return (
     <GlobalAppProvider>
       <Head>
@@ -35,8 +37,12 @@ const App = ({ Component, pageProps }: AppProps) => {
           cardType: 'summary_large_image'
         }}
       />
-      <GlobalStyle />
-      <Component {...pageProps} />
+
+			
+			<CustomRouter router={router}>
+      	<GlobalStyle />
+      	<Component {...pageProps} />
+			</CustomRouter>
     </GlobalAppProvider>
   )
 }

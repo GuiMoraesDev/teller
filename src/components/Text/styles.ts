@@ -1,55 +1,29 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
-import { TextDefaultPropsThatMakeStyles } from ".";
+import { TextDefaultPropsThatMakeStyles } from '.';
 
 interface TextProps extends TextDefaultPropsThatMakeStyles {
-  tag?: string;
+	tag?: string;
 }
 
 export const Text = styled.p.attrs<TextProps>(({ tag }) => ({
-  as: tag,
+	as: tag,
 }))<TextProps>`
-  position: relative;
+	position: relative;
 
-  padding: 0;
-  margin: 0;
+	padding: 0;
+	margin: 0;
 
-  box-sizing: border-box;
+	width: ${({ fullWidth }) => fullWidth && '100%'};
 
-  ${({ variant, theme }) => {
-    if (variant === "light")
-      return css`
-        color: ${theme.themeColors.textLight};
-      `;
+	font-weight: ${({ isBold }) => isBold && 'bold'};
 
-    if (variant === "lighter")
-      return css`
-        color: ${theme.themeColors.textLight};
-      `;
+	${({ theme, dimension }) => theme.typography.variants[dimension || 'body2']};
 
-    return css`
-      color: ${theme.themeColors.text};
-    `;
-  }}
+	color: ${({ variant, theme }) =>
+		variant === 'regular'
+			? theme.themeColors.text
+			: theme.themeColors.textLight};
 
-  ${({ fullWidth }) => {
-    if (fullWidth)
-      return css`
-        width: 100%;
-      `;
-  }}
-
-  ${({ dimension, theme }) => {
-    if (dimension)
-      return css`
-        ${theme.typography.variants[dimension]};
-      `;
-  }}
-
-  ${({ bold }) => {
-    if (bold)
-      return css`
-        font-weight: bold;
-      `;
-  }}
+	box-sizing: border-box;
 `;
