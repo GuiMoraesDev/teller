@@ -1,10 +1,12 @@
 import React from 'react'
-import Head from 'next/head'
+
 import { NextSeo } from 'next-seo'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
+
+import GlobalAppProvider from 'context'
 
 import GlobalStyle from 'styles/global'
-import GlobalAppProvider from 'context'
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

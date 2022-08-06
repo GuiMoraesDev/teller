@@ -1,5 +1,3 @@
-import { DefaultTheme } from "styled-components";
-
 import borders from "./borders";
 import breakpoints from "./breakpoints";
 import { colors, themeColors } from "./colors";

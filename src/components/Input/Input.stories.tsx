@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Plus } from 'phosphor-react'
 
 import Input from '.'
-import { Plus } from 'phosphor-react'
 
 const Storie = {
   title: 'Components/Input',
@@ -55,7 +55,6 @@ Password.args = {
   dimension: 'sm',
   rounded: 'sm'
 }
-
 
 export const DefaultIconLeft = Template.bind({})
 

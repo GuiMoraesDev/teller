@@ -1,12 +1,12 @@
 import React, { InputHTMLAttributes } from 'react';
 
+import { DimensionsProps } from '@types';
 import { Warning } from 'phosphor-react';
 import { DefaultTheme } from 'styled-components';
 
 import Text from 'components/Text';
 
 import * as Styles from './styles';
-import { DimensionsProps } from '@types';
 
 export interface InputDefaultPropsThatMakeStyles {
 	dimension?: keyof DimensionsProps;

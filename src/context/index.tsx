@@ -1,11 +1,24 @@
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react';
 
-import { ThemeProvider } from 'styled-components'
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { ThemeProvider } from 'styled-components';
 
-import theme from 'styles/themes'
+import theme from 'styles/themes';
 
-const GlobalAppProvider = ({ children }: PropsWithChildren<{}>): JSX.Element => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
-}
+import { AuthProvider } from './auth';
 
-export default GlobalAppProvider
+const GlobalAppProvider = ({
+	children,
+}: PropsWithChildren<{}>): JSX.Element => {
+	const client = new QueryClient();
+
+	return (
+		<QueryClientProvider client={client}>
+			<ThemeProvider theme={theme}>
+				<AuthProvider>{children}</AuthProvider>
+			</ThemeProvider>
+		</QueryClientProvider>
+	);
+};
+
+export default GlobalAppProvider;

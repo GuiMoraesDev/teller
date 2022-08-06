@@ -1,3 +1,41 @@
 {
-  "extends": "next/core-web-vitals"
+	"extends": "next/core-web-vitals",
+	"plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+		"@typescript-eslint",
+    "eslint-plugin-import-helpers"
+  ],
+	"rules": {
+		"import-helpers/order-imports": [
+			"warn",
+			{
+				"alphabetize": {
+					"ignoreCase": false,
+					"order": "asc"
+				},
+				"groups": [
+					"/^react/",
+					"/^next/",
+					"module",
+					"/^components/",
+					"/^context/",
+					"/^errorBoundary/",
+					"/^helpers/",
+					"/^layouts/",
+					"/^pages/",
+					"/^patterns/",
+					"/^services/",
+					"/^dtos/",
+					"/^modules/",
+					"/^styles/",
+					"/routes/",
+					"/utils/",
+					["parent", "sibling", "index"]
+				],
+				"newlinesBetween": "always"
+			}
+		]
+	}
 }

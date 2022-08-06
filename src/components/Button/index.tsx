@@ -1,10 +1,11 @@
 import { ButtonHTMLAttributes, forwardRef, useCallback } from 'react';
 
+import { useRouter } from 'next/router';
+
+import { DimensionsProps } from '@types';
 import { DefaultTheme } from 'styled-components';
 
 import * as Styles from './styles';
-import { useRouter } from 'next/router';
-import { DimensionsProps } from '@types';
 
 export interface ButtonDefaultPropsThatMakeStyles {
 	fullWidth?: boolean;
