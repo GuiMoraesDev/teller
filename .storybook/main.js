@@ -14,5 +14,9 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.plugins = [new TsconfigPathsPlugin()]
     return config
-  }
+  },
+	env: (config) => ({
+    ...config,
+    IS_STORYBOOK: 'true',
+  }),
 }

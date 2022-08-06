@@ -16,7 +16,9 @@ const Modal: React.ForwardRefRenderFunction<
 	ModalHandles,
 	PropsWithChildren<{}>
 > = ({ children }, ref): JSX.Element => {
-	const [visible, setVisible] = useState(false);
+	const isStorybook = React.useMemo(() => process.env.IS_STORYBOOK, []);
+
+	const [visible, setVisible] = useState(!!isStorybook);
 
 	const openModal = useCallback(() => {
 		setVisible(true);
