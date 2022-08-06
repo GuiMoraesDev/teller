@@ -1,7 +1,4 @@
-import Image from 'next/image';
-
 import styled from 'styled-components';
-
 
 export const Container = styled.div`
 	display: grid;
@@ -42,10 +39,16 @@ export const Header = styled.header`
 	background-color: ${({ theme }) => theme.themeColors.brandPrimaryLight};
 `;
 
+export const AvatarWrapper = styled.button`
+	height: 100%;
+
+	border: none;
+`;
+
 export const Avatar = styled.img`
 	height: 100%;
 
-	border-radius: ${({theme}) => theme.rounded.full};
+	border-radius: ${({ theme }) => theme.rounded.full};
 
 	border: 3px solid ${({ theme }) => theme.themeColors.canvas};
 `;
