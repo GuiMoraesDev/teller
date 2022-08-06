@@ -30,7 +30,6 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.9",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@storybook/addon-actions": "^6.5.9",
@@ -52,7 +51,6 @@
     "@types/styled-components": "^5.1.25",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
-    "babel-loader": "^8.2.5",
     "chromatic": "^6.7.2",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.3",
