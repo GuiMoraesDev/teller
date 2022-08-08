@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FloatSubMenu pattern should render correctly 1`] = `
+.c0 {
+  position: relative;
+  height: 100%;
+}
+
+.c1 {
+  position: relative;
+  height: 100%;
+  border: none;
+}
+
+.c2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #E4E5E3;
+  border: 0.1rem solid #C9CAC8;
+  border-radius: 0.4rem;
+  box-shadow: 0px 3px 6px 1px #E4E5E3;
+  -webkit-transform: translateY(calc(100% + 0.8rem));
+  -ms-transform: translateY(calc(100% + 0.8rem));
+  transform: translateY(calc(100% + 0.8rem));
+  visibility: hidden;
+}
+
+.c2:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 0.1rem solid #C9CAC8;
+  border-width: 0.8rem;
+  border-color: transparent;
+  border-bottom-color: #E4E5E3;
+  -webkit-transform: translate(100%,-100%);
+  -ms-transform: translate(100%,-100%);
+  transform: translate(100%,-100%);
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1"
+  >
+    <span>
+      Controller
+    </span>
+  </button>
+  <nav
+    class="c2"
+  >
+    <p>
+      Menu item 1
+    </p>
+    <p>
+      Menu item 2
+    </p>
+    <p>
+      Menu item 3
+    </p>
+  </nav>
+</div>
+`;
