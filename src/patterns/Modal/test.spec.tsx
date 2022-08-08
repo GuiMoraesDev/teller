@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, fireEvent } from "tests/test.utils";
+import { render } from "tests/test.utils";
 
 import Modal from "./index";
 
