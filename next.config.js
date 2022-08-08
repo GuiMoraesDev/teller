@@ -6,7 +6,6 @@ const nextConfig = {
 	images: {
     domains: ['avatars.githubusercontent.com'],
   },
-	pageExtensions: ['page.(t|j)sx'],
 	compiler: {
     styledComponents: true,
   },

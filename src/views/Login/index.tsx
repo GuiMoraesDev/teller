@@ -1,4 +1,4 @@
-import { ReactElement, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useRouter } from 'next/router';
@@ -12,7 +12,6 @@ import Text from 'components/Text';
 
 import { useAuth } from 'context/auth';
 
-import SignLayout from 'layouts/Sign';
 import { SignContent } from 'layouts/Sign/styles';
 
 import { getUser } from 'services/github/users.api';
@@ -74,10 +73,6 @@ const Login = (): JSX.Element => {
 			/>
 		</SignContent>
 	);
-};
-
-Login.getLayout = function getLayout(page: ReactElement) {
-	return <SignLayout>{page}</SignLayout>;
 };
 
 export default Login;

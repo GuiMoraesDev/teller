@@ -11,17 +11,7 @@ import GlobalAppProvider from 'context';
 
 import GlobalStyle from 'styles/global';
 
-export type NextPageWithLayout = NextPage & {
-	getLayout?: (page: ReactElement) => ReactNode;
-};
-
-type AppPropsWithLayout = AppProps & {
-	Component: NextPageWithLayout;
-};
-
-const App = ({ Component, pageProps, router }: AppPropsWithLayout) => {
-	const getLayout = Component.getLayout || ((page) => page);
-
+const App = ({ Component, pageProps, router }: AppProps) => {
 	return (
 		<GlobalAppProvider>
 			<Head>
@@ -51,7 +41,7 @@ const App = ({ Component, pageProps, router }: AppPropsWithLayout) => {
 
 			<CustomRouter router={router}>
 				<GlobalStyle />
-				{getLayout(<Component {...pageProps} />)}
+				<Component {...pageProps} />
 			</CustomRouter>
 		</GlobalAppProvider>
 	);
