@@ -15,7 +15,11 @@
 
 ## Description of that project 📖
 
-Teller app is an POC of a social media based on twitter to test out many technologies
+Teller app is an POC of a social media based on twitter to test out many technologies. This project is a playground project to test some concepts;
+
+## Project Design
+
+[Figma Project](https://www.figma.com/file/Jtw62Q7XIKtG4wwemhBzgV/Teller)
 
 ## Requirements 🛑
 
