@@ -1,13 +1,15 @@
 {
 	"extends": "next/core-web-vitals",
+	"parser": "@typescript-eslint/parser",
 	"plugins": [
-    "react",
-    "react-hooks",
-    "prettier",
+		"react",
+		"react-hooks",
+		"prettier",
 		"@typescript-eslint",
-    "eslint-plugin-import-helpers"
-  ],
+		"eslint-plugin-import-helpers"
+	],
 	"rules": {
+		"no-console": "warn",
 		"@next/next/no-img-element": "off",
 		"import-helpers/order-imports": [
 			"warn",
@@ -38,5 +40,13 @@
 				"newlinesBetween": "always"
 			}
 		]
+	},
+	"settings": {
+		"import/parsers": {
+			"@typescript-eslint/parser": [".ts", ".tsx"]
+		},
+		"react": {
+			"version": "detect"
+		}
 	}
 }

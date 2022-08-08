@@ -1,6 +1,5 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React from 'react';
 
-import type { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import { AppProps } from 'next/app';
 import Head from 'next/head';

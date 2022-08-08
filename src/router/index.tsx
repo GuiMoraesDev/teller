@@ -1,29 +1,32 @@
-import { PropsWithChildren } from 'react';
+import { useEffect, PropsWithChildren } from 'react';
 
 import { Router } from 'next/router';
 
-import { useAuth } from 'context/auth';
-
-const isBrowser = () => typeof window !== 'undefined';
+import { UNPROTECTED_ROUTES, LS_KEYS } from 'constant';
 
 interface Props {
 	router: Router;
 }
 
 const CustomRouter = ({ router, children }: PropsWithChildren<Props>) => {
-	const { user } = useAuth();
+	useEffect(() => {
+		const user = localStorage.getItem(LS_KEYS.user);
 
-	const isAuthenticated = user?.id;
+		const isAuthenticated = !!user;
 
-	const unprotectedRoutes = ['/login'];
+		const pathIsProtected = UNPROTECTED_ROUTES.indexOf(router.pathname) === -1;
 
-	const pathIsProtected = unprotectedRoutes.indexOf(router.pathname) === -1;
+		const shouldRedirectToHome = isAuthenticated && !pathIsProtected;
+		const shouldRedirectToLogin = !isAuthenticated && pathIsProtected;
 
-	const shouldRedirect = isBrowser() && !isAuthenticated && pathIsProtected;
+		if (shouldRedirectToHome) {
+			router.push('/home');
+		}
 
-	if (shouldRedirect) {
-		router.push('/login');
-	}
+		if (shouldRedirectToLogin) {
+			router.push('/login');
+		}
+	}, [router]);
 
 	return <>{children}</>;
 };

@@ -1,23 +1,19 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
+	reactStrictMode: true,
 	images: {
-    domains: ['avatars.githubusercontent.com'],
-  },
-	compiler: {
-    styledComponents: true,
-  },
+		domains: ['avatars.githubusercontent.com'],
+	},
 	async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/login',
-        permanent: true,
-      },
-    ]
-  },
-}
+		return [
+			{
+				source: '/',
+				destination: '/login',
+				permanent: true,
+			},
+		];
+	},
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

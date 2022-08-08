@@ -1,10 +1,13 @@
 import React, {
 	createContext,
 	useState,
+	useEffect,
 	useContext,
 	PropsWithChildren,
 	useCallback,
 } from 'react';
+
+import { LS_KEYS } from 'constant';
 
 export interface UserProps {
 	avatar_url: string;
@@ -18,38 +21,32 @@ interface AuthContextData {
 	logoutUser: () => void;
 }
 
-const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+const AuthContext = createContext<AuthContextData | null>(null);
 
 const AuthProvider = ({ children }: PropsWithChildren<{}>) => {
-	const [data, setData] = useState<AuthContextData['user']>(
-		(): AuthContextData['user'] => {
-			if (typeof window !== 'undefined') {
-				const user = localStorage.getItem('User');
+	const [data, setData] = useState<AuthContextData['user']>(null);
 
-				if (user) {
-					const parseduser: UserProps = JSON.parse(user);
+	useEffect(() => {
+		const user = localStorage.getItem(LS_KEYS.user);
 
-					return parseduser;
-				}
-			}
+		if (user) {
+			const parseduser: UserProps = JSON.parse(user);
 
-			return null;
+			setData(parseduser);
 		}
-	);
+	}, []);
 
 	const setLoggedUser = useCallback((props: UserProps) => {
 		setData(props);
 
-		if (typeof window !== 'undefined') {
-			localStorage.setItem('User', JSON.stringify(props));
-		}
+		localStorage.setItem(LS_KEYS.user, JSON.stringify(props));
 	}, []);
 
 	const logoutUser = useCallback(() => {
 		setData(null);
 
 		if (typeof window !== 'undefined') {
-			localStorage.removeItem('User');
+			localStorage.removeItem(LS_KEYS.user);
 		}
 	}, []);
 
@@ -74,14 +71,6 @@ function useAuth(): AuthContextData {
 	}
 
 	return context;
-}
-
-export async function getStaticProps(context: any) {
-	console.log('context', context);
-
-	return {
-		props: {}, // will be passed to the page component as props
-	};
 }
 
 export { AuthProvider, useAuth };
