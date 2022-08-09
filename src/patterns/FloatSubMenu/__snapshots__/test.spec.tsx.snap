@@ -44,9 +44,11 @@ exports[`FloatSubMenu pattern should render correctly 1`] = `
 
 <div
   class="c0"
+  data-testid="float-container"
 >
   <button
     class="c1"
+    data-testid="action-button"
   >
     <span>
       Controller
@@ -54,6 +56,7 @@ exports[`FloatSubMenu pattern should render correctly 1`] = `
   </button>
   <nav
     class="c2"
+    data-testid="nav-wrapper"
   >
     <p>
       Menu item 1

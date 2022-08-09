@@ -11,6 +11,7 @@ const FloatSubMenu = ({
 	ActionComponent,
 	submenuComponents,
 }: Props): JSX.Element => {
+	const actionButtonRef = useRef<HTMLButtonElement>(null);
 	const navContainerRef = useRef<HTMLDivElement>(null);
 
 	const [visible, setVisible] = useState(false);
@@ -19,14 +20,21 @@ const FloatSubMenu = ({
 		setVisible((state) => !state);
 	}, []);
 
+	const handleClickOutside = useCallback((event: MouseEvent) => {
+		const clickedOnActionButton = actionButtonRef.current?.contains(
+			event.target as Node
+		);
+		const clickedOnNavContainer = navContainerRef.current?.contains(
+			event.target as Node
+		);
+
+		if (!clickedOnActionButton && !clickedOnNavContainer) {
+			setVisible(false);
+		}
+	}, []);
+
 	useEffect(() => {
 		if (visible) {
-			const handleClickOutside = (event: MouseEvent) => {
-				if (!navContainerRef.current?.contains(event.target as Node)) {
-					setVisible(false);
-				}
-			};
-
 			document.addEventListener('mousedown', handleClickOutside);
 
 			return () => {
@@ -35,15 +43,23 @@ const FloatSubMenu = ({
 				setVisible(false);
 			};
 		}
-	}, [visible, navContainerRef]);
+	}, [visible, handleClickOutside]);
 
 	return (
-		<Styles.Container>
-			<Styles.ActionButton onClick={handleToggleSubmenu}>
+		<Styles.Container data-testid="float-container">
+			<Styles.ActionButton
+				onClick={handleToggleSubmenu}
+				ref={actionButtonRef}
+				data-testid="action-button"
+			>
 				{ActionComponent}
 			</Styles.ActionButton>
 
-			<Styles.NavWrapper isVisible={visible} ref={navContainerRef}>
+			<Styles.NavWrapper
+				isVisible={visible}
+				ref={navContainerRef}
+				data-testid="nav-wrapper"
+			>
 				{submenuComponents.map((Component) => {
 					return Component;
 				})}
