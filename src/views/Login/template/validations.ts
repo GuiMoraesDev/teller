@@ -3,9 +3,7 @@ import { Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-export interface LoginSchemaProps {
-	username: string;
-}
+import { LoginSchemaProps } from '../@types';
 
 const loginResolver: Resolver<LoginSchemaProps> = yupResolver(
 	yup.object().shape({
