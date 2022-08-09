@@ -115,6 +115,7 @@ exports[`Modal pattern should render correctly 1`] = `
 
 <div
   class="c0"
+  data-testid="modal-container"
 >
   <main
     class="c1"
@@ -124,6 +125,7 @@ exports[`Modal pattern should render correctly 1`] = `
     >
       <button
         class="c3"
+        data-testid="close-button"
       >
         <svg
           fill="currentColor"
@@ -162,6 +164,7 @@ exports[`Modal pattern should render correctly 1`] = `
     </header>
     <section
       class="c4"
+      data-testid="modal-content"
     />
   </main>
 </div>

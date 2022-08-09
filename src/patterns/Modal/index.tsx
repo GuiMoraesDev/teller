@@ -12,13 +12,17 @@ export interface ModalHandles {
 	closeModal: () => void;
 }
 
+interface ModalProps {
+	startOpened?: boolean;
+}
+
 const Modal: React.ForwardRefRenderFunction<
 	ModalHandles,
-	PropsWithChildren<{}>
-> = ({ children }, ref): JSX.Element => {
+	PropsWithChildren<ModalProps>
+> = ({ children, startOpened }, ref): JSX.Element => {
 	const isStorybook = React.useMemo(() => process.env.IS_STORYBOOK, []);
 
-	const [visible, setVisible] = useState(!!isStorybook);
+	const [visible, setVisible] = useState(!!isStorybook || !!startOpened);
 
 	const openModal = useCallback(() => {
 		setVisible(true);
@@ -34,7 +38,7 @@ const Modal: React.ForwardRefRenderFunction<
 	}));
 
 	return (
-		<Styles.ModalContainer isVisible={visible}>
+		<Styles.ModalContainer isVisible={visible} data-testid="modal-container">
 			<Styles.ModalContentWrapper>
 				<Styles.Header>
 					<Button
@@ -42,10 +46,13 @@ const Modal: React.ForwardRefRenderFunction<
 						onClick={closeModal}
 						variant="neutral"
 						dimension="xs"
+						data-testid="close-button"
 					/>
 				</Styles.Header>
 
-				<Styles.ModalContent>{children}</Styles.ModalContent>
+				<Styles.ModalContent data-testid="modal-content">
+					{children}
+				</Styles.ModalContent>
 			</Styles.ModalContentWrapper>
 		</Styles.ModalContainer>
 	);
