@@ -5,4 +5,4 @@
 yarn git-branch-is --not "main" &&
 yarn git-branch-is --not "master" &&
 yarn lint &&
-yarn test
+yarn test --onlyChanged --bail
