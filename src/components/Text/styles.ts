@@ -16,9 +16,9 @@ export const Text = styled.p.attrs<TextProps>(({ tag }) => ({
 
 	width: ${({ fullWidth }) => fullWidth && '100%'};
 
-	font-weight: ${({ isBold }) => isBold && 'bold'};
-
 	${({ theme, dimension }) => theme.typography.variants[dimension || 'body2']};
+
+	font-weight: ${({ isBold }) => isBold && 'bold'};
 
 	color: ${({ variant, theme }) =>
 		variant === 'regular'

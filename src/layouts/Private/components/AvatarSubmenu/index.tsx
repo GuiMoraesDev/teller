@@ -4,13 +4,12 @@ import { useRouter } from 'next/router';
 
 import { SignOut, UserGear } from 'phosphor-react';
 
+import Avatar from 'components/Avatar';
 import Button from 'components/Button';
 
 import { useAuth } from 'context/auth';
 
 import FloatSubMenu from 'patterns/FloatSubMenu';
-
-import * as Styles from './styles';
 
 const AvatarSubmenu = (): JSX.Element | null => {
 	const router = useRouter();
@@ -26,9 +25,7 @@ const AvatarSubmenu = (): JSX.Element | null => {
 	return (
 		<FloatSubMenu
 			ActionComponent={
-				<Styles.AvatarWrapper>
-					<Styles.Avatar src={user?.avatar_url || ''} alt={user?.name || ''} />
-				</Styles.AvatarWrapper>
+				<Avatar src={user?.avatar_url || ''} alt={user?.name || ''} isBordered />
 			}
 			submenuComponents={[
 				<Button

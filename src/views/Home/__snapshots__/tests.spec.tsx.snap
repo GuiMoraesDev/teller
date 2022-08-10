@@ -1,0 +1,322 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page should render correctly 1`] = `
+.c8 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: auto;
+  height: 4.4rem;
+  border: 0.1rem solid #C9CAC8;
+  border-radius: 0.4rem;
+  margin: 0;
+  padding: 0 1.4rem;
+  gap: 1.2rem;
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  color: #FFFFFF;
+  background-color: #63989F;
+  border-color: #4F7A7F;
+}
+
+.c8:hover {
+  background-color: #82ADB2;
+}
+
+.c8 svg {
+  color: inherit;
+}
+
+.c8:hover {
+  background-color: #4F7A7F;
+}
+
+.c8 .spin {
+  -webkit-animation-name: ieAXeN;
+  animation-name: ieAXeN;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.c6 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-family: 'Roboto',sans-serif;
+  line-height: 2.0rem;
+  color: #181917;
+  box-sizing: border-box;
+}
+
+.c3 {
+  position: relative;
+  width: 100%;
+}
+
+.c7 {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: 'Roboto',sans-serif;
+  line-height: 1.6rem;
+  margin: auto;
+  padding: 0.6rem 1.2rem;
+  color: #FFFFFF;
+  background-color: #FFD166;
+  border-radius: 0;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 0;
+}
+
+.c7 svg {
+  margin-right: 0.5rem;
+}
+
+.c4 {
+  position: relative;
+  width: 100%;
+  padding: 1.6rem;
+  background-color: #F2F2F1;
+  border: 0.1rem solid #C9CAC8;
+  border-radius: 0.4rem;
+  -webkit-transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: 'Roboto',sans-serif;
+  line-height: 1.6rem;
+  height: 19.2rem;
+}
+
+.c4:hover {
+  border-color: #949591;
+  box-shadow: 1px 0px 3px 0px #E4E5E3;
+}
+
+.c5 {
+  width: 100%;
+  height: 85%;
+  padding: 0;
+  color: #181917;
+  background-color: #F2F2F1;
+  border: none;
+  resize: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: 'Roboto',sans-serif;
+  line-height: 1.6rem;
+}
+
+.c0 {
+  grid-area: Content;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 2.0rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1.2rem;
+}
+
+.c2 {
+  width: 100%;
+}
+
+.c9 {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: 100%;
+  gap: 1.4rem;
+}
+
+<main
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <form
+      class="c2"
+      id="post-message"
+    >
+      <div
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          <textarea
+            class="c5"
+            data-testid="post-message-input"
+            id="post-message-input"
+            maxlength="1000"
+            name="postMessage"
+            placeholder="What’s happening?"
+          />
+          <p
+            class="c6"
+          >
+            0 / 1000
+          </p>
+          <span
+            class="c7"
+            data-testid="error-alert"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="128"
+                x2="128"
+                y1="104"
+                y2="144"
+              />
+              <path
+                d="M114.2,40l-88,152A16,16,0,0,0,40,216H216a16,16,0,0,0,13.8-24l-88-152A15.9,15.9,0,0,0,114.2,40Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <circle
+                cx="128"
+                cy="180"
+                r="12"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </form>
+    <button
+      class="c8"
+      data-testid="submit-button"
+      form="post-message"
+      type="submit"
+    >
+      Tell
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 256 256"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="none"
+          height="256"
+          width="256"
+        />
+        <path
+          d="M77.4,201.9l-32.3,27A8,8,0,0,1,32,222.8V64a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V192a8,8,0,0,1-8,8H82.5A7.8,7.8,0,0,0,77.4,201.9Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <circle
+          cx="128"
+          cy="128"
+          r="12"
+        />
+        <circle
+          cx="80"
+          cy="128"
+          r="12"
+        />
+        <circle
+          cx="176"
+          cy="128"
+          r="12"
+        />
+      </svg>
+    </button>
+  </div>
+  <div
+    class="c9"
+  />
+</main>
+`;

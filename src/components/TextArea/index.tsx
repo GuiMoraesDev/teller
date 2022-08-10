@@ -11,6 +11,7 @@ export interface TextAreaDefaultPropsThatMakeStyles {
   dimension?: "sm" | "md";
   rounded?: keyof DefaultTheme["rounded"];
   isDisabled?: boolean;
+	fullWidth?: boolean;
   error?: string;
 }
 
@@ -61,6 +62,7 @@ const TextArea: React.ForwardRefRenderFunction<
           <Text label={label} dimension="body1" />
         </Styles.Label>
       )}
+			
       <Styles.ContainerTextArea
         error={error}
         dimension={dimension}

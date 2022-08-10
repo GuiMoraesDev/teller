@@ -1,20 +1,24 @@
+/* cSpell: disable */
+
 import React from 'react';
 
 import userEvent from '@testing-library/user-event';
 
 import { render, waitFor } from 'tests/test.utils';
 
-import LoginTemplate from './template';
+import HomeTemplate from './template';
 
 const ContainerRender = (mockSubmit: jest.Mock<any, any>) =>
-	render(<LoginTemplate onSubmit={mockSubmit} isLoading={false} />);
+	render(
+		<HomeTemplate onPostSubmit={mockSubmit} isLoading={false} postsData={[]} />
+	);
 
 const elementsTestId = {
+	postMessageInput: 'post-message-input',
 	submitButton: 'submit-button',
-	usernameInput: "username-input"
 };
 
-describe('Login page', () => {
+describe('Home page', () => {
 	it('should render correctly', () => {
 		const mockSubmit = jest.fn();
 
@@ -41,10 +45,13 @@ describe('Login page', () => {
 		const { getByTestId } = ContainerRender(mockSubmit);
 
 		const submitButton = getByTestId(elementsTestId.submitButton);
-		const usernameInput = getByTestId(elementsTestId.usernameInput);
+		const postMessageInput = getByTestId(elementsTestId.postMessageInput);
 
 		await waitFor(async () => {
-			await userEvent.type(usernameInput, "my-username");
+			await userEvent.type(
+				postMessageInput,
+				'Dolore incididunt nisi enim eu do aliqua sit labore voluptate aliqua.'
+			);
 			await userEvent.click(submitButton);
 		});
 

@@ -14,6 +14,8 @@ export const Container = styled.div`
 	height: 100vh;
 	width: 100vw;
 
+	padding: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
+
 	@media ${({ theme }) => theme.breakpoints.laptop} {
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: 10fr 1fr;
@@ -27,16 +29,25 @@ export const Container = styled.div`
 export const Header = styled.header`
 	grid-area: NavHeader;
 
+	position: fixed;
+
+	top: 0;
+	left: 0;
+	right: 0;
+
 	display: flex;
 
 	align-items: center;
 	justify-content: space-between;
 
 	width: 100%;
+	height: 6rem;
 
 	padding: ${({ theme }) => theme.sizes.dimensions.spacing.xs};
 
 	background-color: ${({ theme }) => theme.themeColors.brandPrimaryLight};
+
+	z-index: 2;
 `;
 
 export const PrivateContent = styled.main`
@@ -57,12 +68,21 @@ export const Footer = styled.nav`
 
 	display: flex;
 
+	position: fixed;
+
+	bottom: 0;
+	left: 0;
+	right: 0;
+
 	align-items: center;
 	justify-content: space-between;
 
 	width: 100%;
+	height: 6rem;
 
 	padding: ${({ theme }) => theme.sizes.dimensions.spacing.xs};
 
 	background-color: ${({ theme }) => theme.themeColors.brandPrimaryLight};
+
+	z-index: 2;
 `;
