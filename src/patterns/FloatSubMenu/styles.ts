@@ -1,9 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+import { StyledProps } from '.';
+
+export const Container = styled.div<StyledProps>`
 	position: relative;
 
+	display: flex;
+
+	place-content: center;
+
 	height: 100%;
+
+	${({ isFullWidth }) =>
+		isFullWidth &&
+		css`
+			width: 100%;
+		`};
 `;
 
 export const ActionButton = styled.button`
@@ -15,6 +27,7 @@ export const ActionButton = styled.button`
 `;
 
 interface NavWrapperProps {
+	parentWidth?: number;
 	isVisible: boolean;
 }
 
@@ -22,7 +35,7 @@ export const NavWrapper = styled.nav<NavWrapperProps>`
 	position: absolute;
 
 	bottom: 0;
-	left: 0;
+	left: 50%;
 
 	background-color: ${({ theme }) => theme.themeColors.canvasDark};
 
@@ -31,7 +44,10 @@ export const NavWrapper = styled.nav<NavWrapperProps>`
 
 	box-shadow: ${({ theme }) => theme.shadows.regular};
 
-	transform: translateY(calc(100% + ${({ theme }) => theme.sizes.common.x2}));
+	transform: translate(
+		-20%,
+		calc(100% + ${({ theme }) => theme.sizes.common.x2})
+	);
 
 	visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
 
@@ -41,7 +57,7 @@ export const NavWrapper = styled.nav<NavWrapperProps>`
 		position: absolute;
 
 		top: 0;
-		left: 0;
+		left: calc(${({ parentWidth }) => parentWidth}px / 3);
 
 		width: 0;
 		height: 0;
@@ -51,6 +67,6 @@ export const NavWrapper = styled.nav<NavWrapperProps>`
 		border-color: transparent;
 		border-bottom-color: ${({ theme }) => theme.themeColors.canvasDark};
 
-		transform: translate(100%, -100%);
+		transform: translateY(-100%);
 	}
 `;

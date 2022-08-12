@@ -2,7 +2,11 @@ import { useCallback, useRef, useState, useEffect } from 'react';
 
 import * as Styles from './styles';
 
-interface Props {
+export interface StyledProps {
+	isFullWidth?: boolean;
+}
+
+interface Props extends StyledProps {
 	ActionComponent: JSX.Element;
 	submenuComponents: JSX.Element[];
 }
@@ -10,7 +14,9 @@ interface Props {
 const FloatSubMenu = ({
 	ActionComponent,
 	submenuComponents,
+	isFullWidth = false,
 }: Props): JSX.Element => {
+	const containerRef = useRef<HTMLDivElement>(null);
 	const actionButtonRef = useRef<HTMLButtonElement>(null);
 	const navContainerRef = useRef<HTMLDivElement>(null);
 
@@ -46,7 +52,11 @@ const FloatSubMenu = ({
 	}, [visible, handleClickOutside]);
 
 	return (
-		<Styles.Container data-testid="float-container">
+		<Styles.Container
+			data-testid="float-container"
+			ref={containerRef}
+			isFullWidth={isFullWidth}
+		>
 			<Styles.ActionButton
 				onClick={handleToggleSubmenu}
 				ref={actionButtonRef}
@@ -59,6 +69,7 @@ const FloatSubMenu = ({
 				isVisible={visible}
 				ref={navContainerRef}
 				data-testid="nav-wrapper"
+				parentWidth={actionButtonRef.current?.offsetWidth}
 			>
 				{submenuComponents.map((Component) => {
 					return Component;
