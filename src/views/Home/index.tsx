@@ -8,7 +8,7 @@ import {
 	getPosts,
 	postNewPost,
 	GetPostsResponse,
-} from 'services/posts/posts.api';
+} from 'services/posts.api';
 
 import { QUERY_KEYS } from 'constant';
 

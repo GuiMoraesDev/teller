@@ -19,7 +19,7 @@ export interface ButtonDefaultPropsThatMakeStyles {
 	isLoading?: boolean;
 }
 
-interface ButtonDefaultProps
+export interface ButtonDefaultProps
 	extends Omit<ButtonDefaultPropsThatMakeStyles, 'isDisabled'> {
 	label?: string;
 	disabled?: boolean;

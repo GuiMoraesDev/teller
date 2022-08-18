@@ -1,10 +1,11 @@
-export const UNPROTECTED_ROUTES = ['/login'];
+export const UNPROTECTED_ROUTES = ['/signin', '/signup'];
 
 export const LS_KEYS = {
 	user: 'USER'
 };
 
 export const QUERY_KEYS = {
+	users: 'USERS',
 	posts: 'POSTS',
 };
 

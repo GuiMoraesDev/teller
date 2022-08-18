@@ -1,4 +1,8 @@
-import api from './api';
+import axios from 'axios';
+
+const api = axios.create({
+	baseURL: "https://api.github.com",
+});
 
 export interface PostsDTO {
 	userId: string;
