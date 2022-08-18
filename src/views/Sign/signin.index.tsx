@@ -21,7 +21,7 @@ const SignIn = (): JSX.Element => {
 			type="signin"
 			title="Welcome to Teller"
 			description="Use one social link above to sign in"
-			onLoginSuccess={handleRedirectToHomePage}
+			handleLoginSuccess={handleRedirectToHomePage}
 			buttonProps={buttonProps}
 		/>
 	);
