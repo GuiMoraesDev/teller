@@ -6,6 +6,8 @@ import Head from 'next/head';
 
 import CustomRouter from 'router';
 
+import GoogleSignIn from 'components/GoogleSignIn';
+
 import GlobalAppProvider from 'context';
 
 import GlobalStyle from 'styles/global';
@@ -42,6 +44,8 @@ const App = ({ Component, pageProps, router }: AppProps) => {
 				<GlobalStyle />
 				<Component {...pageProps} />
 			</CustomRouter>
+
+			<script src="https://accounts.google.com/gsi/client" async defer></script>
 		</GlobalAppProvider>
 	);
 };

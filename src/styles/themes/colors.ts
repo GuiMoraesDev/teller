@@ -1,7 +1,7 @@
 const colors = {
   transparent: "transparent",
   neutrals: {
-    "000": "#FFFFFF",
+    "000": "#FDFDFD",
     "050": "#F2F2F1",
     "100": "#E4E5E3",
     "150": "#D7D7D6",
@@ -15,7 +15,7 @@ const colors = {
     "850": "#242523",
     "900": "#181917",
     "950": "#0C0C0C",
-    "999": "#000000",
+    "999": "#060606",
   },
   primary: {
     "050": "#EFF5F5",
@@ -70,7 +70,7 @@ const colors = {
 };
 
 const themeColors = {
-  canvas: colors.neutrals["050"],
+  canvas: colors.neutrals["000"],
   canvasDark: colors.neutrals["100"],
   canvasInverted: colors.neutrals["900"],
   canvasInvertedLight: colors.neutrals["800"],

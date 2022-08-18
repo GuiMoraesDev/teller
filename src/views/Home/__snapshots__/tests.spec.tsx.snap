@@ -25,7 +25,7 @@ exports[`Home page should render correctly 1`] = `
   -webkit-transition: background-color 0.2s, color 0.2s;
   transition: background-color 0.2s, color 0.2s;
   cursor: pointer;
-  color: #FFFFFF;
+  color: #FDFDFD;
   background-color: #63989F;
   border-color: #4F7A7F;
 }
@@ -90,7 +90,7 @@ exports[`Home page should render correctly 1`] = `
   line-height: 1.6rem;
   margin: auto;
   padding: 0.6rem 1.2rem;
-  color: #FFFFFF;
+  color: #FDFDFD;
   background-color: #FFD166;
   border-radius: 0;
   border-bottom-left-radius: 0.4rem;
@@ -112,7 +112,7 @@ exports[`Home page should render correctly 1`] = `
   position: relative;
   width: 100%;
   padding: 1.6rem;
-  background-color: #F2F2F1;
+  background-color: #FDFDFD;
   border: 0.1rem solid #C9CAC8;
   border-radius: 0.4rem;
   -webkit-transition: border-color 0.2s, box-shadow 0.2s;
@@ -135,7 +135,7 @@ exports[`Home page should render correctly 1`] = `
   height: 85%;
   padding: 0;
   color: #181917;
-  background-color: #F2F2F1;
+  background-color: #FDFDFD;
   border: none;
   resize: none;
   font-size: 1.2rem;
