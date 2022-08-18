@@ -24,7 +24,7 @@ const CustomRouter = ({ router, children }: PropsWithChildren<Props>) => {
 		}
 
 		if (shouldRedirectToLogin) {
-			router.push('/login');
+			router.push('/signin');
 		}
 	}, [router]);
 

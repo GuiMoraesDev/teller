@@ -6,8 +6,6 @@ import Head from 'next/head';
 
 import CustomRouter from 'router';
 
-import GoogleSignIn from 'components/GoogleSignIn';
-
 import GlobalAppProvider from 'context';
 
 import GlobalStyle from 'styles/global';

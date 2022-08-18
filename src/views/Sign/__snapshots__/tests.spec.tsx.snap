@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login page should render correctly 1`] = `
+.c3 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: auto;
+  height: 4.4rem;
+  border: 0.1rem solid #C9CAC8;
+  border-radius: 0.4rem;
+  margin: 0;
+  padding: 0 1.4rem;
+  gap: 1.2rem;
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  color: #FDFDFD;
+  background-color: #63989F;
+  border-color: #4F7A7F;
+}
+
+.c3:hover {
+  background-color: #82ADB2;
+}
+
+.c3 svg {
+  color: inherit;
+}
+
+.c3:hover {
+  background-color: #4F7A7F;
+}
+
+.c3 .spin {
+  -webkit-animation-name: ieAXeN;
+  animation-name: ieAXeN;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.c1 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-size: 4.8rem;
+  font-weight: 500;
+  font-family: 'Montserrat',sans-serif;
+  line-height: 8.0rem;
+  color: #181917;
+  box-sizing: border-box;
+}
+
+.c2 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-family: 'Roboto',sans-serif;
+  line-height: 2.0rem;
+  color: #181917;
+  box-sizing: border-box;
+}
+
+.c0 {
+  grid-area: Content;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 2.0rem;
+}
+
+<main
+  class="c0"
+>
+  <strong
+    class="c1"
+  >
+    Welcome to Teller
+  </strong>
+  <p
+    class="c2"
+  >
+    Use one social link above to sign in
+  </p>
+  <div
+    class=""
+  >
+    <div
+      id="buttonDiv"
+    />
+  </div>
+  <button
+    class="c3"
+  >
+    Jest test
+  </button>
+</main>
+`;

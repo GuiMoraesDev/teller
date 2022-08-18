@@ -21,7 +21,7 @@ const AvatarSubmenu = (): JSX.Element | null => {
 
 		google.accounts.id.disableAutoSelect();
 
-		router.push('/login');
+		router.push('/signin');
 	}, [logoutUser, router]);
 
 	return (
