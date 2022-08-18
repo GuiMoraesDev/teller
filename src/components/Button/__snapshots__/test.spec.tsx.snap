@@ -25,7 +25,7 @@ exports[`Button component should render correctly 1`] = `
   -webkit-transition: background-color 0.2s, color 0.2s;
   transition: background-color 0.2s, color 0.2s;
   cursor: pointer;
-  color: #FFFFFF;
+  color: #FDFDFD;
   background-color: #63989F;
   border-color: #4F7A7F;
 }

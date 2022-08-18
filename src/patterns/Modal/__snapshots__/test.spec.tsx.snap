@@ -90,7 +90,7 @@ exports[`Modal pattern should render correctly 1`] = `
   grid-template-rows: 3.6rem auto;
   min-width: 8.0rem;
   min-height: 8.0rem;
-  background-color: #F2F2F1;
+  background-color: #FDFDFD;
   border-radius: 0.4rem;
 }
 

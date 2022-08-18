@@ -19,13 +19,15 @@ const AvatarSubmenu = (): JSX.Element | null => {
 	const handleLogoutUser = useCallback(() => {
 		logoutUser();
 
+		google.accounts.id.disableAutoSelect();
+
 		router.push('/login');
 	}, [logoutUser, router]);
 
 	return (
 		<FloatSubMenu
 			ActionComponent={
-				<Avatar src={user?.avatar_url || ''} alt={user?.name || ''} isBordered />
+				<Avatar src={user?.avatar_url || ''} alt={user?.first_name || ''} isBordered />
 			}
 			submenuComponents={[
 				<Button

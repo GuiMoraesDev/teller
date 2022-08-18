@@ -42,12 +42,12 @@ const Home = (): JSX.Element => {
 			const { postMessage } = values;
 
 			mutation.mutate({
-				userId: user?.id || 0,
-				title: user?.name || '',
+				userId: user?.id || "",
+				title: user?.first_name || '',
 				body: postMessage,
 			});
 		},
-		[mutation, user?.id, user?.name]
+		[mutation, user?.id, user?.first_name]
 	);
 
 	return (

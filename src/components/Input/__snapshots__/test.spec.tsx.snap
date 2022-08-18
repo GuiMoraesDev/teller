@@ -23,7 +23,7 @@ exports[`Input component should render correctly 1`] = `
   width: auto;
   height: 4.4rem;
   color: #181917;
-  background-color: #F2F2F1;
+  background-color: #FDFDFD;
   border: 0.1rem solid #C9CAC8;
   border-radius: 0.4rem;
   margin: 0;
@@ -74,7 +74,7 @@ exports[`Input component should render correctly 1`] = `
   margin: auto;
   padding: 1.2rem;
   gap: 1.2rem;
-  color: #FFFFFF;
+  color: #FDFDFD;
   background-color: #EE977D;
   border-radius: none;
   border-bottom-left-radius: 0.4rem;

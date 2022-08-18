@@ -1,13 +1,13 @@
 import api from './api';
 
 export interface PostsDTO {
-	userId: number;
+	userId: string;
 	title: string;
 	body: string;
 }
 
 export interface GetPostsResponse extends PostsDTO {
-	id: number;
+	id: string;
 }
 
 export const getPosts = async () => {
