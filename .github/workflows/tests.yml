@@ -15,5 +15,11 @@ jobs:
       - name: Install modules
         run: yarn
 
-      - name: Run tests
+      - name: Run tests			
         run: yarn test --bail
+    env:
+      NEXT_PUBLIC_ENV:  ${{ secrets.NEXT_PUBLIC_ENV }}
+      NEXT_PUBLIC_GITHUB_TOKEN:  ${{ secrets.NEXT_PUBLIC_GITHUB_TOKEN }}
+      NEXT_PUBLIC_GOOGLE_CLIENT_ID:  ${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+      NEXT_PUBLIC_SUPABASE_URL:  ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_KEY:  ${{ secrets.NEXT_PUBLIC_SUPABASE_KEY }}
