@@ -9,7 +9,7 @@ import TextArea from 'components/TextArea';
 
 import { PrivateContent } from 'layouts/Private/styles';
 
-import { GetPostsResponse } from 'services/posts/posts.api';
+import { GetPostsResponse } from 'services/posts.api';
 
 import { HomeSchemaProps } from '../@types';
 import * as Styles from './styles';
