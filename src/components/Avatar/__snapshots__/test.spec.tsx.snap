@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar component should render correctly with isBordered prop 1`] = `
+.c0 {
+  height: 100%;
+  border: none;
+}
+
+.c1 {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10000px;
+  border: 3px solid #FDFDFD;
+}
+
+<span
+  class="c0"
+>
+  <img
+    alt="avatar placeholder"
+    class="c1"
+    src="https://i.pravatar.cc/150"
+  />
+</span>
+`;
+
+exports[`Avatar component should render correctly without isBordered prop 1`] = `
+.c0 {
+  height: 100%;
+  border: none;
+}
+
+.c1 {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10000px;
+  border: none;
+}
+
+<span
+  class="c0"
+>
+  <img
+    alt="avatar placeholder"
+    class="c1"
+    src="https://i.pravatar.cc/150"
+  />
+</span>
+`;
