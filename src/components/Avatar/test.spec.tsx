@@ -7,7 +7,7 @@ import Avatar from './index';
 describe('Avatar component', () => {
 	it('should render correctly without isBordered prop', () => {
 		const { container } = render(
-			<Avatar src="https://i.pravatar.cc/150" alt="avatar placeholder" />
+			<Avatar src="https://i.pravatar.cc/150?id=50" alt="avatar placeholder" />
 		);
 
 		expect(container.firstChild).toMatchSnapshot();
@@ -16,7 +16,7 @@ describe('Avatar component', () => {
 	it('should render correctly with isBordered prop', () => {
 		const { container } = render(
 			<Avatar
-				src="https://i.pravatar.cc/150"
+				src="https://i.pravatar.cc/150?id=50"
 				alt="avatar placeholder"
 				isBordered
 			/>
