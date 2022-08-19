@@ -1,19 +1,19 @@
-name: Jest tests
+name: CI/CI
 
 on:
   pull_request:
     branches:
       - main
-      - homolog
 
 jobs:
-  tests:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Install modules
-        run: yarn
+        run: yarn --frozen-lockfile
 
       - name: Run tests			
         run: yarn test --bail
@@ -23,3 +23,19 @@ jobs:
       NEXT_PUBLIC_GOOGLE_CLIENT_ID:  ${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
       NEXT_PUBLIC_SUPABASE_URL:  ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_KEY:  ${{ secrets.NEXT_PUBLIC_SUPABASE_KEY }}
+
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install modules
+        run: yarn --frozen-lockfile
+
+      - name: Publish to Chromatic			
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
