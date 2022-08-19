@@ -12,7 +12,12 @@ interface Props extends StyledProps {
 const Avatar = ({ src, alt, isBordered = false }: Props): JSX.Element => {
 	return (
 		<Styles.AvatarWrapper>
-			<Styles.Avatar src={src} alt={alt} isBordered={isBordered} />
+			<Styles.Avatar
+				src={src}
+				alt={alt}
+				isBordered={isBordered}
+				referrerPolicy="no-referrer"
+			/>
 		</Styles.AvatarWrapper>
 	);
 };
