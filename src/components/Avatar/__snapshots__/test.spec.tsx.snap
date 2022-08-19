@@ -19,7 +19,8 @@ exports[`Avatar component should render correctly with isBordered prop 1`] = `
   <img
     alt="avatar placeholder"
     class="c1"
-    src="https://i.pravatar.cc/150"
+    referrerpolicy="no-referrer"
+    src="https://i.pravatar.cc/150?id=50"
   />
 </span>
 `;
@@ -43,7 +44,8 @@ exports[`Avatar component should render correctly without isBordered prop 1`] = 
   <img
     alt="avatar placeholder"
     class="c1"
-    src="https://i.pravatar.cc/150"
+    referrerpolicy="no-referrer"
+    src="https://i.pravatar.cc/150?id=50"
   />
 </span>
 `;

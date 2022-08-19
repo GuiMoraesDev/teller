@@ -17,17 +17,21 @@ const AvatarSubmenu = (): JSX.Element | null => {
 	const { user, logoutUser } = useAuth();
 
 	const handleLogoutUser = useCallback(() => {
-		logoutUser();
-
 		google.accounts.id.disableAutoSelect();
 
 		router.push('/signin');
+
+		logoutUser();
 	}, [logoutUser, router]);
 
 	return (
 		<FloatSubMenu
 			ActionComponent={
-				<Avatar src={user?.avatar_url || ''} alt={user?.first_name || ''} isBordered />
+				<Avatar
+					src={user?.avatar_url || ''}
+					alt={user?.first_name || ''}
+					isBordered
+				/>
 			}
 			submenuComponents={[
 				<Button

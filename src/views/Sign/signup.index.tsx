@@ -2,18 +2,15 @@ import { useCallback } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { PostgrestResponse } from '@supabase/supabase-js';
 import { useMutation } from '@tanstack/react-query';
 import jwt from 'jwt-decode';
 
 import { GoogleUserResponse } from 'components/GoogleSign';
 
-import { useAuth } from 'context/auth';
+import { useAuth, UserProps } from 'context/auth';
 
-import {
-	postSignUp,
-	PostSignUpParams,
-	PostSignUpResponse,
-} from 'services/users.api';
+import { postNewUser } from 'services/users.api';
 
 import { QUERY_KEYS } from 'constant';
 
@@ -24,17 +21,15 @@ const SignIn = (): JSX.Element => {
 	const router = useRouter();
 
 	const onSignUpSuccess = useCallback(
-		(data: PostSignUpResponse[] | null) => {
-			if (data?.[0]) {
-				setLoggedUser(data?.[0]);
+		(data: UserProps) => {
+			setLoggedUser(data);
 
-				router.push('/home');
-			}
+			router.push('/home');
 		},
 		[router, setLoggedUser]
 	);
 
-	const mutation = useMutation([QUERY_KEYS.users], postSignUp, {
+	const mutation = useMutation([QUERY_KEYS.users], postNewUser, {
 		onSuccess: onSignUpSuccess,
 	});
 
@@ -52,6 +47,7 @@ const SignIn = (): JSX.Element => {
 				first_name: credential.given_name,
 				last_name: credential.family_name,
 				avatar_url: credential.picture,
+				email: credential.email,
 			});
 		},
 		[mutation]
