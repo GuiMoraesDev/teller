@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo component should render correctly type icon 1`] = `
+.c0 {
+  height: 100%;
+  max-height: 20rem;
+}
+
+<img
+  alt="Teller logo it's a microphone with sound waves around it and looks like a face blinking eyes"
+  class="c0"
+  src="img/icon.svg"
+/>
+`;
+
+exports[`Logo component should render correctly type logo 1`] = `
+.c0 {
+  height: 100%;
+  max-height: 20rem;
+}
+
+<img
+  alt="Teller logo it's a microphone with sound waves around it and looks like a face blinking eyes and Teller aside"
+  class="c0"
+  src="img/logo.svg"
+/>
+`;
