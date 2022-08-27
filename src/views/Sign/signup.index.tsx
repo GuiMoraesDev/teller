@@ -1,66 +1,76 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
-import { useRouter } from 'next/router';
+import { User, EnvelopeSimple, Lock } from 'phosphor-react';
 
-import { PostgrestResponse } from '@supabase/supabase-js';
-import { useMutation } from '@tanstack/react-query';
-import jwt from 'jwt-decode';
+import Input from 'components/Input';
 
-import { GoogleUserResponse } from 'components/GoogleSign';
+import { useSign } from 'context/sign';
 
-import { useAuth, UserProps } from 'context/auth';
+import logYupErrors from 'helpers/logYupErrors';
 
-import { postNewUser } from 'services/users.api';
-
-import { QUERY_KEYS } from 'constant';
-
+import useSignUpValidation from './hooks/useSignUpValidation';
 import SignTemplate from './template';
 
 const SignIn = (): JSX.Element => {
-	const { setLoggedUser } = useAuth();
-	const router = useRouter();
+	const { sign, clearSaveUserData } = useSign();
+	const { signUpMethods } = useSignUpValidation();
 
-	const onSignUpSuccess = useCallback(
-		(data: UserProps) => {
-			setLoggedUser(data);
+	useEffect(() => {
+		signUpMethods.reset(sign ?? undefined);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-			router.push('/home');
-		},
-		[router, setLoggedUser]
-	);
+	const onSubmit = useCallback(() => {
+		console.count('onSubmit');
 
-	const mutation = useMutation([QUERY_KEYS.users], postNewUser, {
-		onSuccess: onSignUpSuccess,
-	});
-
-	const buttonProps = {
-		label: 'Go to sign in page',
-		href: '/signin',
-		isLoading: mutation.isLoading,
-	};
-
-	const handleLoginSuccess = useCallback(
-		(response: google.accounts.id.CredentialResponse) => {
-			const credential = jwt<GoogleUserResponse>(response.credential);
-
-			mutation.mutate({
-				first_name: credential.given_name,
-				last_name: credential.family_name,
-				avatar_url: credential.picture,
-				email: credential.email,
-			});
-		},
-		[mutation]
-	);
+		clearSaveUserData();
+	}, [clearSaveUserData]);
 
 	return (
 		<SignTemplate
-			type="signup"
-			title="Welcome to Teller"
-			description="Use one social link above to sign up"
-			handleLoginSuccess={handleLoginSuccess}
-			buttonProps={buttonProps}
-		/>
+			pageType="signup"
+			buttonLabel="Go to sign in page"
+			buttonHref="/signin"
+			onSubmit={signUpMethods.handleSubmit(onSubmit, logYupErrors)}
+			buttonIsLoading={false}
+		>
+			<Input
+				id="sign-first-name"
+				label="First Name"
+				placeholder="John"
+				PlaceholderIconLeft={<User />}
+				{...signUpMethods.register('first_name')}
+				error={signUpMethods.formState.errors.first_name?.message}
+			/>
+
+			<Input
+				id="sign-last-name"
+				label="Last Name"
+				placeholder="Doe"
+				PlaceholderIconLeft={<User />}
+				{...signUpMethods.register('last_name')}
+				error={signUpMethods.formState.errors.last_name?.message}
+			/>
+
+			<Input
+				id="sign-email"
+				PlaceholderIconLeft={<EnvelopeSimple />}
+				label="Email"
+				placeholder="email@example.com"
+				{...signUpMethods.register('email')}
+				error={signUpMethods.formState.errors.email?.message}
+			/>
+
+			<Input
+				id="sign-password"
+				PlaceholderIconLeft={<Lock />}
+				label="Password"
+				type="password"
+				placeholder="email@example.com"
+				{...signUpMethods.register('password')}
+				error={signUpMethods.formState.errors.password?.message}
+			/>
+		</SignTemplate>
 	);
 };
 

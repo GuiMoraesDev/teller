@@ -1,9 +1,10 @@
 import React, { InputHTMLAttributes } from 'react';
 
 import { DimensionsProps } from '@types';
-import { Warning } from 'phosphor-react';
+import { Warning, Eye, EyeClosed } from 'phosphor-react';
 import { DefaultTheme } from 'styled-components';
 
+import Button from 'components/Button';
 import Text from 'components/Text';
 
 import * as Styles from './styles';
@@ -14,7 +15,6 @@ export interface InputDefaultPropsThatMakeStyles {
 	isDisabled?: boolean;
 	error?: string;
 	PlaceholderIconLeft?: JSX.Element;
-	PlaceholderIconRight?: JSX.Element;
 }
 
 interface InputDefaultProps
@@ -47,11 +47,16 @@ const Input: React.ForwardRefRenderFunction<
 		rounded = 'sm',
 		className,
 		PlaceholderIconLeft,
-		PlaceholderIconRight,
 		...props
 	},
 	ref
 ) => {
+	const [currentType, setCurrentType] = React.useState(type || 'text');
+
+	const handleToggleType = () => {
+		setCurrentType((state) => (state === 'password' ? 'text' : 'password'));
+	};
+
 	const handleChangeValue = React.useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
 			props.onChange?.(event);
@@ -71,7 +76,11 @@ const Input: React.ForwardRefRenderFunction<
 				</Styles.Label>
 			)}
 
-			<Styles.InputContainer htmlFor={id} dimension={dimension} rounded={rounded}>
+			<Styles.InputContainer
+				htmlFor={id}
+				dimension={dimension}
+				rounded={rounded}
+			>
 				{PlaceholderIconLeft}
 
 				<Styles.InputComponent
@@ -81,9 +90,16 @@ const Input: React.ForwardRefRenderFunction<
 					disabled={props.isDisabled}
 					{...props}
 					onChange={handleChangeValue}
+					type={currentType}
 				/>
 
-				{PlaceholderIconRight}
+				{type === 'password' && (
+					<Button
+						IconLeft={currentType === 'password' ? <EyeClosed /> : <Eye />}
+						onClick={handleToggleType}
+						variant="neutral"
+					/>
+				)}
 			</Styles.InputContainer>
 
 			<Styles.ErrorMessage error={error}>

@@ -25,5 +25,7 @@ export const Text = styled.p.attrs<TextProps>(({ tag }) => ({
 			? theme.themeColors.text
 			: theme.themeColors.textLight};
 
+	text-transform: ${({ isCapitalize }) => (isCapitalize ? 'capitalize' : 'none')};
+
 	box-sizing: border-box;
 `;

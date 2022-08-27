@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Login page should render correctly 1`] = `
-.c3 {
+.c5 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -30,19 +30,74 @@ exports[`Login page should render correctly 1`] = `
   border-color: #4F7A7F;
 }
 
-.c3:hover {
+.c5:hover {
   background-color: #82ADB2;
 }
 
-.c3 svg {
+.c5 svg {
   color: inherit;
 }
 
-.c3:hover {
+.c5:hover {
   background-color: #4F7A7F;
 }
 
-.c3 .spin {
+.c5 .spin {
+  -webkit-animation-name: ieAXeN;
+  animation-name: ieAXeN;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.c6 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: auto;
+  height: 4.4rem;
+  border: 0.1rem solid #C9CAC8;
+  border-radius: 0.4rem;
+  margin: 0;
+  padding: 0 1.4rem;
+  gap: 1.2rem;
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  color: #181917;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.c6:hover {
+  background-color: #82ADB2;
+}
+
+.c6 svg {
+  color: inherit;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  color: #181917;
+  background-color: transparent;
+}
+
+.c6 .spin {
   -webkit-animation-name: ieAXeN;
   animation-name: ieAXeN;
   -webkit-animation-duration: 2s;
@@ -62,6 +117,7 @@ exports[`Login page should render correctly 1`] = `
   font-family: 'Montserrat',sans-serif;
   line-height: 8.0rem;
   color: #181917;
+  text-transform: none;
   box-sizing: border-box;
 }
 
@@ -69,11 +125,25 @@ exports[`Login page should render correctly 1`] = `
   position: relative;
   padding: 0;
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
+  font-weight: 500;
+  font-family: 'Montserrat',sans-serif;
+  line-height: 4.0rem;
+  color: #181917;
+  text-transform: capitalize;
+  box-sizing: border-box;
+}
+
+.c4 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-size: 1.6rem;
   font-weight: 400;
   font-family: 'Roboto',sans-serif;
-  line-height: 2.0rem;
+  line-height: 2.4rem;
   color: #181917;
+  text-transform: none;
   box-sizing: border-box;
 }
 
@@ -97,6 +167,28 @@ exports[`Login page should render correctly 1`] = `
   gap: 2.0rem;
 }
 
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 75%;
+  border-radius: 0.4rem;
+  gap: 2.0rem;
+}
+
 <main
   class="c0"
 >
@@ -105,22 +197,58 @@ exports[`Login page should render correctly 1`] = `
   >
     Welcome to Teller
   </strong>
-  <p
+  <h2
     class="c2"
-  >
-    Use one social link above to sign in
-  </p>
-  <div
-    class=""
-  >
-    <div
-      id="buttonDiv"
-    />
-  </div>
-  <button
+  />
+  <form
     class="c3"
+    id="sign-form"
   >
-    Jest test
+    <p
+      class="c4"
+    >
+      Use the form bellow to undefined
+    </p>
+  </form>
+  <button
+    class="c5"
+    form="sign-form"
+    type="submit"
+  >
+    Sign in
+  </button>
+  <button
+    class="c6"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 256 256"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        fill="none"
+        height="256"
+        width="256"
+      />
+      <path
+        d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="16"
+      />
+      <path
+        d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="16"
+      />
+    </svg>
   </button>
 </main>
 `;

@@ -9,8 +9,21 @@ export interface PostNewSessionsParams {
 	password: string;
 }
 
-export const postNewSession = async (data: PostNewSessionsParams) => {
-	const response = await api.post('/sessions', data);
+export interface PostNewSessionResponse {
+	user: UserProps;
+	token: string;
+}
 
-	return response;
+export const postNewSession = async (data: PostNewSessionsParams) => {
+	const response = await api.post<PostNewSessionResponse>('/sessions', data);
+
+	return response.data;
+};
+
+export const postNewGoogleSession = async (credential: string) => {
+	const response = await api.post<PostNewSessionResponse>('/sessions/google', {
+		credential,
+	});
+
+	return response.data;
 };

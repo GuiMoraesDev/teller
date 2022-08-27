@@ -19,26 +19,37 @@ export interface UserProps {
 
 interface AuthContextData {
 	user: UserProps | null;
-	setLoggedUser: (props: UserProps) => void;
+	token: string | null;
+	setLoggedUser: (props: DataProps) => void;
 	logoutUser: () => void;
+}
+
+interface DataProps {
+	user: AuthContextData['user'];
+	token: AuthContextData['token'];
 }
 
 const AuthContext = createContext<AuthContextData | null>(null);
 
 const AuthProvider = ({ children }: PropsWithChildren<{}>) => {
-	const [data, setData] = useState<AuthContextData['user']>(null);
+	const [data, setData] = useState<DataProps | null>(null);
 
 	useEffect(() => {
 		const user = localStorage.getItem(LS_KEYS.user);
+		const token = localStorage.getItem(LS_KEYS.token);
 
-		if (user) {
-			const parseduser: UserProps = JSON.parse(user);
+		if (user && token) {
+			const parsedUser: UserProps = JSON.parse(user);
+			const parsedToken: string = JSON.parse(token);
 
-			setData(parseduser);
+			setData({
+				user: parsedUser,
+				token: parsedToken,
+			});
 		}
 	}, []);
 
-	const setLoggedUser = useCallback((props: UserProps) => {
+	const setLoggedUser = useCallback((props: DataProps) => {
 		setData(props);
 
 		localStorage.setItem(LS_KEYS.user, JSON.stringify(props));
@@ -55,7 +66,8 @@ const AuthProvider = ({ children }: PropsWithChildren<{}>) => {
 	return (
 		<AuthContext.Provider
 			value={{
-				user: data,
+				user: data?.user || null,
+				token: data?.token || null,
 				setLoggedUser,
 				logoutUser,
 			}}
