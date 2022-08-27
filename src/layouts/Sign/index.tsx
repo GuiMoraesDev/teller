@@ -12,10 +12,6 @@ const SignLayout = ({ children }: PropsWithChildren<{}>): JSX.Element => (
 		</Styles.Header>
 
 		{children}
-
-		<Styles.Footer>
-			<Text label="Teller @2022" dimension="body1" />
-		</Styles.Footer>
 	</Styles.Container>
 );
 

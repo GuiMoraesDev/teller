@@ -113,4 +113,6 @@ export const ErrorMessage = styled.span<ErrorMessageProps>`
 	opacity: ${({ error }) => (error ? 1 : 0)};
 	transform: translateY(100%);
 	transition: opacity 0.5s ease-in-out;
+
+	z-index: 5;
 `;

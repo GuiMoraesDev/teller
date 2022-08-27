@@ -9,6 +9,7 @@ export interface TextDefaultPropsThatMakeStyles {
 	dimension?: keyof DefaultTheme['typography']['variants'];
 	variant?: 'regular' | 'light';
 	isBold?: boolean;
+	isCapitalize?: boolean;
 }
 
 type TagProps = Record<keyof DefaultTheme['typography']['variants'], string>;

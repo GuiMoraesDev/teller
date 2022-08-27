@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
 
 export interface Props {
+	id: string;
 	type: 'signin' | 'signup';
 	handleLoginSuccess: (response: google.accounts.id.CredentialResponse) => void;
 }
@@ -27,11 +28,14 @@ export type ContextTextProps = Record<
 	google.accounts.id.GsiButtonConfiguration['text']
 >;
 
-const GoogleSign = ({ type, handleLoginSuccess }: Props): JSX.Element => {
-	const contextText: ContextTextProps = useMemo(() => ({
-		signin: 'signin_with',
-		signup: 'signup_with',
-	}), []);
+const GoogleSign = ({ id, type, handleLoginSuccess }: Props): JSX.Element => {
+	const contextText: ContextTextProps = useMemo(
+		() => ({
+			signin: 'signin_with',
+			signup: 'signup_with',
+		}),
+		[]
+	);
 
 	useEffect(() => {
 		const { NEXT_PUBLIC_GOOGLE_CLIENT_ID } = process.env;
@@ -50,17 +54,17 @@ const GoogleSign = ({ type, handleLoginSuccess }: Props): JSX.Element => {
 		});
 
 		google.accounts.id.renderButton(
-			document.getElementById('buttonDiv') as HTMLElement,
+			document.getElementById(id) as HTMLElement,
 			{
 				theme: 'outline',
 				size: 'medium',
-				type: 'standard',
+				type: 'icon',
 				text: contextText[type],
 			}
 		);
-	}, [contextText, handleLoginSuccess, type]);
+	}, [contextText, handleLoginSuccess, id, type]);
 
-	return <div id="buttonDiv"></div>;
+	return <div id={id}></div>;
 };
 
 export default GoogleSign;
