@@ -10,7 +10,7 @@ import React, {
 import { LS_KEYS } from 'constant';
 
 export interface UserProps {
-	avatar_url: string;
+	avatar_url?: string;
 	id: string;
 	first_name: string;
 	last_name: string;

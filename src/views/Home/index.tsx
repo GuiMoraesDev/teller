@@ -4,12 +4,6 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { useAuth } from 'context/auth';
 
-import {
-	getPosts,
-	postNewPost,
-	GetPostsResponse,
-} from 'services/posts.api';
-
 import { QUERY_KEYS } from 'constant';
 
 import { HomeSchemaProps } from './@types';
@@ -18,7 +12,7 @@ import HomeTemplate from './template';
 const Home = (): JSX.Element => {
 	const { user } = useAuth();
 
-	const [posts, setPosts] = useState<GetPostsResponse[]>([]);
+	/* const [posts, setPosts] = useState<GetPostsResponse[]>([]);
 
 	const mutation = useMutation(postNewPost, {
 		onSuccess: (response) => {
@@ -27,17 +21,17 @@ const Home = (): JSX.Element => {
 				...response.data,
 			}));
 		},
-	});
+	}); */
 
-	const loadPosts = useCallback(async () => {
+	/* const loadPosts = useCallback(async () => {
 		const response = await getPosts();
 
 		setPosts(response.data);
 	}, []);
 
-	const { isLoading } = useQuery([QUERY_KEYS.posts], loadPosts);
+	const { isLoading } = useQuery([QUERY_KEYS.posts], loadPosts); */
 
-	const onSubmit = useCallback(
+	/* const onSubmit = useCallback(
 		(values: HomeSchemaProps) => {
 			const { postMessage } = values;
 
@@ -48,14 +42,17 @@ const Home = (): JSX.Element => {
 			});
 		},
 		[mutation, user?.id, user?.first_name]
-	);
+	); */
 
 	return (
-		<HomeTemplate
+		<>
+			<div />
+			{/* <HomeTemplate
 			onPostSubmit={onSubmit}
-			isLoading={mutation.isLoading || isLoading}
+			isLoading={mutation.isLoading}
 			postsData={posts}
-		/>
+		/> */}
+		</>
 	);
 };
 

@@ -1,16 +1,11 @@
-import { createClient } from '@supabase/supabase-js';
+import axios from 'axios';
 
-if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
-	throw new Error('NEXT_PUBLIC_SUPABASE_URL is missing');
+if (!process.env.NEXT_PUBLIC_API_URL) {
+	throw new Error('NEXT_PUBLIC_API_URL is missing');
 }
 
-if (!process.env.NEXT_PUBLIC_SUPABASE_KEY) {
-	throw new Error('NEXT_PUBLIC_SUPABASE_KEY is missing');
-}
+const api = axios.create({
+	baseURL: process.env.NEXT_PUBLIC_API_URL,
+});
 
-const supabase = createClient(
-	process.env.NEXT_PUBLIC_SUPABASE_URL,
-	process.env.NEXT_PUBLIC_SUPABASE_KEY
-);
-
-export default supabase;
+export default api;
