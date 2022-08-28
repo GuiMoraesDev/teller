@@ -22,3 +22,8 @@ export interface GoogleUserResponse {
 	picture: string;
 	sub: string;
 }
+
+export interface SignSuccessfulProps {
+	user: UserProps;
+	token: string;
+}

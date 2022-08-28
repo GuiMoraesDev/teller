@@ -17,6 +17,7 @@ export interface ButtonDefaultPropsThatMakeStyles {
 	IconLeft?: JSX.Element;
 	IconRight?: JSX.Element;
 	isLoading?: boolean;
+	isCapitalize?: boolean;
 }
 
 export interface ButtonDefaultProps
@@ -69,11 +70,11 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
 			{...props}
 			ref={ref}
 		>
-			{isLoading && IconLeft ? <Spinner className="spin" /> : IconLeft}
+			{IconLeft}
 
 			{label}
 
-			{isLoading ? <Spinner className="spin"/> : IconRight}
+			{isLoading ? <Spinner className="spin" /> : IconRight}
 		</Styles.Button>
 	);
 };

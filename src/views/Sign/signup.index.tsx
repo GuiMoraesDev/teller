@@ -1,4 +1,6 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
+
+import { useRouter } from 'next/router';
 
 import { User, EnvelopeSimple, Lock } from 'phosphor-react';
 
@@ -6,23 +8,44 @@ import Input from 'components/Input';
 
 import logYupErrors from 'helpers/logYupErrors';
 
+import { postNewUser, PostNewUserParams } from 'services/users.api';
+
+import useSignSuccessful from './hooks/useSignSuccessful';
 import useSignValidation from './hooks/useSignValidation';
 import SignTemplate from './template';
 
 const SignIn = (): JSX.Element => {
+	const { onSign } = useSignSuccessful();
+
 	const { signUpMethods } = useSignValidation();
 
-	const onSubmit = useCallback(() => {
-		console.count('onSubmit');
-	}, []);
+	const [isLoading, setIsLoading] = useState(false);
+
+	const onSignUp = useCallback(
+		async (values: PostNewUserParams) => {
+			setIsLoading(true);
+
+			try {
+				const session = await postNewUser(values);
+
+				onSign(session);
+			} catch (error) {
+				// eslint-disable-next-line no-console
+				console.error(error);
+			}
+
+			setIsLoading(false);
+		},
+		[onSign]
+	);
 
 	return (
 		<SignTemplate
-			pageType="signup"
+			pageType="sign up"
 			buttonLabel="Go to sign in page"
 			buttonHref="/signin"
-			onSubmit={signUpMethods.handleSubmit(onSubmit, logYupErrors)}
-			buttonIsLoading={false}
+			onSubmit={signUpMethods.handleSubmit(onSignUp, logYupErrors)}
+			isLoading={isLoading}
 		>
 			<Input
 				id="sign-first-name"
@@ -56,7 +79,7 @@ const SignIn = (): JSX.Element => {
 				PlaceholderIconLeft={<Lock />}
 				label="Password"
 				type="password"
-				placeholder="email@example.com"
+				placeholder="password"
 				{...signUpMethods.register('password')}
 				error={signUpMethods.formState.errors.password?.message}
 			/>

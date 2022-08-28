@@ -1,3 +1,5 @@
+import { SignSuccessfulProps } from '@types';
+
 import { UserProps } from 'context/auth';
 
 import api from './api';
@@ -9,19 +11,14 @@ export interface PostNewSessionsParams {
 	password: string;
 }
 
-export interface PostNewSessionResponse {
-	user: UserProps;
-	token: string;
-}
-
 export const postNewSession = async (data: PostNewSessionsParams) => {
-	const response = await api.post<PostNewSessionResponse>('/sessions', data);
+	const response = await api.post<SignSuccessfulProps>('/sessions', data);
 
 	return response.data;
 };
 
 export const postNewGoogleSession = async (credential: string) => {
-	const response = await api.post<PostNewSessionResponse>('/sessions/google', {
+	const response = await api.post<SignSuccessfulProps>('/sessions/google', {
 		credential,
 	});
 

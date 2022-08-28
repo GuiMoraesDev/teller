@@ -1,8 +1,5 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
-import { useRouter } from 'next/router';
-
-import { useMutation } from '@tanstack/react-query';
 import { EnvelopeSimple, Lock } from 'phosphor-react';
 
 import Input from 'components/Input';
@@ -13,67 +10,65 @@ import logYupErrors from 'helpers/logYupErrors';
 
 import {
 	postNewSession,
-	PostNewSessionResponse,
-	postNewGoogleSession,
 	PostNewSessionsParams,
+	postNewGoogleSession,
 } from 'services/sessions.api';
 
-import { QUERY_KEYS } from 'constant';
-
+import useSignSuccessful from './hooks/useSignSuccessful';
 import useSignValidation from './hooks/useSignValidation';
 import SignTemplate from './template';
 
 const SignIn = (): JSX.Element => {
+	const {onSign} = useSignSuccessful();
 	const { signInMethods } = useSignValidation();
-	const { setLoggedUser } = useAuth();
 
-	const router = useRouter();
+	const [isLoading, setIsLoading] = useState(false);
 
-	const onSignInSuccess = useCallback(
-		(data: PostNewSessionResponse) => {
-			setLoggedUser(data);
+	const onSignIn = useCallback(
+		async (values: PostNewSessionsParams) => {
+			setIsLoading(true);
+			try {
+				const session = await postNewSession(values);
 
-			router.push('/home');
+				onSign(session);
+			} catch (error) {
+				// eslint-disable-next-line no-console
+				console.error(error);
+			}
+
+			setIsLoading(false);
 		},
-		[router, setLoggedUser]
-	);
-
-	const mutation = useMutation([QUERY_KEYS.sessions], postNewSession, {
-		onSuccess: onSignInSuccess,
-	});
-
-	const googleMutation = useMutation(
-		[QUERY_KEYS.sessions],
-		postNewGoogleSession,
-		{
-			onSuccess: onSignInSuccess,
-		}
-	);
-
-	const onSubmit = useCallback(
-		(values: PostNewSessionsParams) => {
-			mutation.mutate(values);
-		},
-		[mutation]
+		[onSign]
 	);
 
 	const onGoogleSignIn = useCallback(
-		(response: google.accounts.id.CredentialResponse) => {
+		async (response: google.accounts.id.CredentialResponse) => {
+			setIsLoading(true);
+
 			const { credential } = response;
 
-			googleMutation.mutate(credential);
+			try {
+				const session = await postNewGoogleSession(credential);
+
+				onSign(session);
+			} catch (error) {
+				// eslint-disable-next-line no-console
+				console.error(error);
+			}
+
+			setIsLoading(false);
 		},
-		[googleMutation]
+		[onSign]
 	);
 
 	return (
 		<SignTemplate
-			pageType="signin"
+			pageType="sign in"
 			buttonLabel="Go to sign up page"
 			buttonHref="/signup"
-			onSubmit={signInMethods.handleSubmit(onSubmit, logYupErrors)}
+			onSubmit={signInMethods.handleSubmit(onSignIn, logYupErrors)}
 			onGoogleSignIn={onGoogleSignIn}
-			buttonIsLoading={mutation.isLoading || googleMutation.isLoading}
+			isLoading={isLoading}
 		>
 			<Input
 				id="sign-email"

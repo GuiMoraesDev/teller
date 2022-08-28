@@ -22,6 +22,7 @@ exports[`Login page should render correctly 1`] = `
   margin: 0;
   padding: 0 1.4rem;
   gap: 1.2rem;
+  text-transform: capitalize;
   -webkit-transition: background-color 0.2s, color 0.2s;
   transition: background-color 0.2s, color 0.2s;
   cursor: pointer;
@@ -74,6 +75,7 @@ exports[`Login page should render correctly 1`] = `
   margin: 0;
   padding: 0 1.4rem;
   gap: 1.2rem;
+  text-transform: none;
   -webkit-transition: background-color 0.2s, color 0.2s;
   transition: background-color 0.2s, color 0.2s;
   cursor: pointer;
@@ -214,9 +216,7 @@ exports[`Login page should render correctly 1`] = `
     class="c5"
     form="sign-form"
     type="submit"
-  >
-    Sign in
-  </button>
+  />
   <button
     class="c6"
   >
