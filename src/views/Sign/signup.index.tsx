@@ -10,12 +10,12 @@ import logYupErrors from 'helpers/logYupErrors';
 
 import { postNewUser, PostNewUserParams } from 'services/users.api';
 
-import useSignSuccessful from './hooks/useSignSuccessful';
+import useSignCallback from './hooks/useSignCallback';
 import useSignValidation from './hooks/useSignValidation';
 import SignTemplate from './template';
 
 const SignIn = (): JSX.Element => {
-	const { onSign } = useSignSuccessful();
+	const { signSuccessful, signFailed } = useSignCallback();
 
 	const { signUpMethods } = useSignValidation();
 
@@ -28,15 +28,14 @@ const SignIn = (): JSX.Element => {
 			try {
 				const session = await postNewUser(values);
 
-				onSign(session);
+				signSuccessful(session);
 			} catch (error) {
-				// eslint-disable-next-line no-console
-				console.error(error);
+				signFailed(signUpMethods, error);
 			}
 
 			setIsLoading(false);
 		},
-		[onSign]
+		[signFailed, signSuccessful, signUpMethods]
 	);
 
 	return (

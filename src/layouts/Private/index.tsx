@@ -2,9 +2,6 @@ import { PropsWithChildren } from 'react';
 
 import {
 	Activity,
-	EnvelopeSimple,
-	House,
-	UserList,
 } from 'phosphor-react';
 
 import Button from 'components/Button';
@@ -27,12 +24,6 @@ const PrivateLayout = ({
 			</Styles.Header>
 
 			{children}
-
-			<Styles.Footer>
-				<Button IconLeft={<House />} variant="neutral" />
-				<Button IconLeft={<UserList />} variant="neutral" />
-				<Button IconLeft={<EnvelopeSimple />} variant="neutral" />
-			</Styles.Footer>
 		</Styles.Container>
 	);
 };

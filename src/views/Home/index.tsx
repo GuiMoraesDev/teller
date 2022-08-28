@@ -1,58 +1,55 @@
-import { ReactElement, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { useAuth } from 'context/auth';
 
+import { AllPostsProps, getPosts, postNewPost } from 'services/posts.api';
+
 import { QUERY_KEYS } from 'constant';
 
-import { HomeSchemaProps } from './@types';
 import HomeTemplate from './template';
+import { HomeResolverProps } from './template/validations';
 
 const Home = (): JSX.Element => {
 	const { user } = useAuth();
 
-	/* const [posts, setPosts] = useState<GetPostsResponse[]>([]);
+	const [posts, setPosts] = useState<AllPostsProps[]>([]);
 
-	const mutation = useMutation(postNewPost, {
-		onSuccess: (response) => {
-			setPosts((state) => ({
-				...state,
-				...response.data,
-			}));
-		},
-	}); */
+	const loadPosts = useCallback(async () => {
+		const postsData = await getPosts({
+			author_id: user?.id || '',
+		});
 
-	/* const loadPosts = useCallback(async () => {
-		const response = await getPosts();
+		setPosts(postsData);
+	}, [user?.id]);
 
-		setPosts(response.data);
-	}, []);
+	const query = useQuery([QUERY_KEYS.posts], loadPosts);
 
-	const { isLoading } = useQuery([QUERY_KEYS.posts], loadPosts); */
+	const mutation = useMutation([QUERY_KEYS.posts], postNewPost, {
+		onSuccess: () => query.refetch(),
+	});
 
-	/* const onSubmit = useCallback(
-		(values: HomeSchemaProps) => {
-			const { postMessage } = values;
+	const onSubmit = useCallback(
+		({ body }: HomeResolverProps) => {
+			if (!user?.id) {
+				throw new Error('author id is required');
+			}
 
 			mutation.mutate({
-				userId: user?.id || "",
-				title: user?.first_name || '',
-				body: postMessage,
+				author_id: user?.id,
+				body,
 			});
 		},
-		[mutation, user?.id, user?.first_name]
-	); */
+		[mutation, user?.id]
+	);
 
 	return (
-		<>
-			<div />
-			{/* <HomeTemplate
+		<HomeTemplate
 			onPostSubmit={onSubmit}
-			isLoading={mutation.isLoading}
+			isLoading={query.isLoading}
 			postsData={posts}
-		/> */}
-		</>
+		/>
 	);
 };
 
