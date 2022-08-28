@@ -5,11 +5,15 @@ import * as yup from 'yup';
 
 import { POST_MESSAGE_LENGTH } from 'constant';
 
-import { HomeSchemaProps } from '../@types';
+import { PostNewPostParams } from '../@types';
 
-const homeResolver: Resolver<HomeSchemaProps> = yupResolver(
+export interface HomeResolverProps {
+	body: PostNewPostParams['body'];
+}
+
+const homeResolver: Resolver<HomeResolverProps> = yupResolver(
 	yup.object().shape({
-		postMessage: yup.string().max(POST_MESSAGE_LENGTH).required('attributeName'),
+		body: yup.string().max(POST_MESSAGE_LENGTH).required('Message is required'),
 	})
 );
 

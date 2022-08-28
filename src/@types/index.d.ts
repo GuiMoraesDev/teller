@@ -1,9 +1,9 @@
 export interface DimensionsProps {
-  xs: string
-  sm: string
-  md: string
-  lg: string
-  xl: string
+	xs: string;
+	sm: string;
+	md: string;
+	lg: string;
+	xl: string;
 }
 
 export interface GoogleUserResponse {
@@ -27,3 +27,5 @@ export interface SignSuccessfulProps {
 	user: UserProps;
 	token: string;
 }
+
+

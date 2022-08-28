@@ -206,7 +206,7 @@ exports[`Home page should render correctly 1`] = `
   >
     <form
       class="c2"
-      id="post-message"
+      id="post-body"
     >
       <div
         class="c3"
@@ -216,10 +216,10 @@ exports[`Home page should render correctly 1`] = `
         >
           <textarea
             class="c5"
-            data-testid="post-message-input"
-            id="post-message-input"
+            data-testid="post-body-input"
+            id="post-body-input"
             maxlength="1000"
-            name="postMessage"
+            name="body"
             placeholder="What’s happening?"
           />
           <p
@@ -275,7 +275,7 @@ exports[`Home page should render correctly 1`] = `
     <button
       class="c8"
       data-testid="submit-button"
-      form="post-message"
+      form="post-body"
       type="submit"
     >
       Tell
