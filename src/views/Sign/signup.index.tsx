@@ -1,30 +1,20 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
 import { User, EnvelopeSimple, Lock } from 'phosphor-react';
 
 import Input from 'components/Input';
 
-import { useSign } from 'context/sign';
-
 import logYupErrors from 'helpers/logYupErrors';
 
-import useSignUpValidation from './hooks/useSignUpValidation';
+import useSignValidation from './hooks/useSignValidation';
 import SignTemplate from './template';
 
 const SignIn = (): JSX.Element => {
-	const { sign, clearSaveUserData } = useSign();
-	const { signUpMethods } = useSignUpValidation();
-
-	useEffect(() => {
-		signUpMethods.reset(sign ?? undefined);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	const { signUpMethods } = useSignValidation();
 
 	const onSubmit = useCallback(() => {
 		console.count('onSubmit');
-
-		clearSaveUserData();
-	}, [clearSaveUserData]);
+	}, []);
 
 	return (
 		<SignTemplate

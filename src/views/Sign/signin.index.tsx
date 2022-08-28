@@ -8,7 +8,6 @@ import { EnvelopeSimple, Lock } from 'phosphor-react';
 import Input from 'components/Input';
 
 import { useAuth } from 'context/auth';
-import { useSign } from 'context/sign';
 
 import logYupErrors from 'helpers/logYupErrors';
 
@@ -21,15 +20,13 @@ import {
 
 import { QUERY_KEYS } from 'constant';
 
-import { formatGoogleCredentials } from './helpers/formatGoogleCredentials';
-import useSignInValidation from './hooks/useSignInValidation';
+import useSignValidation from './hooks/useSignValidation';
 import SignTemplate from './template';
 
 const SignIn = (): JSX.Element => {
-	const { setSaveUserData } = useSign();
-	const { signInMethods } = useSignInValidation();
-
+	const { signInMethods } = useSignValidation();
 	const { setLoggedUser } = useAuth();
+
 	const router = useRouter();
 
 	const onSignInSuccess = useCallback(
@@ -41,19 +38,17 @@ const SignIn = (): JSX.Element => {
 		[router, setLoggedUser]
 	);
 
-	const onGoogleSignInError = useCallback(
-		(_: unknown, variables: string) => {
-			const credentials = formatGoogleCredentials(variables);
-			setSaveUserData(credentials);
-
-			router.push('/signup');
-		},
-		[router, setSaveUserData]
-	);
-
 	const mutation = useMutation([QUERY_KEYS.sessions], postNewSession, {
 		onSuccess: onSignInSuccess,
 	});
+
+	const googleMutation = useMutation(
+		[QUERY_KEYS.sessions],
+		postNewGoogleSession,
+		{
+			onSuccess: onSignInSuccess,
+		}
+	);
 
 	const onSubmit = useCallback(
 		(values: PostNewSessionsParams) => {
@@ -62,18 +57,11 @@ const SignIn = (): JSX.Element => {
 		[mutation]
 	);
 
-	const googleMutation = useMutation(
-		[QUERY_KEYS.sessions],
-		postNewGoogleSession,
-		{
-			onSuccess: onSignInSuccess,
-			onError: onGoogleSignInError,
-		}
-	);
-
 	const onGoogleSignIn = useCallback(
-		(values: string) => {
-			googleMutation.mutate(values);
+		(response: google.accounts.id.CredentialResponse) => {
+			const { credential } = response;
+
+			googleMutation.mutate(credential);
 		},
 		[googleMutation]
 	);
@@ -84,7 +72,7 @@ const SignIn = (): JSX.Element => {
 			buttonLabel="Go to sign up page"
 			buttonHref="/signup"
 			onSubmit={signInMethods.handleSubmit(onSubmit, logYupErrors)}
-			onGoogleSignIn={(response) => onGoogleSignIn(response.credential)}
+			onGoogleSignIn={onGoogleSignIn}
 			buttonIsLoading={mutation.isLoading || googleMutation.isLoading}
 		>
 			<Input
