@@ -13,8 +13,8 @@ import * as Styles from './styles';
 interface Props {
 	buttonLabel: ButtonDefaultProps['label'];
 	buttonHref: ButtonDefaultProps['href'];
-	buttonIsLoading: ButtonDefaultProps['isLoading'];
-	pageType: 'signin' | 'signup';
+	isLoading: ButtonDefaultProps['isLoading'];
+	pageType: 'sign in' | 'sign up';
 	onSubmit: (event: FormEvent<HTMLFormElement>) => void;
 	onGoogleSignIn?: (response: google.accounts.id.CredentialResponse) => void;
 }
@@ -23,7 +23,7 @@ const SignTemplate = ({
 	children,
 	buttonLabel,
 	buttonHref,
-	buttonIsLoading,
+	isLoading,
 	pageType,
 	onSubmit,
 	onGoogleSignIn,
@@ -39,9 +39,9 @@ const SignTemplate = ({
 				{children}
 			</Styles.FormWrapper>
 
-			<Button label="Sign in" type="submit" form="sign-form" />
+			<Button label={pageType} type="submit" form="sign-form" isLoading={isLoading} isCapitalize />
 
-			{pageType === 'signin' && (
+			{pageType === 'sign in' && (
 				<Styles.SocialLinksWrapper>
 					<Text label="Or use social links: " dimension="body2" />
 					<GoogleSign
@@ -56,7 +56,6 @@ const SignTemplate = ({
 				href={buttonHref}
 				IconRight={<Link />}
 				variant="neutral"
-				isLoading={buttonIsLoading}
 			/>
 		</SignContent>
 	);

@@ -31,6 +31,8 @@ export const Button = styled.button<ButtonDefaultPropsThatMakeStyles>`
 			theme.sizes.dimensions.spacing[dimension || 'md']};
 	gap: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
 
+	text-transform: ${({ isCapitalize }) => (isCapitalize ? 'capitalize' : 'none')};
+
 	transition: background-color ${({ theme }) => theme.transition.fast},
 		color ${({ theme }) => theme.transition.fast};
 

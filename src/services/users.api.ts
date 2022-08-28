@@ -1,3 +1,5 @@
+import { SignSuccessfulProps } from '@types';
+
 import { UserProps } from 'context/auth';
 
 import api from './api';
@@ -12,7 +14,7 @@ export interface PostNewUserParams {
 }
 
 export const postNewUser = async (data: PostNewUserParams) => {
-	const response = await api.post('/users/new', data);
+	const response = await api.post<SignSuccessfulProps>('/users/new', data);
 
-	return response;
+	return response.data;
 };
