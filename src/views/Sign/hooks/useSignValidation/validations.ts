@@ -13,7 +13,7 @@ export interface SignInSchemaProps {
 const signInResolver = yupResolver(
 	yup.object().shape({
 		email: yup.string().email().required('Email is required'),
-		password: yup.string().required('password is required'),
+		password: yup.string().required('Password is required'),
 	})
 );
 
