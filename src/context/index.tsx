@@ -6,7 +6,6 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'styles/themes';
 
 import { AuthProvider } from './auth';
-import { SignProvider } from './sign';
 
 const GlobalAppProvider = ({
 	children,
@@ -16,9 +15,7 @@ const GlobalAppProvider = ({
 	return (
 		<QueryClientProvider client={client}>
 			<ThemeProvider theme={theme}>
-				<AuthProvider>
-					<SignProvider>{children}</SignProvider>
-				</AuthProvider>
+				<AuthProvider>{children}</AuthProvider>
 			</ThemeProvider>
 		</QueryClientProvider>
 	);

@@ -75,7 +75,7 @@ exports[`Input component should render correctly 1`] = `
   padding: 1.2rem;
   gap: 1.2rem;
   color: #FDFDFD;
-  background-color: #EE977D;
+  background-color: #E35226;
   border-radius: none;
   border-bottom-left-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;

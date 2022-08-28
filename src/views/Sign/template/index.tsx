@@ -14,7 +14,7 @@ interface Props {
 	buttonLabel: ButtonDefaultProps['label'];
 	buttonHref: ButtonDefaultProps['href'];
 	buttonIsLoading: ButtonDefaultProps['isLoading'];
-	pageType: GoogleSignProps['type'];
+	pageType: 'signin' | 'signup';
 	onSubmit: (event: FormEvent<HTMLFormElement>) => void;
 	onGoogleSignIn?: (response: google.accounts.id.CredentialResponse) => void;
 }
@@ -46,10 +46,7 @@ const SignTemplate = ({
 					<Text label="Or use social links: " dimension="body2" />
 					<GoogleSign
 						id="google-sign"
-						type={pageType}
-						handleLoginSuccess={(
-							response: google.accounts.id.CredentialResponse
-						) => onGoogleSignIn?.(response)}
+						onLoginSuccess={(response) => onGoogleSignIn?.(response)}
 					/>
 				</Styles.SocialLinksWrapper>
 			)}

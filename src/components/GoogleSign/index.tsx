@@ -2,8 +2,7 @@ import { useEffect, useMemo } from 'react';
 
 export interface Props {
 	id: string;
-	type: 'signin' | 'signup';
-	handleLoginSuccess: (response: google.accounts.id.CredentialResponse) => void;
+	onLoginSuccess: (response: google.accounts.id.CredentialResponse) => void;
 }
 
 export interface GoogleUserResponse {
@@ -23,34 +22,18 @@ export interface GoogleUserResponse {
 	sub: string;
 }
 
-export type ContextTextProps = Record<
-	Props['type'],
-	google.accounts.id.GsiButtonConfiguration['text']
->;
-
-const GoogleSign = ({ id, type, handleLoginSuccess }: Props): JSX.Element => {
-	const contextText: ContextTextProps = useMemo(
-		() => ({
-			signin: 'signin_with',
-			signup: 'signup_with',
-		}),
-		[]
-	);
-
+const GoogleSign = ({ id, onLoginSuccess }: Props): JSX.Element => {
 	useEffect(() => {
-		const { NEXT_PUBLIC_GOOGLE_CLIENT_ID } = process.env;
-
 		if (process.env.NEXT_PUBLIC_ENV === 'test') return;
 
-		if (!NEXT_PUBLIC_GOOGLE_CLIENT_ID) {
+		if (!process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID) {
 			throw new Error('NEXT_PUBLIC_GOOGLE_CLIENT_ID is missing');
 		}
 
 		google.accounts.id.initialize({
-			client_id: NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-			callback: handleLoginSuccess,
+			client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
 			auto_select: true,
-			context: type,
+			callback: onLoginSuccess,
 		});
 
 		google.accounts.id.renderButton(
@@ -59,10 +42,9 @@ const GoogleSign = ({ id, type, handleLoginSuccess }: Props): JSX.Element => {
 				theme: 'outline',
 				size: 'medium',
 				type: 'icon',
-				text: contextText[type],
 			}
 		);
-	}, [contextText, handleLoginSuccess, id, type]);
+	}, [onLoginSuccess, id]);
 
 	return <div id={id}></div>;
 };
