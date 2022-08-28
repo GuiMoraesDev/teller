@@ -4,8 +4,6 @@ import { EnvelopeSimple, Lock } from 'phosphor-react';
 
 import Input from 'components/Input';
 
-import { useAuth } from 'context/auth';
-
 import logYupErrors from 'helpers/logYupErrors';
 
 import {
@@ -14,12 +12,12 @@ import {
 	postNewGoogleSession,
 } from 'services/sessions.api';
 
-import useSignSuccessful from './hooks/useSignSuccessful';
+import useSignCallback from './hooks/useSignCallback';
 import useSignValidation from './hooks/useSignValidation';
 import SignTemplate from './template';
 
 const SignIn = (): JSX.Element => {
-	const {onSign} = useSignSuccessful();
+	const { signSuccessful, signFailed } = useSignCallback();
 	const { signInMethods } = useSignValidation();
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -30,15 +28,14 @@ const SignIn = (): JSX.Element => {
 			try {
 				const session = await postNewSession(values);
 
-				onSign(session);
+				signSuccessful(session);
 			} catch (error) {
-				// eslint-disable-next-line no-console
-				console.error(error);
+				signFailed(signInMethods, error);
 			}
 
 			setIsLoading(false);
 		},
-		[onSign]
+		[signFailed, signInMethods, signSuccessful]
 	);
 
 	const onGoogleSignIn = useCallback(
@@ -50,15 +47,14 @@ const SignIn = (): JSX.Element => {
 			try {
 				const session = await postNewGoogleSession(credential);
 
-				onSign(session);
+				signSuccessful(session);
 			} catch (error) {
-				// eslint-disable-next-line no-console
-				console.error(error);
+				signFailed(signInMethods, error);
 			}
 
 			setIsLoading(false);
 		},
-		[onSign]
+		[signFailed, signInMethods, signSuccessful]
 	);
 
 	return (

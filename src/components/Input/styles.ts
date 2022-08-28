@@ -103,7 +103,7 @@ export const ErrorMessage = styled.span<ErrorMessageProps>`
 	padding: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
 	gap: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
 
-	color: ${({ theme }) => theme.colors.neutrals['000']};
+	color: ${({ theme }) => theme.colors.neutrals['050']};
 	background-color: ${({ theme }) => theme.colors.danger['500']};
 
 	border-radius: ${({ theme }) => theme.rounded.none};
