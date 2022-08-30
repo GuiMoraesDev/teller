@@ -12,13 +12,6 @@ export const Container = styled.div`
 
 	height: 100vh;
 	width: 100vw;
-
-	@media ${({ theme }) => theme.breakpoints.laptop} {
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: 10fr 1fr;
-
-		grid-template-areas: 'NavHeader Content';
-	}
 `;
 
 export const Header = styled.header`
@@ -49,7 +42,12 @@ export const PrivateContent = styled.main`
 	align-items: center;
 	justify-content: center;
 
-	padding: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
+	padding: ${({ theme }) => theme.sizes.dimensions.spacing.xl};
 
 	gap: ${({ theme }) => theme.sizes.dimensions.spacing.xl};
+
+	width: 100%;
+	max-width: 600px;
+
+	margin: auto;
 `;
