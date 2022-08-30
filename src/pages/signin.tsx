@@ -1,6 +1,7 @@
+import SignLayout from 'layouts/Sign';
+
 import SignInPage from 'views/Sign/signin.index';
 
-import SignLayout from 'layouts/Sign';
 
 const Page = () => (
 	<SignLayout>
