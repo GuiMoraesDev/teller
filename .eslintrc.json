@@ -28,6 +28,7 @@
 					"/^helpers/",
 					"/^layouts/",
 					"/^pages/",
+					"/^views/",
 					"/^patterns/",
 					"/^services/",
 					"/^dtos/",

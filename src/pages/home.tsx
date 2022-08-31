@@ -1,6 +1,7 @@
+import PrivateLayout from 'layouts/Private';
+
 import HomePage from 'views/Home';
 
-import PrivateLayout from 'layouts/Private';
 
 const Page = () => (
 	<PrivateLayout>
