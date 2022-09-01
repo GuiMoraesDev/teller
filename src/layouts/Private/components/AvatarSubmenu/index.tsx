@@ -2,34 +2,39 @@ import { useCallback } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { UserProps } from '@types';
+import nookies from 'nookies';
 import { SignOut, UserGear } from 'phosphor-react';
+
 
 import Avatar from 'components/Avatar';
 import Button from 'components/Button';
 
-import { useAuth } from 'context/auth';
-
 import FloatSubMenu from 'patterns/FloatSubMenu';
 
-const AvatarSubmenu = (): JSX.Element | null => {
-	const router = useRouter();
 
-	const { user, logoutUser } = useAuth();
+export interface AvatarSubmenuProps {
+	user: UserProps;
+}
+
+const AvatarSubmenu = ({ user }: AvatarSubmenuProps): JSX.Element | null => {
+	const router = useRouter();
 
 	const handleLogoutUser = useCallback(() => {
 		google.accounts.id.disableAutoSelect();
 
-		router.push('/signin');
+		nookies.destroy(null, 'user');
+		nookies.destroy(null, 'token');
 
-		logoutUser();
-	}, [logoutUser, router]);
+		router.push('/signin');
+	}, [router]);
 
 	return (
 		<FloatSubMenu
 			ActionComponent={
 				<Avatar
-					src={user?.avatar_url || ''}
-					alt={user?.first_name || ''}
+					src={user.avatar_url || ''}
+					alt={user.first_name || ''}
 					isBordered
 				/>
 			}

@@ -1,10 +1,11 @@
-import { SignSuccessfulProps } from '@types';
-
-import { UserProps } from 'context/auth';
+import { UserProps } from '@types';
 
 import api from './api';
 
-export type { UserProps };
+interface SignInSuccessfulProps {
+	user: UserProps;
+	token: string;
+}
 
 export interface PostNewSessionsParams {
 	email: UserProps['email'];
@@ -12,13 +13,13 @@ export interface PostNewSessionsParams {
 }
 
 export const postNewSession = async (data: PostNewSessionsParams) => {
-	const response = await api.post<SignSuccessfulProps>('/sessions', data);
+	const response = await api.post<SignInSuccessfulProps>('/sessions', data);
 
 	return response.data;
 };
 
 export const postNewGoogleSession = async (credential: string) => {
-	const response = await api.post<SignSuccessfulProps>('/sessions/google', {
+	const response = await api.post<SignInSuccessfulProps>('/sessions/google', {
 		credential,
 	});
 

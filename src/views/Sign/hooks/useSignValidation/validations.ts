@@ -1,9 +1,8 @@
 import { Resolver } from 'react-hook-form';
 
 import { yupResolver } from '@hookform/resolvers/yup';
+import { UserProps } from '@types';
 import * as yup from 'yup';
-
-import { UserProps } from 'context/auth';
 
 export interface SignInSchemaProps {
 	email: UserProps['email'];

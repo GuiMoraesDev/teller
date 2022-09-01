@@ -7,13 +7,11 @@ import SignTemplate from './template';
 const ContainerRender = (mockSubmit: jest.Mock<any, any>) =>
 	render(
 		<SignTemplate
-			type="signin"
-			title="Welcome to Teller"
-			description="Use one social link above to sign in"
-			handleLoginSuccess={mockSubmit}
-			buttonProps={{
-				label: 'Jest test',
-			}}
+			buttonLabel="Jest test"
+			buttonHref="/"
+			isLoading={false}
+			pageType="sign in"
+			onSubmit={mockSubmit}
 		/>
 	);
 

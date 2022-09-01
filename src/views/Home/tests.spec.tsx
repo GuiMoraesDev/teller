@@ -13,11 +13,6 @@ const ContainerRender = (mockSubmit: jest.Mock<any, any>) =>
 		<HomeTemplate onPostSubmit={mockSubmit} isLoading={false} postsData={[]} />
 	);
 
-const elementsTestId = {
-	postMessageInput: 'post-message-input',
-	submitButton: 'submit-button',
-};
-
 describe('Home page', () => {
 	it('should render correctly', () => {
 		const mockSubmit = jest.fn();

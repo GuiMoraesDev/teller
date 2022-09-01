@@ -1,7 +1,9 @@
 import { useCallback, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import { useRouter } from 'next/router';
 
+import nookies from 'nookies';
 import { User, EnvelopeSimple, Lock } from 'phosphor-react';
 
 import Input from 'components/Input';
@@ -10,12 +12,11 @@ import logYupErrors from 'helpers/logYupErrors';
 
 import { postNewUser, PostNewUserParams } from 'services/users.api';
 
-import useSignCallback from './hooks/useSignCallback';
 import useSignValidation from './hooks/useSignValidation';
 import SignTemplate from './template';
 
 const SignIn = (): JSX.Element => {
-	const { signSuccessful, signFailed } = useSignCallback();
+	const router = useRouter();
 
 	const { signUpMethods } = useSignValidation();
 
@@ -26,16 +27,28 @@ const SignIn = (): JSX.Element => {
 			setIsLoading(true);
 
 			try {
-				const session = await postNewUser(values);
+				const { user, token } = await postNewUser(values);
 
-				signSuccessful(session);
+				nookies.set(null, 'user', JSON.stringify(user));
+				nookies.set(null, 'token', JSON.stringify(token));
+
+				toast.success('Logged successfully');
+
+				router.push('/home');
 			} catch (error) {
-				signFailed(signUpMethods, error);
+				if (process.env.NODE_ENV === 'development') {
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+
+				signUpMethods.reset();
+
+				toast.error('Something went wrong');
 			}
 
 			setIsLoading(false);
 		},
-		[signFailed, signSuccessful, signUpMethods]
+		[router, signUpMethods]
 	);
 
 	return (

@@ -23,9 +23,10 @@ export interface GoogleUserResponse {
 	sub: string;
 }
 
-export interface SignSuccessfulProps {
-	user: UserProps;
-	token: string;
+export interface UserProps {
+	avatar_url?: string;
+	id: string;
+	first_name: string;
+	last_name: string;
+	email: string;
 }
-
-
