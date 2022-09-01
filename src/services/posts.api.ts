@@ -1,7 +1,6 @@
-import { UserProps } from 'context/auth';
+import { UserProps } from '@types';
 
 import { Post, PostNewPostParams } from 'views/Home/@types';
-
 
 import api from './api';
 

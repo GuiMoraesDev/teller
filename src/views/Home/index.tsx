@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { useMutation, useQuery } from '@tanstack/react-query';
-
-import { useAuth } from 'context/auth';
+import { UserProps } from '@types';
 
 import { AllPostsProps, getPosts, postNewPost } from 'services/posts.api';
 
@@ -11,9 +10,11 @@ import { QUERY_KEYS } from 'constant';
 import HomeTemplate from './template';
 import { HomeResolverProps } from './template/validations';
 
-const Home = (): JSX.Element => {
-	const { user } = useAuth();
+interface Props {
+	user: UserProps | null;
+}
 
+const Home = ({ user }: Props): JSX.Element => {
 	const [posts, setPosts] = useState<AllPostsProps[]>([]);
 
 	const loadPosts = useCallback(async () => {

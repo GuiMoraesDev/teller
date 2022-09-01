@@ -54,7 +54,7 @@ exports[`Login page should render correctly 1`] = `
   animation-timing-function: linear;
 }
 
-.c6 {
+.c8 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -84,22 +84,22 @@ exports[`Login page should render correctly 1`] = `
   border-color: transparent;
 }
 
-.c6:hover {
+.c8:hover {
   background-color: #82ADB2;
 }
 
-.c6 svg {
+.c8 svg {
   color: inherit;
 }
 
-.c6:hover {
+.c8:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   color: #181917;
   background-color: transparent;
 }
 
-.c6 .spin {
+.c8 .spin {
   -webkit-animation-name: ieAXeN;
   animation-name: ieAXeN;
   -webkit-animation-duration: 2s;
@@ -149,6 +149,19 @@ exports[`Login page should render correctly 1`] = `
   box-sizing: border-box;
 }
 
+.c7 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-family: 'Roboto',sans-serif;
+  line-height: 2.0rem;
+  color: #181917;
+  text-transform: none;
+  box-sizing: border-box;
+}
+
 .c0 {
   grid-area: Content;
   display: -webkit-box;
@@ -191,6 +204,27 @@ exports[`Login page should render correctly 1`] = `
   gap: 2.0rem;
 }
 
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 50%;
+  gap: 1.2rem;
+  margin: 1.2rem 0;
+  padding: 1.2rem 0;
+  border-top: 0.1rem solid #C9CAC8;
+  border-bottom: 0.1rem solid #C9CAC8;
+}
+
 <main
   class="c0"
 >
@@ -201,7 +235,9 @@ exports[`Login page should render correctly 1`] = `
   </strong>
   <h2
     class="c2"
-  />
+  >
+    sign in
+  </h2>
   <form
     class="c3"
     id="sign-form"
@@ -209,17 +245,32 @@ exports[`Login page should render correctly 1`] = `
     <p
       class="c4"
     >
-      Use the form bellow to undefined
+      Use the form bellow to sign in
     </p>
   </form>
   <button
     class="c5"
     form="sign-form"
     type="submit"
-  />
-  <button
+  >
+    sign in
+  </button>
+  <div
     class="c6"
   >
+    <p
+      class="c7"
+    >
+      Or use social links: 
+    </p>
+    <div
+      id="google-sign"
+    />
+  </div>
+  <button
+    class="c8"
+  >
+    Jest test
     <svg
       fill="currentColor"
       height="1em"
