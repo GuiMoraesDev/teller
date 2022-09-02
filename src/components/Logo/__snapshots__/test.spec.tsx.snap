@@ -9,7 +9,7 @@ exports[`Logo component should render correctly type icon 1`] = `
 <img
   alt="Teller logo it's a microphone with sound waves around it and looks like a face blinking eyes"
   class="c0"
-  src="img/icon.svg"
+  src="/img/icon.svg"
 />
 `;
 
@@ -22,6 +22,6 @@ exports[`Logo component should render correctly type logo 1`] = `
 <img
   alt="Teller logo it's a microphone with sound waves around it and looks like a face blinking eyes and Teller aside"
   class="c0"
-  src="img/logo.svg"
+  src="/img/logo.svg"
 />
 `;
