@@ -17,7 +17,13 @@ export interface AllPostsProps extends Post {
 	};
 }
 
-export const getPosts = async ({ author_id }: GetPostsParams) => {
+export const getAllPosts = async () => {
+	const response = await api.get<AllPostsProps[]>('/posts');
+
+	return response.data;
+};
+
+export const getUserPosts = async ({ author_id }: GetPostsParams) => {
 	const response = await api.get<AllPostsProps[]>(`/posts/${author_id}`);
 
 	return response.data;
