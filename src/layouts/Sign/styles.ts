@@ -16,7 +16,7 @@ export const Container = styled.div`
 	padding: ${({ theme }) => theme.sizes.dimensions.spacing.xl};
 
 	@media ${({ theme }) => theme.breakpoints.laptop} {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: 60% 40%;
 		grid-template-rows: auto;
 
 		grid-template-areas: 'Header Content';
