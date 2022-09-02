@@ -11,7 +11,7 @@ import HomeTemplate from './template';
 import { HomeResolverProps } from './template/validations';
 
 interface Props {
-	user: UserProps | null;
+	user: UserProps;
 }
 
 const Home = ({ user }: Props): JSX.Element => {
@@ -31,16 +31,12 @@ const Home = ({ user }: Props): JSX.Element => {
 
 	const onSubmit = useCallback(
 		({ body }: HomeResolverProps) => {
-			if (!user?.id) {
-				throw new Error('author id is required');
-			}
-
 			mutation.mutate({
-				author_id: user?.id,
+				author_id: user.id,
 				body,
 			});
 		},
-		[mutation, user?.id]
+		[mutation, user.id]
 	);
 
 	return (
