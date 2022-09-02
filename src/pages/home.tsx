@@ -7,8 +7,6 @@ import PrivateLayout from 'layouts/Private';
 
 import HomePage from 'views/Home';
 
-import api from 'services/api';
-
 type ServerSideProps = GetServerSideProps<{
 	user: UserProps;
 }>;
