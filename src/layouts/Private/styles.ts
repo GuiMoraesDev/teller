@@ -12,6 +12,8 @@ export const Container = styled.div`
 
 	height: 100vh;
 	width: 100vw;
+
+	overflow: hidden;
 `;
 
 export const Header = styled.header`
@@ -39,15 +41,15 @@ export const PrivateContent = styled.main`
 
 	flex-direction: column;
 
-	align-items: center;
-	justify-content: center;
-
 	padding: ${({ theme }) => theme.sizes.dimensions.spacing.xl};
 
 	gap: ${({ theme }) => theme.sizes.dimensions.spacing.xl};
 
 	width: 100%;
 	max-width: 600px;
+	height: 100%;
 
 	margin: auto;
+
+	overflow-y: auto;
 `;

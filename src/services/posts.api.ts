@@ -9,7 +9,7 @@ export interface GetPostsParams {
 }
 
 export interface AllPostsProps extends Post {
-	Users: {
+	users: {
 		id: UserProps['id'];
 		first_name: UserProps['first_name'];
 		last_name: UserProps['last_name'];

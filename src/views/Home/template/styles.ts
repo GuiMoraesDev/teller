@@ -23,16 +23,17 @@ export const PostsWrapper = styled.div`
 	grid-template-columns: 1fr;
 
 	width: 100%;
-	height: 100%;
 
 	gap: ${({ theme }) => theme.sizes.dimensions.spacing.md};
+
+	margin-bottom: auto;
 `;
 
 export const Post = styled.div`
 	display: grid;
 
 	grid-template-columns: 6rem auto;
-	grid-template-rows: 6rem auto;
+	grid-template-rows: 2rem auto;
 
 	grid-template-areas:
 		'Avatar AuthorMetadata'
@@ -44,7 +45,7 @@ export const Post = styled.div`
 	border: ${({ theme }) => theme.borders.solid};
 	border-radius: ${({ theme }) => theme.rounded.sm};
 
-	padding: ${({ theme }) => theme.sizes.dimensions.spacing.xs};
+	padding: ${({ theme }) => theme.sizes.dimensions.spacing.sm};
 `;
 
 export const AvatarWrapper = styled.div`
@@ -62,4 +63,14 @@ export const AuthorMetadata = styled.section`
 
 export const PostMessage = styled.section`
 	grid-area: PostMessage;
+`;
+
+export const Empty = styled.div`
+	display: flex;
+
+	align-items: center;
+	justify-content: center;
+
+	height: 100%;
+	width: 100%;
 `;
