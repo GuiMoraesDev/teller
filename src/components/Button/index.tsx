@@ -50,13 +50,17 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
 
 	const handleClick = useCallback(
 		(event: React.MouseEvent<HTMLButtonElement>) => {
+			if (Boolean(props.disabled) || Boolean(isLoading)) {
+				return;
+			}
+
 			if (href) {
 				return navigate.push(href);
 			}
 
 			return props.onClick?.(event);
 		},
-		[href, navigate, props]
+		[href, isLoading, navigate, props]
 	);
 
 	return (
@@ -66,7 +70,7 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
 			rounded={rounded}
 			variant={variant}
 			onClick={handleClick}
-			isDisabled={Boolean(props.disabled)}
+			isDisabled={Boolean(props.disabled) || Boolean(isLoading)}
 			{...props}
 			ref={ref}
 		>
