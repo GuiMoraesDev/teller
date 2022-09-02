@@ -2,8 +2,8 @@ import { useForm } from 'react-hook-form';
 
 import { ChatDots } from 'phosphor-react';
 
-import Avatar from 'components/Avatar';
 import Button from 'components/Button';
+import Img from 'components/Img';
 import Text from 'components/Text';
 import TextArea from 'components/TextArea';
 
@@ -66,8 +66,8 @@ const HomeTemplate = ({
 					postsData.map((post) => (
 						<Styles.Post key={post.id}>
 							<Styles.AvatarWrapper>
-								<Avatar
-									src={post.users.avatar_url || ''}
+								<Img
+									src={post.users.avatar_url}
 									alt={post.users.first_name}
 								/>
 							</Styles.AvatarWrapper>

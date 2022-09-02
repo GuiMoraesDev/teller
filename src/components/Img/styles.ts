@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 import { StyledProps } from '.';
 
-export const AvatarWrapper = styled.span`
+export const ImageWrapper = styled.span`
 	height: 100%;
 
 	border: none;
 `;
 
-export const Avatar = styled.img<StyledProps>`
+export const Image = styled.img<StyledProps>`
 	max-width: 100%;
 	max-height: 100%;
 

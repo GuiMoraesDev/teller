@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Avatar component should render correctly with isBordered prop 1`] = `
+exports[`Img component should render correctly with isBordered prop 1`] = `
 .c0 {
   height: 100%;
   border: none;
@@ -19,13 +19,14 @@ exports[`Avatar component should render correctly with isBordered prop 1`] = `
   <img
     alt="avatar placeholder"
     class="c1"
+    loading="lazy"
     referrerpolicy="no-referrer"
     src="https://i.pravatar.cc/150?id=50"
   />
 </span>
 `;
 
-exports[`Avatar component should render correctly without isBordered prop 1`] = `
+exports[`Img component should render correctly without isBordered prop 1`] = `
 .c0 {
   height: 100%;
   border: none;
@@ -44,6 +45,7 @@ exports[`Avatar component should render correctly without isBordered prop 1`] = 
   <img
     alt="avatar placeholder"
     class="c1"
+    loading="lazy"
     referrerpolicy="no-referrer"
     src="https://i.pravatar.cc/150?id=50"
   />

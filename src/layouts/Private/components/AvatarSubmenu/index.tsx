@@ -6,12 +6,10 @@ import { UserProps } from '@types';
 import nookies from 'nookies';
 import { SignOut, UserGear } from 'phosphor-react';
 
-
-import Avatar from 'components/Avatar';
 import Button from 'components/Button';
+import Img from 'components/Img';
 
 import FloatSubMenu from 'patterns/FloatSubMenu';
-
 
 export interface AvatarSubmenuProps {
 	user: UserProps;
@@ -32,7 +30,7 @@ const AvatarSubmenu = ({ user }: AvatarSubmenuProps): JSX.Element | null => {
 	return (
 		<FloatSubMenu
 			ActionComponent={
-				<Avatar
+				<Img
 					src={user.avatar_url || ''}
 					alt={user.first_name || ''}
 					isBordered
