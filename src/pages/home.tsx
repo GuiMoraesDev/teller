@@ -22,7 +22,7 @@ const Page = ({ user }: InferGetServerSidePropsType<ServerSideProps>) => {
 };
 
 export const getServerSideProps: ServerSideProps = async (context) => {
-	const { user: cookiesUser, token } = nookies.get(context);
+	const { user: cookiesUser } = nookies.get(context);
 
 	if (!cookiesUser) {
 		return {
@@ -34,8 +34,6 @@ export const getServerSideProps: ServerSideProps = async (context) => {
 	}
 
 	const user = JSON.parse(cookiesUser) as UserProps;
-
-	api.defaults.headers.common['authorization'] = `Bearer ${token}`;
 
 	return {
 		props: { user },
