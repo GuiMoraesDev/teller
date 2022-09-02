@@ -10,6 +10,7 @@ import Input from 'components/Input';
 
 import logYupErrors from 'helpers/logYupErrors';
 
+import { postNewSession } from 'services/sessions.api';
 import { postNewUser, PostNewUserParams } from 'services/users.api';
 
 import useSignValidation from './hooks/useSignValidation';
@@ -27,7 +28,12 @@ const SignIn = (): JSX.Element => {
 			setIsLoading(true);
 
 			try {
-				const { user, token } = await postNewUser(values);
+				await postNewUser(values);
+
+				const { user, token } = await postNewSession({
+					email: values.email,
+					password: values.password,
+				});
 
 				nookies.set(null, 'user', JSON.stringify(user));
 				nookies.set(null, 'token', JSON.stringify(token));
