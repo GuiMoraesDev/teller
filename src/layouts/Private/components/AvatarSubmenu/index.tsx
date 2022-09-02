@@ -42,6 +42,7 @@ const AvatarSubmenu = ({ user }: AvatarSubmenuProps): JSX.Element | null => {
 					key="profile-button"
 					label="Profile"
 					variant="neutral"
+					href={`/profile/${user.id}`}
 				/>,
 				<Button
 					IconLeft={<SignOut />}

@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile page should render correctly 1`] = `
+.c2 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: auto;
+  height: 4.4rem;
+  border: 0.1rem solid #C9CAC8;
+  border-radius: 0.4rem;
+  margin: 0;
+  padding: 0 1.4rem;
+  gap: 1.2rem;
+  text-transform: none;
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  color: #181917;
+  background-color: #FDFDFD;
+  border-color: #30312F;
+}
+
+.c2:hover {
+  background-color: #82ADB2;
+}
+
+.c2 svg {
+  color: inherit;
+}
+
+.c2:hover {
+  color: #FDFDFD;
+  background-color: #181917;
+}
+
+.c2 .spin {
+  -webkit-animation-name: ieAXeN;
+  animation-name: ieAXeN;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.c4 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 500;
+  font-family: 'Montserrat',sans-serif;
+  line-height: 4.0rem;
+  font-weight: bold;
+  color: #181917;
+  text-transform: none;
+  box-sizing: border-box;
+}
+
+.c0 {
+  grid-area: Content;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 2.0rem;
+  gap: 2.0rem;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  margin: auto;
+  overflow-y: auto;
+}
+
+.c1 {
+  display: grid;
+  grid-template-columns: 10rem 100%;
+  grid-template-rows: auto;
+  grid-template-areas: 'Back .' 'AuthorMetadata AuthorMetadata';
+  width: 100%;
+  gap: 1.2rem;
+}
+
+.c5 {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  gap: 1.4rem;
+  margin-bottom: auto;
+}
+
+.c3 {
+  grid-area: AuthorMetadata;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+<main
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <button
+      class="c2"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 256 256"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="none"
+          height="256"
+          width="256"
+        />
+        <polyline
+          fill="none"
+          points="92.1 148.1 28.1 148.1 28.1 84.1"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <path
+          d="M224,184A96,96,0,0,0,60.1,116.1l-32,32"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+      </svg>
+      Home
+    </button>
+    <section
+      class="c3"
+    >
+      <h2
+        class="c4"
+      >
+        John's profile
+      </h2>
+    </section>
+  </div>
+  <div
+    class="c5"
+  >
+    <div
+      class="c6"
+    >
+      You have no posts yet
+    </div>
+  </div>
+</main>
+`;
