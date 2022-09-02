@@ -1,23 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-  ::-webkit-scrollbar {
-    width: ${({ theme }) => theme.sizes.common.x2};
-    height: ${({ theme }) => theme.sizes.common.x2};
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: ${({ theme }) => theme.themeColors.canvasInverted};
-
-    border: ${({ theme }) => theme.borders.solid};
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.themeColors.canvasDark};
-
-    border-radius: ${({ theme }) => theme.rounded.full};
-  }
-
   * {
     margin: 0;
     padding: 0;

@@ -13,6 +13,8 @@ import { PrivateContent } from 'layouts/Private/styles';
 
 import { AllPostsProps } from 'services/posts.api';
 
+import { POST_MESSAGE_LENGTH } from 'constant';
+
 import * as Styles from './styles';
 import { homeResolver, HomeResolverProps } from './validations';
 
@@ -45,6 +47,7 @@ const HomeTemplate = ({
 						error={homeMethods.formState.errors.body?.message}
 						fullWidth
 						{...homeMethods.register('body')}
+						maxLength={POST_MESSAGE_LENGTH}
 					/>
 				</Styles.PostsForm>
 
@@ -59,27 +62,31 @@ const HomeTemplate = ({
 			</Styles.PostsFormWrapper>
 
 			<Styles.PostsWrapper>
-				{postsData.map((post) => (
-					<Styles.Post key={post.id}>
-						<Styles.AvatarWrapper>
-							<Avatar
-								src={post.Users.avatar_url || ''}
-								alt={post.Users.first_name}
-							/>
-						</Styles.AvatarWrapper>
+				{Boolean(postsData.length) ? (
+					postsData.map((post) => (
+						<Styles.Post key={post.id}>
+							<Styles.AvatarWrapper>
+								<Avatar
+									src={post.users.avatar_url || ''}
+									alt={post.users.first_name}
+								/>
+							</Styles.AvatarWrapper>
 
-						<Styles.AuthorMetadata>
-							<Text
-								label={`${post.Users.first_name} ${post.Users.last_name}`}
-								isBold
-							/>
-						</Styles.AuthorMetadata>
+							<Styles.AuthorMetadata>
+								<Text
+									label={`${post.users.first_name} ${post.users.last_name}`}
+									isBold
+								/>
+							</Styles.AuthorMetadata>
 
-						<Styles.PostMessage>
-							<Text label={post.body} />
-						</Styles.PostMessage>
-					</Styles.Post>
-				))}
+							<Styles.PostMessage>
+								<Text label={post.body} />
+							</Styles.PostMessage>
+						</Styles.Post>
+					))
+				) : (
+					<Styles.Empty>You have no posts yet</Styles.Empty>
+				)}
 			</Styles.PostsWrapper>
 		</PrivateContent>
 	);
