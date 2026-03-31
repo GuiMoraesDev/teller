@@ -44,8 +44,8 @@ exports[`Home page should render correctly 1`] = `
 }
 
 .c8 .spin {
-  -webkit-animation-name: ieAXeN;
-  animation-name: ieAXeN;
+  -webkit-animation-name: k0;
+  animation-name: k0;
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
@@ -211,6 +211,34 @@ exports[`Home page should render correctly 1`] = `
   justify-content: center;
   height: 100%;
   width: 100%;
+}
+
+@-webkit-keyframes k0 {
+  from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes k0 {
+  from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 <main

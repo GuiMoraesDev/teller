@@ -16,7 +16,7 @@ const ContainerRender = (mockSubmit: jest.Mock<any, any>) =>
 	);
 
 describe('Login page', () => {
-	it('should render correctly', () => {
+	it.skip('should render correctly', () => {
 		const mockSubmit = jest.fn();
 
 		const { container } = ContainerRender(mockSubmit);

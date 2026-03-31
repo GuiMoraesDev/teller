@@ -47,8 +47,8 @@ exports[`Modal pattern should render correctly 1`] = `
 }
 
 .c3 .spin {
-  -webkit-animation-name: ieAXeN;
-  animation-name: ieAXeN;
+  -webkit-animation-name: k0;
+  animation-name: k0;
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
@@ -112,6 +112,34 @@ exports[`Modal pattern should render correctly 1`] = `
 
 .c4 {
   padding: 0.8rem;
+}
+
+@-webkit-keyframes k0 {
+  from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes k0 {
+  from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 <div
