@@ -2,19 +2,31 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Monorepo Structure
+
+Turborepo monorepo with npm workspaces.
+
+- `apps/web` — Next.js 12 frontend (Twitter-like social media POC)
+- `packages/` — shared packages (future)
+
 ## Commands
 
-- **Dev server**: `yarn dev`
-- **Build**: `yarn build`
-- **Lint**: `yarn lint`
-- **Test all**: `yarn test`
-- **Test single file**: `yarn test --testPathPattern=<path>`
-- **Test changed only**: `yarn test --onlyChanged`
-- **Storybook**: `yarn storybook` (port 6006)
+Root-level commands run via Turbo across all workspaces:
 
-## Architecture
+- **Dev server**: `npm run dev`
+- **Build**: `npm run build`
+- **Lint**: `npm run lint`
+- **Test all**: `npm test`
 
-This is a Next.js 12 social media app (Twitter-like POC) using styled-components with SSR.
+App-specific commands (run from `apps/web/`):
+
+- **Test single file**: `npm test -- --testPathPattern=<path>`
+- **Test changed only**: `npm test -- --onlyChanged`
+- **Storybook**: `npm run storybook` (port 6006)
+
+## Web App Architecture (`apps/web`)
+
+Next.js 12 app using styled-components with SSR.
 
 ### Layer hierarchy: Pages → Layouts → Views → Templates → Components/Patterns
 
@@ -48,8 +60,8 @@ Axios-based API layer. `api.ts` creates a configured instance that reads JWT fro
 - **Commits**: conventional commits enforced via commitlint (`@commitlint/config-conventional`)
 - **Branch protection**: pre-commit hook blocks commits on main/master, runs lint + tests on changed files
 - **Component structure**: each component has `index.tsx`, `styles.ts`, optional `test.spec.tsx`, `*.stories.tsx`, and `__snapshots__/`
-- **CI**: PR to main triggers `yarn test --bail` on ubuntu-latest
+- **CI**: PR to main triggers `npm test --bail` on ubuntu-latest
 
 ## Environment Variables
 
-Required (set via `.env` or CI secrets): `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_ENV`, `NEXT_PUBLIC_GITHUB_TOKEN`, `NEXT_PUBLIC_GOOGLE_CLIENT_ID`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_KEY`
+Required (set via `.env` in `apps/web/` or CI secrets): `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_ENV`, `NEXT_PUBLIC_GITHUB_TOKEN`, `NEXT_PUBLIC_GOOGLE_CLIENT_ID`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_KEY`
