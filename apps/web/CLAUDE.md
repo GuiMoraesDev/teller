@@ -89,6 +89,15 @@ All use `PUBLIC_` prefix (Astro convention for client-exposed vars):
 
 Typed in `src/env.d.ts`.
 
+## Testing
+
+Jest + React Testing Library with ts-jest. Config in `jest.config.cjs`.
+
+Known caveats:
+- **`import.meta.env`**: ts-jest cannot parse `import.meta` syntax. Components using it (e.g., `GoogleSign`) must be mocked in tests via `jest.mock('components/GoogleSign', ...)`.
+- **Tailwind visibility**: JSDOM does not compute CSS from class names, so `toBeVisible()` / `not.toBeVisible()` won't work with Tailwind's `invisible` class. Use `toHaveClass('invisible')` / `not.toHaveClass('invisible')` instead.
+- **Snapshot tests**: Snapshots reflect Tailwind utility classes (not generated CSS). Update with `npm test -- -u` after intentional styling changes.
+
 ## Key Files
 
 | File | Purpose |

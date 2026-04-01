@@ -56,6 +56,14 @@ Axios-based API layer. `api.ts` creates a configured instance that reads JWT fro
 
 `UNPROTECTED_ROUTES`, `LS_KEYS`, `QUERY_KEYS`, `POST_MESSAGE_LENGTH` (144 chars)
 
+## Testing
+
+Jest + React Testing Library with ts-jest (`jest.config.cjs`).
+
+- **`import.meta.env`**: ts-jest cannot parse this syntax. Mock components that use it (e.g., `GoogleSign`) in tests.
+- **Tailwind visibility**: Use `toHaveClass('invisible')` instead of `not.toBeVisible()` — JSDOM doesn't compute CSS from class names.
+- **Snapshots**: Reflect Tailwind classes. Update with `npm test -- -u` after styling changes.
+
 ## Code Conventions
 
 - **Absolute imports** from `src/` (configured in tsconfig `baseUrl: "./src"` and Vite aliases in `astro.config.mjs`)
