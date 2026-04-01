@@ -1,1 +1,1 @@
-import 'jest-styled-components'
+// Jest setup file

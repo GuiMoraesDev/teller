@@ -1,13 +1,12 @@
 import { useCallback } from 'react';
 
-import { useRouter } from 'next/router';
-
-import { UserProps } from '@types';
-import nookies from 'nookies';
+import type { UserProps } from '@types';
 import { SignOut, UserGear } from 'phosphor-react';
 
 import Button from 'components/Button';
 import Img from 'components/Img';
+
+import { deleteCookie } from 'helpers/cookies';
 
 import FloatSubMenu from 'patterns/FloatSubMenu';
 
@@ -16,16 +15,14 @@ export interface AvatarSubmenuProps {
 }
 
 const AvatarSubmenu = ({ user }: AvatarSubmenuProps): JSX.Element | null => {
-	const router = useRouter();
-
 	const handleLogoutUser = useCallback(() => {
 		google.accounts.id.disableAutoSelect();
 
-		nookies.destroy(null, 'user');
-		nookies.destroy(null, 'token');
+		deleteCookie('user');
+		deleteCookie('token');
 
-		router.push('/signin');
-	}, [router]);
+		window.location.href = '/signin';
+	}, []);
 
 	return (
 		<FloatSubMenu

@@ -1,58 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FloatSubMenu pattern should render correctly 1`] = `
-.c0 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  place-content: center;
-  height: 100%;
-}
-
-.c1 {
-  position: relative;
-  height: 100%;
-  border: none;
-}
-
-.c2 {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  background-color: #E4E5E3;
-  border: 0.1rem solid #C9CAC8;
-  border-radius: 0.4rem;
-  box-shadow: 0px 3px 6px 1px #E4E5E3;
-  -webkit-transform: translate( -20%, calc(100% + 0.8rem) );
-  -ms-transform: translate( -20%, calc(100% + 0.8rem) );
-  transform: translate( -20%, calc(100% + 0.8rem) );
-  visibility: hidden;
-}
-
-.c2:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: calc(px / 3);
-  width: 0;
-  height: 0;
-  border: 0.1rem solid #C9CAC8;
-  border-width: 0.8rem;
-  border-color: transparent;
-  border-bottom-color: #E4E5E3;
-  -webkit-transform: translateY(-100%);
-  -ms-transform: translateY(-100%);
-  transform: translateY(-100%);
-}
-
 <div
-  class="c0"
+  class="relative flex place-content-center h-full"
   data-testid="float-container"
 >
   <button
-    class="c1"
+    class="relative h-full border-none bg-transparent cursor-pointer"
     data-testid="action-button"
   >
     <span>
@@ -60,7 +14,7 @@ exports[`FloatSubMenu pattern should render correctly 1`] = `
     </span>
   </button>
   <nav
-    class="c2"
+    class="absolute bottom-0 left-1/2 bg-canvas-dark border border-border rounded-[0.4rem] shadow-regular -translate-x-[20%] translate-y-[calc(100%+0.8rem)] before:content-[""] before:absolute before:top-0 before:left-[33%] before:w-0 before:h-0 before:border-[0.8rem] before:border-solid before:border-transparent before:border-b-canvas-dark before:-translate-y-full invisible"
     data-testid="nav-wrapper"
   >
     <p>

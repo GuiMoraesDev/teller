@@ -1,14 +1,14 @@
 import { useCallback, useState } from 'react';
 
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { UserProps } from '@types';
+import type { UserProps } from '@types';
 
-import { AllPostsProps, getAllPosts, postNewPost } from 'services/posts.api';
+import { type AllPostsProps, getAllPosts, postNewPost } from 'services/posts.api';
 
 import { QUERY_KEYS } from 'constant';
 
 import HomeTemplate from './template';
-import { HomeResolverProps } from './template/validations';
+import type { HomeResolverProps } from './template/validations';
 
 interface Props {
 	user: UserProps;
@@ -19,7 +19,6 @@ const Home = ({ user }: Props): JSX.Element => {
 
 	const loadPosts = useCallback(async () => {
 		const postsData = await getAllPosts();
-
 		setPosts(postsData);
 	}, []);
 
@@ -36,7 +35,7 @@ const Home = ({ user }: Props): JSX.Element => {
 				body,
 			});
 		},
-		[mutation, user.id]
+		[mutation, user.id],
 	);
 
 	return (

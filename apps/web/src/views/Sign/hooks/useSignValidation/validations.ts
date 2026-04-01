@@ -1,7 +1,7 @@
-import { Resolver } from 'react-hook-form';
+import type { Resolver } from 'react-hook-form';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserProps } from '@types';
+import type { UserProps } from '@types';
 import * as yup from 'yup';
 
 export interface SignInSchemaProps {
@@ -18,7 +18,7 @@ const signInResolver = yupResolver(
 
 export interface SignUpSchemaProps extends  Omit<UserProps, 'id'> {
 	password: string;
-};
+}
 
 const signUpResolver: Resolver<SignUpSchemaProps> = yupResolver(
 	yup.object().shape({

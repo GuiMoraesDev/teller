@@ -1,0 +1,199 @@
+@import 'tailwindcss';
+
+@theme {
+	/* Breakpoints */
+	--breakpoint-tablet: 768px;
+	--breakpoint-laptop: 1024px;
+
+	/* Font families */
+	--font-heading: 'Montserrat', sans-serif;
+	--font-body: 'Roboto', sans-serif;
+
+	/* Colors - Neutrals */
+	--color-neutral-000: #FDFDFD;
+	--color-neutral-050: #F2F2F1;
+	--color-neutral-100: #E4E5E3;
+	--color-neutral-150: #D7D7D6;
+	--color-neutral-200: #C9CAC8;
+	--color-neutral-300: #AFB0AC;
+	--color-neutral-400: #949591;
+	--color-neutral-500: #797B75;
+	--color-neutral-600: #61625E;
+	--color-neutral-700: #494A46;
+	--color-neutral-800: #30312F;
+	--color-neutral-850: #242523;
+	--color-neutral-900: #181917;
+	--color-neutral-950: #0C0C0C;
+	--color-neutral-999: #060606;
+
+	/* Colors - Primary */
+	--color-primary-050: #EFF5F5;
+	--color-primary-100: #E0EAEC;
+	--color-primary-150: #D0E0E2;
+	--color-primary-200: #C1D6D9;
+	--color-primary-300: #A1C1C5;
+	--color-primary-400: #82ADB2;
+	--color-primary-500: #63989F;
+	--color-primary-600: #4F7A7F;
+	--color-primary-700: #3B5B5F;
+	--color-primary-800: #283D40;
+	--color-primary-850: #1E2E30;
+	--color-primary-900: #141E20;
+	--color-primary-950: #0A0F10;
+
+	/* Colors - Secondary */
+	--color-secondary-050: #F5F1EF;
+	--color-secondary-100: #ECE3E0;
+	--color-secondary-150: #E2D4D0;
+	--color-secondary-200: #D9C6C1;
+	--color-secondary-300: #C5AAA1;
+	--color-secondary-400: #B28D82;
+	--color-secondary-500: #9F7163;
+	--color-secondary-600: #7F5A4F;
+	--color-secondary-700: #5F443B;
+	--color-secondary-800: #402D28;
+	--color-secondary-850: #30221E;
+	--color-secondary-900: #201714;
+	--color-secondary-950: #100B0A;
+
+	/* Colors - Success */
+	--color-success-100: #D7E2D9;
+	--color-success-300: #94AF99;
+	--color-success-500: #507C59;
+
+	/* Colors - Alert */
+	--color-alert-100: #FFF6E0;
+	--color-alert-300: #FFE3A3;
+	--color-alert-500: #FFD166;
+
+	/* Colors - Danger */
+	--color-danger-100: #F9DCD4;
+	--color-danger-300: #EE977D;
+	--color-danger-500: #E35226;
+
+	/* Colors - Info */
+	--color-info-100: #B8CDE0;
+	--color-info-300: #6D92B5;
+	--color-info-500: #235789;
+
+	/* Theme colors (semantic aliases) */
+	--color-canvas: #FDFDFD;
+	--color-canvas-dark: #E4E5E3;
+	--color-canvas-inverted: #181917;
+	--color-canvas-inverted-light: #30312F;
+
+	--color-text-primary: #181917;
+	--color-text-light: #797B75;
+	--color-text-inverted: #FDFDFD;
+
+	--color-border: #C9CAC8;
+	--color-border-inverted: #797B75;
+
+	--color-brand-primary-light: #82ADB2;
+	--color-brand-primary: #63989F;
+	--color-brand-primary-dark: #4F7A7F;
+
+	/* Shadows */
+	--shadow-regular: 0px 3px 6px 1px var(--color-canvas-dark);
+	--shadow-short: 1px 0px 3px 0px var(--color-canvas-dark);
+
+	/* Animations */
+	--animate-spin-slow: spin 2s linear infinite;
+}
+
+@layer base {
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		outline: 0;
+	}
+
+	html {
+		font-size: 50.5%;
+	}
+
+	body {
+		font-size: 1.6rem;
+		background-color: var(--color-canvas);
+	}
+
+	html, body {
+		font-family: var(--font-body);
+		-webkit-font-smoothing: antialiased;
+		scroll-behavior: smooth;
+	}
+
+	body, input, button, textarea {
+		font-family: var(--font-body);
+	}
+
+	strong {
+		font-weight: 600;
+	}
+
+	h1 {
+		font-size: 3.6rem;
+		font-weight: 500;
+		font-family: var(--font-heading);
+		line-height: 5.6rem;
+	}
+
+	h2 {
+		font-size: 2.4rem;
+		font-weight: 500;
+		font-family: var(--font-heading);
+		line-height: 4.0rem;
+	}
+
+	h3 {
+		font-size: 2.0rem;
+		font-weight: 500;
+		font-family: var(--font-heading);
+		line-height: 3.2rem;
+	}
+
+	h4 {
+		font-size: 1.6rem;
+		font-weight: 500;
+		font-family: var(--font-heading);
+		line-height: 2.4rem;
+	}
+
+	h5 {
+		font-size: 1.4rem;
+		font-weight: 500;
+		font-family: var(--font-heading);
+		line-height: 2.0rem;
+	}
+
+	a, button {
+		background: transparent;
+		cursor: pointer;
+
+		&[disabled] {
+			cursor: not-allowed;
+		}
+	}
+
+	input::placeholder {
+		color: var(--color-neutral-400);
+	}
+
+	img {
+		object-fit: cover;
+		word-break: break-all;
+	}
+
+	@media (min-width: 1440px) {
+		html {
+			font-size: 55.5%;
+		}
+	}
+
+	@media (min-width: 1560px) {
+		html {
+			font-size: 62.5%;
+		}
+	}
+}

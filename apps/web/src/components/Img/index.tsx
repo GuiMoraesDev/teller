@@ -1,22 +1,19 @@
-import { ImgHTMLAttributes, useState, useCallback } from 'react';
+import { type ImgHTMLAttributes, useState, useCallback } from 'react';
 
 import chroma from 'chroma-js';
+import clsx from 'clsx';
 
-import * as Styles from './styles';
-
-export interface StyledProps {
-	isBordered?: boolean;
-}
-
-interface Props extends StyledProps, ImgHTMLAttributes<HTMLImageElement> {
+interface Props extends ImgHTMLAttributes<HTMLImageElement> {
 	src?: string;
 	alt?: string;
+	isBordered?: boolean;
 }
 
 const Img = ({
 	src,
 	alt = 'Not found',
 	isBordered = false,
+	className,
 	...props
 }: Props): JSX.Element => {
 	const [imageSrc, setImageSrc] = useState<string>(src || '');
@@ -44,26 +41,28 @@ const Img = ({
 		context.fillText(
 			`${textJoined.slice(0, 2).toUpperCase()}`,
 			canvasElement.width / 2,
-			canvasElement.height / 2
+			canvasElement.height / 2,
 		);
 
-		const dataUrl = canvasElement.toDataURL();
-
-		setImageSrc(dataUrl);
+		setImageSrc(canvasElement.toDataURL());
 	}, [alt]);
 
 	return (
-		<Styles.ImageWrapper>
-			<Styles.Image
+		<span className="h-full border-none">
+			<img
 				{...props}
+				className={clsx(
+					'max-w-full max-h-full rounded-full',
+					isBordered && 'border-[3px] border-canvas',
+					className,
+				)}
 				src={imageSrc}
 				alt={alt}
 				onError={handleErrorImages}
-				isBordered={isBordered}
 				referrerPolicy="no-referrer"
 				loading="lazy"
 			/>
-		</Styles.ImageWrapper>
+		</span>
 	);
 };
 

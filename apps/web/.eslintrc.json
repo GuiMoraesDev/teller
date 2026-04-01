@@ -1,5 +1,10 @@
 {
-	"extends": "next/core-web-vitals",
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended"
+	],
 	"parser": "@typescript-eslint/parser",
 	"plugins": [
 		"react",
@@ -8,9 +13,12 @@
 		"@typescript-eslint",
 		"eslint-plugin-import-helpers"
 	],
+	"ignorePatterns": ["**/*.astro"],
 	"rules": {
 		"no-console": "warn",
-		"@next/next/no-img-element": "off",
+		"@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_", "destructuredArrayIgnorePattern": "^_" }],
+		"react/react-in-jsx-scope": "off",
+		"react/prop-types": "off",
 		"import-helpers/order-imports": [
 			"warn",
 			{
@@ -20,23 +28,16 @@
 				},
 				"groups": [
 					"/^react/",
-					"/^next/",
 					"module",
 					"/^components/",
 					"/^context/",
-					"/^errorBoundary/",
 					"/^helpers/",
 					"/^layouts/",
-					"/^pages/",
 					"/^views/",
 					"/^patterns/",
 					"/^services/",
-					"/^dtos/",
-					"/^modules/",
 					"/^constant/",
 					"/^styles/",
-					"/routes/",
-					"/utils/",
 					["parent", "sibling", "index"]
 				],
 				"newlinesBetween": "always"

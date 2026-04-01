@@ -1,7 +1,6 @@
 import React from 'react';
 
 import userEvent from '@testing-library/user-event';
-
 import { render, waitFor } from 'tests/test.utils';
 
 import Modal from './index';
@@ -23,9 +22,7 @@ describe('Modal pattern', () => {
 		const closeButton = getByTestId(elementsTestId.closeButton);
 		const modalContent = getByTestId(elementsTestId.modalContent);
 
-		expect(modalContainer).not.toBeVisible();
-		expect(closeButton).not.toBeVisible();
-		expect(modalContent).not.toBeVisible();
+		expect(modalContainer).toHaveClass('invisible');
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
@@ -34,22 +31,18 @@ describe('Modal pattern', () => {
 		const { getByTestId } = ContainerRender(true);
 
 		const modalContainer = getByTestId(elementsTestId.modalContainer);
-		const closeButton = getByTestId(elementsTestId.closeButton);
-		const modalContent = getByTestId(elementsTestId.modalContent);
 
-		expect(modalContainer).toBeVisible();
-		expect(closeButton).toBeVisible();
-		expect(modalContent).toBeVisible();
+		expect(modalContainer).not.toHaveClass('invisible');
 	});
 
 	it('should close Modal on close button click', async () => {
 		const { getByTestId } = ContainerRender(true);
 
+		const modalContainer = getByTestId(elementsTestId.modalContainer);
 		const closeButton = getByTestId(elementsTestId.closeButton);
-		const modalContent = getByTestId(elementsTestId.modalContent);
 
 		await waitFor(() => userEvent.click(closeButton));
 
-		expect(modalContent).not.toBeVisible();
+		expect(modalContainer).toHaveClass('invisible');
 	});
 });

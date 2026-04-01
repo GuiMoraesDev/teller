@@ -1,159 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal pattern should render correctly 1`] = `
-.c3 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: auto;
-  height: 3.6rem;
-  border: 0.1rem solid #C9CAC8;
-  border-radius: 0.4rem;
-  margin: 0;
-  padding: 0 0.8rem;
-  gap: 1.2rem;
-  text-transform: none;
-  -webkit-transition: background-color 0.2s, color 0.2s;
-  transition: background-color 0.2s, color 0.2s;
-  cursor: pointer;
-  color: #181917;
-  background-color: transparent;
-  border-color: transparent;
-}
-
-.c3:hover {
-  background-color: #82ADB2;
-}
-
-.c3 svg {
-  color: inherit;
-}
-
-.c3:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  color: #181917;
-  background-color: transparent;
-}
-
-.c3 .spin {
-  -webkit-animation-name: k0;
-  animation-name: k0;
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-}
-
-.c0 {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background-color: rgba(0,0,0,0.6);
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.c1 {
-  position: relative;
-  display: grid;
-  grid-template-rows: 3.6rem auto;
-  min-width: 8.0rem;
-  min-height: 8.0rem;
-  background-color: #FDFDFD;
-  border-radius: 0.4rem;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.c4 {
-  padding: 0.8rem;
-}
-
-@-webkit-keyframes k0 {
-  from {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes k0 {
-  from {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
 <div
-  class="c0"
+  class="absolute inset-0 flex items-center justify-center w-screen h-screen overflow-hidden bg-black/60 transition-all duration-200 opacity-0 invisible"
   data-testid="modal-container"
 >
   <main
-    class="c1"
+    class="relative grid grid-rows-[3.6rem_auto] min-w-[8.0rem] min-h-[8.0rem] bg-canvas rounded-[0.4rem]"
   >
     <header
-      class="c2"
+      class="flex items-center justify-end"
     >
       <button
-        class="c3"
+        class="relative flex items-center justify-center border gap-[1.2rem] transition-colors duration-200 cursor-pointer h-[3.6rem] px-[0.8rem] rounded-[0.4rem] text-text-primary bg-transparent border-transparent hover:underline [&_svg]:text-inherit"
         data-testid="close-button"
       >
         <svg
@@ -192,7 +51,7 @@ exports[`Modal pattern should render correctly 1`] = `
       </button>
     </header>
     <section
-      class="c4"
+      class="px-[0.8rem]"
       data-testid="modal-content"
     />
   </main>

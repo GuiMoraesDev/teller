@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form';
 
 import {
 	signInResolver,
-	SignInSchemaProps,
+	type SignInSchemaProps,
 	signUpResolver,
-	SignUpSchemaProps,
+	type SignUpSchemaProps,
 } from './validations';
 
 const useSignValidation = () => {

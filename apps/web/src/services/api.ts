@@ -1,16 +1,19 @@
 import axios from 'axios';
-import nookies from 'nookies';
 
-if (!process.env.NEXT_PUBLIC_API_URL) {
-	throw new Error('NEXT_PUBLIC_API_URL is missing');
+import { getCookie } from 'helpers/cookies';
+
+const apiUrl = import.meta.env.PUBLIC_API_URL;
+
+if (!apiUrl) {
+	throw new Error('PUBLIC_API_URL is missing');
 }
 
 const api = axios.create({
-	baseURL: process.env.NEXT_PUBLIC_API_URL,
+	baseURL: apiUrl,
 });
 
 api.interceptors.request.use((config) => {
-	const { token: cookiesToken } = nookies.get();
+	const cookiesToken = getCookie('token');
 
 	if (!cookiesToken) {
 		return config;

@@ -2,6 +2,11 @@ import React from 'react';
 
 import { render } from 'tests/test.utils';
 
+jest.mock('components/GoogleSign', () => ({
+	__esModule: true,
+	default: ({ id }: { id: string }) => <div id={id} data-testid="google-sign-mock" />,
+}));
+
 import SignTemplate from './template';
 
 const ContainerRender = (mockSubmit: jest.Mock<any, any>) =>

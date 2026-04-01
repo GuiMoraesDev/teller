@@ -1,0 +1,17 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Providers from './Providers';
+import Logo from '../components/Logo';
+---
+
+<BaseLayout>
+	<div class="grid grid-cols-1 grid-rows-[10rem_auto] h-screen w-screen p-[2.0rem] laptop:grid-cols-[60%_40%] laptop:grid-rows-[auto] laptop:p-0">
+		<header class="flex items-center justify-center h-full laptop:bg-brand-primary-light">
+			<Logo type="logo" />
+		</header>
+
+		<Providers client:load>
+			<slot />
+		</Providers>
+	</div>
+</BaseLayout>

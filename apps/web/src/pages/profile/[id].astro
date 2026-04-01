@@ -1,0 +1,12 @@
+---
+import type { UserProps } from '../../@types';
+import PrivateLayout from '../../layouts/PrivateLayout.astro';
+import ProfilePage from '../../views/Profile';
+
+const userCookie = Astro.cookies.get('user')?.value;
+const user = JSON.parse(userCookie!) as UserProps;
+---
+
+<PrivateLayout user={user}>
+	<ProfilePage user={user} client:load />
+</PrivateLayout>

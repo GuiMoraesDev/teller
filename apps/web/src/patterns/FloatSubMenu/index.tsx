@@ -1,14 +1,11 @@
 import { useCallback, useRef, useState, useEffect } from 'react';
 
-import * as Styles from './styles';
+import clsx from 'clsx';
 
-export interface StyledProps {
-	isFullWidth?: boolean;
-}
-
-interface Props extends StyledProps {
+interface Props {
 	ActionComponent: JSX.Element;
 	submenuComponents: JSX.Element[];
+	isFullWidth?: boolean;
 }
 
 const FloatSubMenu = ({
@@ -27,12 +24,8 @@ const FloatSubMenu = ({
 	}, []);
 
 	const handleClickOutside = useCallback((event: MouseEvent) => {
-		const clickedOnActionButton = actionButtonRef.current?.contains(
-			event.target as Node
-		);
-		const clickedOnNavContainer = navContainerRef.current?.contains(
-			event.target as Node
-		);
+		const clickedOnActionButton = actionButtonRef.current?.contains(event.target as Node);
+		const clickedOnNavContainer = navContainerRef.current?.contains(event.target as Node);
 
 		if (!clickedOnActionButton && !clickedOnNavContainer) {
 			setVisible(false);
@@ -45,37 +38,41 @@ const FloatSubMenu = ({
 
 			return () => {
 				document.removeEventListener('mousedown', handleClickOutside);
-
 				setVisible(false);
 			};
 		}
 	}, [visible, handleClickOutside]);
 
 	return (
-		<Styles.Container
+		<div
 			data-testid="float-container"
 			ref={containerRef}
-			isFullWidth={isFullWidth}
+			className={clsx(
+				'relative flex place-content-center h-full',
+				isFullWidth && 'w-full',
+			)}
 		>
-			<Styles.ActionButton
+			<button
+				className="relative h-full border-none bg-transparent cursor-pointer"
 				onClick={handleToggleSubmenu}
 				ref={actionButtonRef}
 				data-testid="action-button"
 			>
 				{ActionComponent}
-			</Styles.ActionButton>
+			</button>
 
-			<Styles.NavWrapper
-				isVisible={visible}
+			<nav
 				ref={navContainerRef}
 				data-testid="nav-wrapper"
-				parentWidth={actionButtonRef.current?.offsetWidth}
+				className={clsx(
+					'absolute bottom-0 left-1/2 bg-canvas-dark border border-border rounded-[0.4rem] shadow-regular -translate-x-[20%] translate-y-[calc(100%+0.8rem)]',
+					'before:content-[""] before:absolute before:top-0 before:left-[33%] before:w-0 before:h-0 before:border-[0.8rem] before:border-solid before:border-transparent before:border-b-canvas-dark before:-translate-y-full',
+					visible ? 'visible' : 'invisible',
+				)}
 			>
-				{submenuComponents.map((Component) => {
-					return Component;
-				})}
-			</Styles.NavWrapper>
-		</Styles.Container>
+				{submenuComponents.map((Component) => Component)}
+			</nav>
+		</div>
 	);
 };
 

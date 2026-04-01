@@ -1,28 +1,23 @@
 import { useCallback, useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { useRouter } from 'next/router';
-
-import nookies from 'nookies';
 import { EnvelopeSimple, Lock } from 'phosphor-react';
 
 import Input from 'components/Input';
 
+import { setCookie } from 'helpers/cookies';
 import logYupErrors from 'helpers/logYupErrors';
 
 import {
 	postNewSession,
-	PostNewSessionsParams,
+	type PostNewSessionsParams,
 	postNewGoogleSession,
 } from 'services/sessions.api';
 
 import useSignValidation from './hooks/useSignValidation';
 import SignTemplate from './template';
 
-
 const SignIn = (): JSX.Element => {
-	const router = useRouter();
-
 	const { signInMethods } = useSignValidation();
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -33,26 +28,24 @@ const SignIn = (): JSX.Element => {
 			try {
 				const { user, token } = await postNewSession(values);
 
-				nookies.set(null, 'user', JSON.stringify(user));
-				nookies.set(null, 'token', JSON.stringify(token));
+				setCookie('user', JSON.stringify(user));
+				setCookie('token', JSON.stringify(token));
 
 				toast.success('Logged successfully');
 
-				router.push('/home');
+				window.location.href = '/home';
 			} catch (error) {
-				if (process.env.NODE_ENV === 'development') {
-					// eslint-disable-next-line no-console
+				if (import.meta.env.DEV) {
 					console.error(error);
 				}
 
 				signInMethods.reset();
-
 				toast.error('Something went wrong');
 			}
 
 			setIsLoading(false);
 		},
-		[router, signInMethods]
+		[signInMethods],
 	);
 
 	const onGoogleSignIn = useCallback(
@@ -64,26 +57,24 @@ const SignIn = (): JSX.Element => {
 			try {
 				const { user, token } = await postNewGoogleSession(credential);
 
-				nookies.set(null, 'user', JSON.stringify(user));
-				nookies.set(null, 'token', JSON.stringify(token));
+				setCookie('user', JSON.stringify(user));
+				setCookie('token', JSON.stringify(token));
 
 				toast.success('Logged successfully');
 
-				router.push('/home');
+				window.location.href = '/home';
 			} catch (error) {
-				if (process.env.NODE_ENV === 'development') {
-					// eslint-disable-next-line no-console
+				if (import.meta.env.DEV) {
 					console.error(error);
 				}
 
 				signInMethods.reset();
-
 				toast.error('Something went wrong');
 			}
 
 			setIsLoading(false);
 		},
-		[router, signInMethods]
+		[signInMethods],
 	);
 
 	return (
