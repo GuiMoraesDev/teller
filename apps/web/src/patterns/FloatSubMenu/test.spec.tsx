@@ -1,7 +1,6 @@
 import React from 'react';
 
 import userEvent from '@testing-library/user-event';
-
 import { render, waitFor } from 'tests/test.utils';
 
 import FloatSubMenu from './index';
@@ -34,7 +33,7 @@ describe('FloatSubMenu pattern', () => {
 
 		expect(floatContainer).toBeVisible();
 		expect(actionButton).toBeVisible();
-		expect(navWrapper).not.toBeVisible();
+		expect(navWrapper).toHaveClass('invisible');
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
@@ -47,7 +46,7 @@ describe('FloatSubMenu pattern', () => {
 
 		await waitFor(() => userEvent.click(actionButton));
 
-		expect(navWrapper).toBeVisible();
+		expect(navWrapper).not.toHaveClass('invisible');
 	});
 
 	it('should close menu clicking on another element then action button or nav wrapper', async () => {
@@ -59,11 +58,11 @@ describe('FloatSubMenu pattern', () => {
 
 		await waitFor(() => userEvent.click(actionButton));
 
-		expect(navWrapper).toBeVisible();
+		expect(navWrapper).not.toHaveClass('invisible');
 
 		await waitFor(() => userEvent.click(floatContainer));
 
-		expect(navWrapper).not.toBeVisible();
+		expect(navWrapper).toHaveClass('invisible');
 	});
 
 	it('should open and close menu clicking on action button', async () => {
@@ -75,10 +74,10 @@ describe('FloatSubMenu pattern', () => {
 
 		await waitFor(() => userEvent.click(actionButton));
 
-		expect(navWrapper).toBeVisible();
+		expect(navWrapper).not.toHaveClass('invisible');
 
 		await waitFor(() => userEvent.click(actionButton));
 
-		expect(navWrapper).not.toBeVisible();
+		expect(navWrapper).toHaveClass('invisible');
 	});
 });

@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react';
 
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { UserProps } from '@types';
+import { useQuery } from '@tanstack/react-query';
+import type { UserProps } from '@types';
 
-import { AllPostsProps, getUserPosts } from 'services/posts.api';
+import { type AllPostsProps, getUserPosts } from 'services/posts.api';
 
 import { QUERY_KEYS } from 'constant';
 
@@ -18,9 +18,8 @@ const Profile = ({ user }: Props): JSX.Element => {
 
 	const loadPosts = useCallback(async () => {
 		const postsData = await getUserPosts({
-			author_id: user.id
+			author_id: user.id,
 		});
-
 		setPosts(postsData);
 	}, [user.id]);
 
@@ -28,7 +27,7 @@ const Profile = ({ user }: Props): JSX.Element => {
 
 	return (
 		<ProfileTemplate
-		userData={user}
+			userData={user}
 			isLoading={query.isLoading}
 			postsData={posts}
 		/>

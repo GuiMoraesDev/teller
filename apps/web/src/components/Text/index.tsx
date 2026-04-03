@@ -1,57 +1,81 @@
-import React, { HTMLAttributes } from 'react';
+import { type HTMLAttributes } from 'react';
 
-import { DefaultTheme } from 'styled-components';
+import clsx from 'clsx';
 
-import * as Styles from './styles';
+type TypographyVariant =
+	| 'display1'
+	| 'heading1'
+	| 'heading2'
+	| 'heading3'
+	| 'heading4'
+	| 'heading5'
+	| 'body1'
+	| 'body2'
+	| 'body3'
+	| 'body4';
 
-export interface TextDefaultPropsThatMakeStyles {
+interface TextProps extends HTMLAttributes<HTMLElement> {
+	label: string;
 	fullWidth?: boolean;
-	dimension?: keyof DefaultTheme['typography']['variants'];
+	dimension?: TypographyVariant;
 	variant?: 'regular' | 'light';
 	isBold?: boolean;
 	isCapitalize?: boolean;
 }
 
-type TagProps = Record<keyof DefaultTheme['typography']['variants'], string>;
+const tagMap: Record<TypographyVariant, keyof JSX.IntrinsicElements> = {
+	display1: 'strong',
+	heading1: 'h1',
+	heading2: 'h2',
+	heading3: 'h3',
+	heading4: 'h4',
+	heading5: 'h5',
+	body1: 'p',
+	body2: 'p',
+	body3: 'p',
+	body4: 'p',
+};
 
-interface TextDefaultProps extends TextDefaultPropsThatMakeStyles {
-	label: string;
-}
-
-type TextProps = TextDefaultProps & HTMLAttributes<HTMLElement>;
+const typographyClasses: Record<TypographyVariant, string> = {
+	display1: 'text-[4.8rem] font-heading font-medium leading-[8.0rem]',
+	heading1: 'text-[3.6rem] font-heading font-medium leading-[5.6rem]',
+	heading2: 'text-[2.4rem] font-heading font-medium leading-[4.0rem]',
+	heading3: 'text-[2.0rem] font-heading font-medium leading-[3.2rem]',
+	heading4: 'text-[1.6rem] font-heading font-medium leading-[2.4rem]',
+	heading5: 'text-[1.4rem] font-heading font-medium leading-[2.0rem]',
+	body1: 'text-[1.6rem] font-body font-normal leading-[2.4rem]',
+	body2: 'text-[1.4rem] font-body font-normal leading-[2.0rem]',
+	body3: 'text-[1.2rem] font-body font-normal leading-[1.6rem]',
+	body4: 'text-[1.0rem] font-body font-normal leading-[1.2rem]',
+};
 
 const Text = ({
 	label,
 	variant = 'regular',
 	fullWidth = false,
 	dimension = 'body2',
+	isBold,
+	isCapitalize,
+	className,
 	...props
 }: TextProps): JSX.Element => {
-	const TagsOptions: TagProps = {
-		display1: 'strong',
-		heading1: 'h1',
-		heading2: 'h2',
-		heading3: 'h3',
-		heading4: 'h4',
-		heading5: 'h5',
-		body1: 'p',
-		body2: 'p',
-		body3: 'p',
-		body4: 'p',
-	};
-
-	const Tag = TagsOptions[dimension];
+	const Tag = tagMap[dimension];
 
 	return (
-		<Styles.Text
-			tag={Tag}
-			fullWidth={fullWidth}
-			dimension={dimension}
-			variant={variant}
+		<Tag
+			className={clsx(
+				'relative p-0 m-0',
+				typographyClasses[dimension],
+				variant === 'regular' ? 'text-text-primary' : 'text-text-light',
+				fullWidth && 'w-full',
+				isBold && 'font-bold',
+				isCapitalize && 'capitalize',
+				className,
+			)}
 			{...props}
 		>
 			{label}
-		</Styles.Text>
+		</Tag>
 	);
 };
 

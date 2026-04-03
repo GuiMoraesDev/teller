@@ -1,11 +1,9 @@
-import React, { forwardRef, useImperativeHandle, useState } from 'react';
-import { PropsWithChildren, useCallback } from 'react';
+import React, { forwardRef, useImperativeHandle, useState, useCallback, type PropsWithChildren } from 'react';
 
+import clsx from 'clsx';
 import { X } from 'phosphor-react';
 
 import Button from 'components/Button';
-
-import * as Styles from './styles';
 
 export interface ModalHandles {
 	openModal: () => void;
@@ -16,31 +14,27 @@ interface ModalProps {
 	startOpened?: boolean;
 }
 
-const Modal: React.ForwardRefRenderFunction<
-	ModalHandles,
-	PropsWithChildren<ModalProps>
-> = ({ children, startOpened }, ref): JSX.Element => {
-	const isStorybook = React.useMemo(() => process.env.IS_STORYBOOK, []);
+const Modal: React.ForwardRefRenderFunction<ModalHandles, PropsWithChildren<ModalProps>> = (
+	{ children, startOpened },
+	ref,
+): JSX.Element => {
+	const [visible, setVisible] = useState(!!startOpened);
 
-	const [visible, setVisible] = useState(!!isStorybook || !!startOpened);
+	const openModal = useCallback(() => setVisible(true), []);
+	const closeModal = useCallback(() => setVisible(false), []);
 
-	const openModal = useCallback(() => {
-		setVisible(true);
-	}, []);
-
-	const closeModal = useCallback(() => {
-		setVisible(false);
-	}, []);
-
-	useImperativeHandle(ref, () => ({
-		openModal,
-		closeModal,
-	}));
+	useImperativeHandle(ref, () => ({ openModal, closeModal }));
 
 	return (
-		<Styles.ModalContainer isVisible={visible} data-testid="modal-container">
-			<Styles.ModalContentWrapper>
-				<Styles.Header>
+		<div
+			className={clsx(
+				'absolute inset-0 flex items-center justify-center w-screen h-screen overflow-hidden bg-black/60 transition-all duration-200',
+				visible ? 'opacity-100 visible' : 'opacity-0 invisible',
+			)}
+			data-testid="modal-container"
+		>
+			<main className="relative grid grid-rows-[3.6rem_auto] min-w-[8.0rem] min-h-[8.0rem] bg-canvas rounded-[0.4rem]">
+				<header className="flex items-center justify-end">
 					<Button
 						IconLeft={<X />}
 						onClick={closeModal}
@@ -48,13 +42,13 @@ const Modal: React.ForwardRefRenderFunction<
 						dimension="xs"
 						data-testid="close-button"
 					/>
-				</Styles.Header>
+				</header>
 
-				<Styles.ModalContent data-testid="modal-content">
+				<section className="px-[0.8rem]" data-testid="modal-content">
 					{children}
-				</Styles.ModalContent>
-			</Styles.ModalContentWrapper>
-		</Styles.ModalContainer>
+				</section>
+			</main>
+		</div>
 	);
 };
 

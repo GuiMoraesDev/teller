@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 
 export interface Props {
 	id: string;
@@ -24,14 +24,14 @@ export interface GoogleUserResponse {
 
 const GoogleSign = ({ id, onLoginSuccess }: Props): JSX.Element => {
 	useEffect(() => {
-		if (process.env.NEXT_PUBLIC_ENV === 'test') return;
+		if (import.meta.env.PUBLIC_ENV === 'test') return;
 
-		if (!process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID) {
-			throw new Error('NEXT_PUBLIC_GOOGLE_CLIENT_ID is missing');
+		if (!import.meta.env.PUBLIC_GOOGLE_CLIENT_ID) {
+			throw new Error('PUBLIC_GOOGLE_CLIENT_ID is missing');
 		}
 
 		google.accounts.id.initialize({
-			client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+			client_id: import.meta.env.PUBLIC_GOOGLE_CLIENT_ID,
 			auto_select: true,
 			callback: onLoginSuccess,
 		});
@@ -42,7 +42,7 @@ const GoogleSign = ({ id, onLoginSuccess }: Props): JSX.Element => {
 				theme: 'outline',
 				size: 'medium',
 				type: 'icon',
-			}
+			},
 		);
 	}, [onLoginSuccess, id]);
 

@@ -1,21 +1,20 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./src",
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true
-  },
-  "include": ["next-env.d.ts", "styled.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"jsx": "react-jsx",
+		"paths": {
+			"@types": ["./src/@types"],
+			"components/*": ["./src/components/*"],
+			"constant": ["./src/constant"],
+			"constant/*": ["./src/constant/*"],
+			"helpers/*": ["./src/helpers/*"],
+			"layouts/*": ["./src/layouts/*"],
+			"patterns/*": ["./src/patterns/*"],
+			"services/*": ["./src/services/*"],
+			"views/*": ["./src/views/*"]
+		}
+	},
+	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro", "src/env.d.ts"],
+	"exclude": ["node_modules"]
 }

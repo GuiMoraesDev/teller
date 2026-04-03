@@ -1,277 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home page should render correctly 1`] = `
-.c8 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: auto;
-  height: 4.4rem;
-  border: 0.1rem solid #C9CAC8;
-  border-radius: 0.4rem;
-  margin: 0;
-  padding: 0 1.4rem;
-  gap: 1.2rem;
-  text-transform: none;
-  -webkit-transition: background-color 0.2s, color 0.2s;
-  transition: background-color 0.2s, color 0.2s;
-  cursor: pointer;
-  color: #FDFDFD;
-  background-color: #63989F;
-  border-color: #4F7A7F;
-}
-
-.c8:hover {
-  background-color: #82ADB2;
-}
-
-.c8 svg {
-  color: inherit;
-}
-
-.c8:hover {
-  background-color: #4F7A7F;
-}
-
-.c8 .spin {
-  -webkit-animation-name: k0;
-  animation-name: k0;
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-}
-
-.c6 {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 400;
-  font-family: 'Roboto',sans-serif;
-  line-height: 2.0rem;
-  color: #181917;
-  text-transform: none;
-  box-sizing: border-box;
-}
-
-.c3 {
-  position: relative;
-  width: 100%;
-}
-
-.c7 {
-  position: absolute;
-  bottom: 0.2rem;
-  right: 0;
-  left: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 100%;
-  font-size: 1.2rem;
-  font-weight: 400;
-  font-family: 'Roboto',sans-serif;
-  line-height: 1.6rem;
-  margin: auto;
-  padding: 0.6rem 1.2rem;
-  color: #FDFDFD;
-  background-color: #FFD166;
-  border-radius: 0;
-  border-bottom-left-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  opacity: 0;
-  -webkit-transform: translateY(100%);
-  -ms-transform: translateY(100%);
-  transform: translateY(100%);
-  -webkit-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
-  z-index: 0;
-}
-
-.c7 svg {
-  margin-right: 0.5rem;
-}
-
-.c4 {
-  position: relative;
-  width: 100%;
-  padding: 1.6rem;
-  background-color: #FDFDFD;
-  border: 0.1rem solid #C9CAC8;
-  border-radius: 0.4rem;
-  -webkit-transition: border-color 0.2s, box-shadow 0.2s;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  border-radius: 0.4rem;
-  font-size: 1.2rem;
-  font-weight: 400;
-  font-family: 'Roboto',sans-serif;
-  line-height: 1.6rem;
-  height: 19.2rem;
-}
-
-.c4:hover {
-  border-color: #949591;
-  box-shadow: 1px 0px 3px 0px #E4E5E3;
-}
-
-.c5 {
-  width: 100%;
-  height: 85%;
-  padding: 0;
-  color: #181917;
-  background-color: #FDFDFD;
-  border: none;
-  resize: none;
-  font-size: 1.2rem;
-  font-weight: 400;
-  font-family: 'Roboto',sans-serif;
-  line-height: 1.6rem;
-}
-
-.c0 {
-  grid-area: Content;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding: 2.0rem;
-  gap: 2.0rem;
-  width: 100%;
-  max-width: 600px;
-  height: 100%;
-  margin: auto;
-  overflow-y: auto;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: 100%;
-  gap: 1.2rem;
-}
-
-.c2 {
-  width: 100%;
-}
-
-.c9 {
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
-  gap: 1.4rem;
-  margin-bottom: auto;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-}
-
-@-webkit-keyframes k0 {
-  from {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes k0 {
-  from {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
 <main
-  class="c0"
+  class="flex flex-col p-[2.0rem] gap-[2.0rem] w-full max-w-[600px] h-full mx-auto overflow-y-auto"
 >
   <div
-    class="c1"
+    class="flex flex-col items-end justify-center w-full gap-[1.2rem]"
   >
     <form
-      class="c2"
+      class="w-full"
       id="post-body"
     >
       <div
-        class="c3"
+        class="relative w-full"
       >
         <div
-          class="c4"
+          class="relative w-full p-[1.6rem] bg-canvas border border-border transition-[border-color,box-shadow] duration-200 hover:border-neutral-400 hover:shadow-short h-[19.2rem] text-[1.2rem] leading-[1.6rem] rounded-[0.4rem]"
         >
           <textarea
-            class="c5"
+            class="w-full h-[85%] p-0 text-text-primary bg-canvas border-none resize-none outline-none text-[1.2rem] font-body leading-[1.6rem]"
             data-testid="post-body-input"
             id="post-body-input"
             maxlength="144"
             name="body"
-            placeholder="What’s happening?"
+            placeholder="What's happening?"
           />
           <p
-            class="c6"
+            class="relative p-0 m-0 text-[1.4rem] font-body font-normal leading-[2.0rem] text-text-primary"
           >
             0 / 144
           </p>
           <span
-            class="c7"
+            class="absolute bottom-[0.2rem] left-0 right-0 flex items-center w-full text-[1.2rem] font-body leading-[1.6rem] mx-auto py-[0.6rem] px-[1.2rem] text-neutral-000 bg-alert-500 rounded-none rounded-b-[0.4rem] translate-y-full transition-opacity duration-500 z-0 [&_svg]:mr-[0.5rem] opacity-0"
             data-testid="error-alert"
           >
             <svg
@@ -316,7 +76,7 @@ exports[`Home page should render correctly 1`] = `
       </div>
     </form>
     <button
-      class="c8"
+      class="relative flex items-center justify-center border gap-[1.2rem] transition-colors duration-200 cursor-pointer h-[4.4rem] px-[1.4rem] rounded-[0.4rem] text-text-inverted bg-brand-primary border-brand-primary-dark hover:bg-brand-primary-dark [&_svg]:text-inherit"
       data-testid="submit-button"
       form="post-body"
       type="submit"
@@ -361,10 +121,10 @@ exports[`Home page should render correctly 1`] = `
     </button>
   </div>
   <div
-    class="c9"
+    class="grid grid-cols-1 w-full gap-[1.4rem] mb-auto"
   >
     <div
-      class="c10"
+      class="flex items-center justify-center h-full w-full"
     >
       You have no posts yet
     </div>

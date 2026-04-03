@@ -1,6 +1,6 @@
-import { UserProps } from '@types';
+import type { UserProps } from '@types';
 
-import { Post, PostNewPostParams } from 'views/Home/@types';
+import type { Post, PostNewPostParams } from 'views/Home/types';
 
 import api from './api';
 

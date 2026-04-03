@@ -1,25 +1,21 @@
-import { Toaster, ToasterProps } from 'react-hot-toast';
+import { Toaster, type ToasterProps } from 'react-hot-toast';
 
-import { useTheme } from 'styled-components';
+const toastOptions: ToasterProps['toastOptions'] = {
+	success: {
+		iconTheme: {
+			primary: '#507C59',
+			secondary: '#D7E2D9',
+		},
+	},
+	error: {
+		iconTheme: {
+			primary: '#E35226',
+			secondary: '#F9DCD4',
+		},
+	},
+};
 
 const ToasterComponent = (): JSX.Element => {
-	const theme = useTheme();
-
-	const toastOptions: ToasterProps['toastOptions'] = {
-		success: {
-			iconTheme: {
-				primary: theme.colors.success[500],
-				secondary: theme.colors.success[100],
-			},
-		},
-		error: {
-			iconTheme: {
-				primary: theme.colors.danger[500],
-				secondary: theme.colors.danger[100],
-			},
-		},
-	};
-
 	return (
 		<Toaster
 			position="top-right"

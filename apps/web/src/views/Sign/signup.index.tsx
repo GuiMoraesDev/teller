@@ -1,24 +1,20 @@
 import { useCallback, useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { useRouter } from 'next/router';
-
-import nookies from 'nookies';
 import { User, EnvelopeSimple, Lock } from 'phosphor-react';
 
 import Input from 'components/Input';
 
+import { setCookie } from 'helpers/cookies';
 import logYupErrors from 'helpers/logYupErrors';
 
 import { postNewSession } from 'services/sessions.api';
-import { postNewUser, PostNewUserParams } from 'services/users.api';
+import { postNewUser, type PostNewUserParams } from 'services/users.api';
 
 import useSignValidation from './hooks/useSignValidation';
 import SignTemplate from './template';
 
-const SignIn = (): JSX.Element => {
-	const router = useRouter();
-
+const SignUp = (): JSX.Element => {
 	const { signUpMethods } = useSignValidation();
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -35,26 +31,24 @@ const SignIn = (): JSX.Element => {
 					password: values.password,
 				});
 
-				nookies.set(null, 'user', JSON.stringify(user));
-				nookies.set(null, 'token', JSON.stringify(token));
+				setCookie('user', JSON.stringify(user));
+				setCookie('token', JSON.stringify(token));
 
 				toast.success('Logged successfully');
 
-				router.push('/home');
+				window.location.href = '/home';
 			} catch (error) {
-				if (process.env.NODE_ENV === 'development') {
-					// eslint-disable-next-line no-console
+				if (import.meta.env.DEV) {
 					console.error(error);
 				}
 
 				signUpMethods.reset();
-
 				toast.error('Something went wrong');
 			}
 
 			setIsLoading(false);
 		},
-		[router, signUpMethods]
+		[signUpMethods],
 	);
 
 	return (
@@ -105,4 +99,4 @@ const SignIn = (): JSX.Element => {
 	);
 };
 
-export default SignIn;
+export default SignUp;

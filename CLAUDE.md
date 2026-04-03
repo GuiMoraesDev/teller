@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Turborepo monorepo with npm workspaces.
 
-- `apps/web` — Next.js 12 frontend (Twitter-like social media POC)
+- `apps/web` — Astro 5 frontend with React islands (Twitter-like social media POC)
 - `packages/` — shared packages (future)
 
 ## Commands
@@ -20,48 +20,61 @@ Root-level commands run via Turbo across all workspaces:
 
 App-specific commands (run from `apps/web/`):
 
+- **Preview**: `npm run preview`
 - **Test single file**: `npm test -- --testPathPattern=<path>`
 - **Test changed only**: `npm test -- --onlyChanged`
-- **Storybook**: `npm run storybook` (port 6006)
 
 ## Web App Architecture (`apps/web`)
 
-Next.js 12 app using styled-components with SSR.
+Astro 5 app with React islands (`client:load`) and Tailwind CSS v4.
 
-### Layer hierarchy: Pages → Layouts → Views → Templates → Components/Patterns
+### Layer hierarchy: Astro Pages → Astro Layouts → React Views → React Templates → React Components/Patterns
 
-- **Pages** (`src/pages/`): Next.js routing + SSR auth checks via `getServerSideProps` with nookies. Root `/` permanently redirects to `/signin`.
-- **Layouts** (`src/layouts/`): `Private` (authenticated pages with header/nav) and `Sign` (auth pages with logo only).
-- **Views** (`src/views/`): Business logic, data fetching (React Query), mutations, and state. Each view has a `template/` subfolder for presentational rendering.
+- **Pages** (`src/pages/`): `.astro` files for routing. Auth handled by middleware (`src/middleware.ts`). Root `/` redirects to `/signin`.
+- **Layouts** (`src/layouts/`): Astro layouts (`BaseLayout.astro`, `PrivateLayout.astro`, `SignLayout.astro`) wrap pages. `Providers.tsx` wraps React islands with QueryClientProvider + Toaster.
+- **Views** (`src/views/`): React components with business logic, data fetching (React Query), mutations, and state. Each view has a `template/` subfolder for presentational rendering.
 - **Templates** (`src/views/*/template/`): Receive props from views, handle form rendering and validation schemas.
-- **Components** (`src/components/`): Reusable UI primitives (Button, Input, Text, TextArea, Img, Logo, etc.).
-- **Patterns** (`src/patterns/`): Complex composites (Modal, FloatSubMenu).
+- **Components** (`src/components/`): Reusable React UI primitives (Button, Input, Text, TextArea, Img, Logo, etc.) styled with Tailwind CSS.
+- **Patterns** (`src/patterns/`): Complex React composites (Modal, FloatSubMenu).
+
+### Auth Middleware (`src/middleware.ts`)
+
+Replaces Next.js `getServerSideProps`. Reads `user` cookie via `Astro.cookies`, redirects unauthenticated users from protected routes to `/signin`, and redirects authenticated users from `/signin`/`/signup` to `/home`.
 
 ### Services (`src/services/`)
 
-Axios-based API layer. `api.ts` creates a configured instance that reads JWT from cookies and sets `Authorization: Bearer` header. Domain-specific files (`posts.api.ts`, `users.api.ts`, `sessions.api.ts`) export endpoint functions.
+Axios-based API layer. `api.ts` creates a configured instance that reads JWT from `document.cookie` and sets `Authorization: Bearer` header. Domain-specific files (`posts.api.ts`, `users.api.ts`, `sessions.api.ts`) export endpoint functions.
 
 ### State & Data
 
-- **Auth**: JWT stored in cookies via nookies, decoded with jwt-decode
+- **Auth**: JWT stored in browser cookies via `helpers/cookies.ts` utility, decoded with jwt-decode
 - **Server state**: TanStack React Query v4 (`QUERY_KEYS`: sessions, users, posts)
 - **Forms**: react-hook-form + yup validation + @hookform/resolvers
-- **Styling**: styled-components with theme (`styles/themes/` has colors, breakpoints, borders, sizes, typography)
+- **Styling**: Tailwind CSS v4 with custom theme tokens in `src/styles/global.css`
 
 ### Key constants (`src/constant/index.ts`)
 
 `UNPROTECTED_ROUTES`, `LS_KEYS`, `QUERY_KEYS`, `POST_MESSAGE_LENGTH` (144 chars)
 
+## Testing
+
+Jest + React Testing Library with ts-jest (`jest.config.cjs`).
+
+- **`import.meta.env`**: ts-jest cannot parse this syntax. Mock components that use it (e.g., `GoogleSign`) in tests.
+- **Tailwind visibility**: Use `toHaveClass('invisible')` instead of `not.toBeVisible()` — JSDOM doesn't compute CSS from class names.
+- **Snapshots**: Reflect Tailwind classes. Update with `npm test -- -u` after styling changes.
+
 ## Code Conventions
 
-- **Absolute imports** from `src/` (configured in tsconfig `baseUrl: "./src"`)
-- **Import order** enforced by ESLint: react → next → external modules → internal aliases (components, context, helpers, layouts, views, patterns, services, constants, styles) → relative imports, alphabetized within groups
-- **Styling**: tabs, 2-space tab width, single quotes, semicolons, always arrow parens (`.prettierrc`)
+- **Absolute imports** from `src/` (configured in tsconfig `baseUrl: "./src"` and Vite aliases in `astro.config.mjs`)
+- **Styling**: Tailwind CSS utility classes + `clsx` for conditional classes
 - **Commits**: conventional commits enforced via commitlint (`@commitlint/config-conventional`)
 - **Branch protection**: pre-commit hook blocks commits on main/master, runs lint + tests on changed files
-- **Component structure**: each component has `index.tsx`, `styles.ts`, optional `test.spec.tsx`, `*.stories.tsx`, and `__snapshots__/`
+- **Component structure**: each component has `index.tsx`, optional `test.spec.tsx`
 - **CI**: PR to main triggers `npm test --bail` on ubuntu-latest
 
 ## Environment Variables
 
-Required (set via `.env` in `apps/web/` or CI secrets): `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_ENV`, `NEXT_PUBLIC_GITHUB_TOKEN`, `NEXT_PUBLIC_GOOGLE_CLIENT_ID`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_KEY`
+Required (set via `.env` in `apps/web/` or CI secrets): `PUBLIC_API_URL`, `PUBLIC_ENV`, `PUBLIC_GITHUB_TOKEN`, `PUBLIC_GOOGLE_CLIENT_ID`, `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_KEY`
+
+Note: Astro uses `PUBLIC_` prefix (not `NEXT_PUBLIC_`) for client-exposed env vars.
