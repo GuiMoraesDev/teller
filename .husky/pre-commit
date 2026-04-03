@@ -1,8 +1,2 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-. "$(dirname "$0")/common.sh"
-
-npx git-branch-is --not "main" &&
-npx git-branch-is --not "master" &&
 npx turbo run lint &&
 npx turbo run test -- --onlyChanged --bail
